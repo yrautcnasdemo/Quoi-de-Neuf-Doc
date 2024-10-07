@@ -1,0 +1,188 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(90deg, #143447, #2B495A);
+    background-size: cover;
+    height: 100vh;
+}
+
+
+/* HEADER */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+    background-color: #143447;
+}
+
+.logo-site {
+    max-height: 70px;
+}
+
+
+/* ///////////////////////   HOMEPAGE   ///////////////////////////*/
+
+
+
+/* INTRO HOMEPAGE */
+.homepage-intro{
+    position: relative;
+    max-width: 750px;
+    padding: 30px 20px 30px 20px;
+}
+
+.intro-model01{
+    width: 100%;
+    border-radius: 15px;
+    filter: drop-shadow(10px 10px 4px black);
+}
+
+.line-tr1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    position: absolute;
+    width: 70%;
+    top: 50%;
+    background-color: #e240317e;
+}
+.line-op1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #E24031;
+    width: 80%;
+    height: 30px;
+}
+.line-tr1 h2 {
+    color: aliceblue;
+    font-family: poppins;
+    font-size: 12px;
+}
+
+.line-tr2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    position: absolute;
+    width: 70%;
+    top: 62%;
+    right: 20px;
+    background-color: #30abb477;
+}
+.line-op2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #30ACB4;
+    width: 80%;
+    height: 30px;
+}
+.line-tr2 h2 {
+    color: aliceblue;
+    font-family: poppins;
+    font-size: 12px;
+}
+
+button {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 10px;
+    background-color: #DE6E52;
+    padding: 5px 10px;
+    color: aliceblue;
+    font-size: 16px;
+    filter: drop-shadow(5px 5px 2px black);
+    font-family: Teachers;
+}
+
+
+
+/* PRESENTATION HOMEPAGE */
+.homepage-presentation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px 40px 20px;
+    text-align: center;
+}
+
+.logo-title {
+    position: relative;
+    width: 250px;
+}
+.homepage-presentation h1 {
+    font-family: poppins-bold;
+    font-size: 34px;
+    color: aliceblue;
+    line-height: 1.1;
+}
+.red-span {
+    color: red;
+}
+.logo-doc {
+    position: absolute;
+    top: -30px;
+    left: 3px;
+}
+
+.homepage-presentation p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: aliceblue;
+    font-family: poppins;
+    line-height: 1.1;
+}
+
+.homepage-slider {
+    margin-top: 30px;
+}
+.homepage-slider img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+
+.homepage-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 100px;
+    padding: 30px;
+    background-color: #143447;
+}
+
+.homepage-search h3 {
+    color: aliceblue;
+    font-family: poppins;
+}
+
+.homepage-search #regions-select {
+    padding: 5px 10px;
+    font-family: poppins;
+    font-size: 14px;
+}
+.homepage-search #regions-select option {
+    font-family: poppins;
+    font-size: 14px;
+}
+
+
+
+/* ///////////////////////   ???   ///////////////////////////*/

@@ -1,0 +1,14 @@
+@font-face {
+    font-family: poppins;
+    src: url(/fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: poppins-bold;
+    src: url(/fonts/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: Teachers;
+    src: url(/fonts/Teachers-VariableFont_wght.ttf);
+}
