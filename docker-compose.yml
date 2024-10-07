@@ -1,0 +1,39 @@
+services:
+    php:
+        image: php:8.3-apache
+        container_name: quoi_de_neuf_doc_php8_3
+        ports:
+            - "8003:80" # on définit le port pour accéder à l'application (localhost:8001)
+        volumes:
+            - ./src:/var/www/html # on monte le dossier courant dans le dossier /var/www/html du container
+        build:
+            context: .
+            dockerfile: Dockerfile
+    db:
+        image: mysql:8.0
+        container_name: quoi_de_neuf_doc_mysql8_0
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: take_a_feariend
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+        volumes:
+            - ./db:/docker-entrypoint-initdb.d # Chemin vers le dossier db contenant le fichier SQL
+            - mysql_data:/var/lib/mysql   # Utilisation d'un volume pour persister les données MySQL
+        ports:
+            - "3308:3306"
+    phpma:
+        image: phpmyadmin/phpmyadmin
+        container_name: quoi_de_neuf_doc_phpmyadmin
+        environment:
+            PMA_ARBITRARY: 1
+            PMA_HOST: db
+            PMA_USER: root
+            PMA_PASSWORD: root
+            UPLOAD_LIMIT: 20M
+        ports:
+            - "8083:80" # on définit le port pour accéder à phpmyadmin (localhost:8081)
+
+volumes:
+    mysql_data:   # Définition du volume mysql_data pour persister les données MySQL
