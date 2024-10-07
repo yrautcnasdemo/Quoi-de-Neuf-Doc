@@ -15,6 +15,7 @@
     </header>
 
     <main>
+        <!-- /* INTRO HOMEPAGE */ -->
         <article>
             <section class="homepage-intro">
                 <img class="intro-model01" src="assets/images/medecins-model01.jpg" alt="img-medecins-model">
@@ -32,6 +33,8 @@
                 <button>Chercher</button>
             </section>
 
+
+            <!-- /* PRESENTATION HOMEPAGE */ -->
             <section class="homepage-presentation">
                 <div class="logo-title">
                     <h1>Quoi de <br> neuf <span class="red-span">Doc ?</span></h1>
@@ -47,31 +50,101 @@
             </section>
         </article>
 
+
+        <!-- /* SEARCH HOMEPAGE */ -->
         <section class="homepage-search">
             <div class="intro-search">
                 <h3> Ma <span class="red-span">Région</span> :</h3>
             </div>
 
-            <select name="regions" id="regions-select">
-                <option value="">Liste régions:</option>
-                <option value="auvergne-rhone-alpes">Auvergne-Rhône-Alpes</option>
-                <option value="bourgogne-franche-comte">Bourgogne-Franche-Comté</option>
-                <option value="bretagne">Bretagne</option>
-                <option value="centre-val-de-loire">Centre-Val de Loire</option>
-                <option value="corse">Corse</option>
-                <option value="grand est">Grand Est</option>
-                <option value="hauts-de-france">Hauts-de-France</option>
-                <option value="ile-de-france">Île-de-France</option>
-                <option value="normandie">Normandie</option>
-                <option value="nouvelle-aquitaine">Nouvelle-Aquitaine</option>
-                <option value="occitanie">Occitanie</option>
-                <option value="pays-de-la-loire">Pays de la Loire</option>
-                <option value="provence-alpes-cote-azur">Provence-Alpes-Côte d'Azur</option>
-            </select>
+            <form class="regions-form" action="" method="GET">
+                <select name="regions" id="regions-select">
+                    <option value="">Liste régions:</option>
+                    <option value="auvergne-rhone-alpes">Auvergne-Rhône-Alpes</option>
+                    <option value="bourgogne-franche-comte">Bourgogne-Franche-Comté</option>
+                    <option value="bretagne">Bretagne</option>
+                    <option value="centre-val-de-loire">Centre-Val de Loire</option>
+                    <option value="corse">Corse</option>
+                    <option value="grand est">Grand Est</option>
+                    <option value="hauts-de-france">Hauts-de-France</option>
+                    <option value="ile-de-france">Île-de-France</option>
+                    <option value="normandie">Normandie</option>
+                    <option value="nouvelle-aquitaine">Nouvelle-Aquitaine</option>
+                    <option value="occitanie">Occitanie</option>
+                    <option value="pays-de-la-loire">Pays de la Loire</option>
+                    <option value="provence-alpes-cote-azur">Provence-Alpes-Côte d'Azur</option>
+                </select>
+
+                <button>Envoyer</button>
+            </form>
+        </section>
 
 
+        <!-- /*CONTACT HOMEPAGE*/ -->
+        <section class="homepage-form">
+            <div class="title-form">
+                <h4>Une idée à nous <span class="red-span">partager</span> ? Écrivez-nous via le formulaire de contact <br> ci-dessous :</h4>
+            </div>
+
+            <form class="full-form" action="">
+                <div class="form-input">
+                    <span>Nom :</span>
+                    <input type="text" placeholder="Entrer votre nom">
+                </div>
+                <div class="form-input">
+                    <span>Prénom :</span>
+                    <input type="text" placeholder="Entrer votre prenom">
+                </div>
+                <div class="form-input">
+                    <span>eMail :</span>
+                    <input type="mail" placeholder="Entrer votre eMail">
+                </div>
+                <div class="form-input">
+                    <span>Sujet :</span>
+                    <input type="text" placeholder="Décriver votre sujet">
+                </div>
+                <div class="form-input">
+                    <span>Nom :</span>
+                    <textarea id="text-area" name="text-area" rows="10" placeholder="Entrer votre message..."></textarea>
+                </div>
+
+                <button>Envoyer votre message</button>
+            </form>
         </section>
     </main>
+
+
+    <footer>
+    <div class="footer-content">
+        <div class="footer-up">
+            <div class="footer-about">
+                <h3 class="red-span">À propos</h3>
+                <p>Notre site vous offre des informations fiables et actualisées sur la santé, avec une équipe de professionnels dédiée à vous informer.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3 class="red-span">Liens utiles</h3>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+            
+        <div class="contact-us">
+            <h3 class="red-span">Contactez-nous</h3>
+            <p>Email : contact@quoi-de-neuf-doc.com</p>
+            <p>Téléphone : +1 555-2368</p>
+            <p>Adresse : Hook & Ladder 8, 14 North Moore Street, New York, NY 10013, États-Unis</p>
+        </div>
+    </div>
+
+    <div class="all-right">
+        <p>2024 Quoi de neuf Doc ? Tous droits réservés.</p>
+    </div>
+</footer>
 
     <script src="javascript/script.js"></script>
 </body>

@@ -4,7 +4,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+html {
+    scroll-behavior: smooth;
+}
 body {
     background: linear-gradient(90deg, #143447, #2B495A);
     background-size: cover;
@@ -14,16 +16,75 @@ body {
 
 /* HEADER */
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding-right: 20px;
     background-color: #143447;
+    z-index: 5;
 }
-
 .logo-site {
     max-height: 70px;
+}
+
+
+
+/*FOOTER*/
+footer {
+    margin-top: 50px;
+    padding: 20px 10px;
+    background-color: #1e1e1e;
+    font-family: poppins;
+    color: aliceblue;
+}
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.footer-up {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 35px;
+    height: 160px;
+}
+.footer-about {
+    text-align: center;
+    width: 250px;
+}
+.footer-about p {
+    font-size: 14px;
+}
+.footer-links {
+    text-align: center;
+}
+.footer-links li {
+    list-style: none;
+}
+.footer-links li a {
+    color: aliceblue;
+    transition: 0.4s ease-in-out;
+}
+.footer-links li a:hover {
+    transition: 0.4s ease-in-out;
+    color: rgb(255, 73, 73);
+}
+
+.contact-us {
+    text-align: center;
+    font-size: 14px;
+}
+.all-right {
+    text-align: center;
+    margin-top: 10px;
 }
 
 
@@ -33,6 +94,7 @@ header {
 
 /* INTRO HOMEPAGE */
 .homepage-intro{
+    margin-top: 70px;
     position: relative;
     max-width: 750px;
     padding: 30px 20px 30px 20px;
@@ -41,7 +103,7 @@ header {
 .intro-model01{
     width: 100%;
     border-radius: 15px;
-    filter: drop-shadow(10px 10px 4px black);
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.50);
 }
 
 .line-tr1 {
@@ -93,7 +155,7 @@ header {
     font-size: 12px;
 }
 
-button {
+.homepage-intro button {
     position: absolute;
     top: 80%;
     left: 50%;
@@ -153,17 +215,19 @@ button {
 .homepage-slider img {
     width: 100%;
     border-radius: 10px;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
 }
 
 
 
+/* SEARCH HOMEPAGE */
 .homepage-search {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     padding: 30px;
     background-color: #143447;
 }
@@ -173,6 +237,13 @@ button {
     font-family: poppins;
 }
 
+.regions-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
 .homepage-search #regions-select {
     padding: 5px 10px;
     font-family: poppins;
@@ -182,7 +253,80 @@ button {
     font-family: poppins;
     font-size: 14px;
 }
+.regions-form button {
+    font-family: poppins;
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: #E24031;
+    border: none;
+    border-radius: 10px;
+    color: aliceblue;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+}
 
+
+
+
+/*CONTACT HOMEPAGE*/
+.homepage-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title-form {
+    width: 350px;
+}
+.title-form h4 {
+    color: aliceblue;
+    font-family: poppins;
+    font-size: 24px;
+    text-align: center;
+}
+.full-form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #9F4D38;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+}
+.form-input {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-bottom: 15px;
+    width: 100%;
+    font-family: poppins;
+    color: aliceblue;
+}
+
+.form-input input {
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.form-input textarea {
+    border-radius: 5px;
+}
+
+.full-form button {
+    border: none;
+    background-color: #D9D9D9;
+    color: black;
+    margin-top: 10px;
+    font-family: poppins;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.493);
+}
 
 
 /* ///////////////////////   ???   ///////////////////////////*/
