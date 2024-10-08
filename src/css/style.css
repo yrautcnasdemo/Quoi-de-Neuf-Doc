@@ -25,7 +25,7 @@ header {
     align-items: center;
     padding-right: 20px;
     background-color: #143447;
-    z-index: 5;
+    z-index: 10;
 }
 .logo-site {
     max-height: 70px;
@@ -274,25 +274,27 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    width: 400px;
+    width: 360px;
     border-radius: 15px;
-    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.50);
 }
 .img-gallery2 {
     position: absolute;
     top: 50%;
-    transform: translate(-25%, -50%);
-    width: 400px;
+    right: 0;
+    transform: translate(0%, -50%);
+    width: 360px;
     border-radius: 15px;
-    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.50);
+    z-index: 5;
 }
 .img-gallery3 {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 400px;
+    width: 360px;
     border-radius: 15px;
-    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.50);
 }
 
 
@@ -340,8 +342,33 @@ footer {
     box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
 }
 
-
-
+/*SEARCH HOMEPAGE tablette & desktop */
+.homepage-search-L {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: #143447;
+}
+.interractive-intro h3 {
+    font-family: Teachers;
+    font-size: 34px;
+    color: aliceblue;
+    padding-top: 15px;
+}
+.interractive-intro p {
+    font-family: poppins;
+    font-size: 16px;
+    color: aliceblue;
+    line-height: 1.2;
+    margin-top: 25px;
+    max-width: 800px;
+    padding: 0px 50px 0px 50px;
+    text-align: center;
+}
 
 /*CONTACT HOMEPAGE*/
 .homepage-form {

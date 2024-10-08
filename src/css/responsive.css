@@ -6,6 +6,9 @@
     .homepage-gallery {
         display: none;
     }
+    .homepage-search-L {
+        display: none;
+    }
 }
 
 @media (min-width: 750px) {
@@ -21,6 +24,7 @@
         width: 80px;
         top: -50px;
         left: 65px;
+        transition: 1s ease-in-out;
     }
     .homepage-presentation h1 {
         margin-bottom: 20px;
@@ -32,6 +36,10 @@
     .homepage-slider {
         display: none;
     }
+    /*SEARCH*/
+    .homepage-search {
+        display: none;
+    }
 }
 
 
@@ -41,12 +49,50 @@
         justify-content: center;
         align-items: center;
         text-align: start;
+        gap: 30px;
     }
     .hp-text {
         align-items: start;
     }
+    .logo-doc {
+        width: 80px;
+        top: -50px;
+        left: 350px;
+        transition: 1s ease-in-out;
+    }
     .homepage-presentation p {
         line-height: 1.2;
         max-width: 600px;
+    }
+    .homepage-gallery {
+        height: 400px;
+        width: 450px;
+        margin: 10px;
+    }
+    .img-gallery1 {
+        width: 280px;
+    }
+    .img-gallery2 {
+        width: 280px;
+    }
+    .img-gallery3 {
+        width: 280px;
+    }
+
+
+    /*SEARCH*/
+    .homepage-search {
+        display: none;
+    }
+    .homepage-search-L {
+        flex-direction: row;
+        gap: 0px;
+    }
+    .interractive-intro h3 {
+        padding-left: 50px;
+    }
+    .interractive-intro p {
+        text-align: start;
+        padding: 0px 0px 0px 50px;
     }
 }
