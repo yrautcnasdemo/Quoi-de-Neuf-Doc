@@ -40,6 +40,45 @@
     .homepage-search {
         display: none;
     }
+    /*FORMULAIRE*/
+    .title-form {
+        max-width: 800px;
+    }
+    .full-form {
+        max-width: 885px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        padding: 30px;
+        border-radius: 20px;
+        background-color: #9F4D38;
+        box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+    }
+    .part-all {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        max-width: 800px;
+        margin-bottom: 15px;
+    }
+    .part1 {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .part2 {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 
@@ -94,5 +133,14 @@
     .interractive-intro p {
         text-align: start;
         padding: 0px 0px 0px 50px;
+    }
+
+
+    .footer-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
     }
 }

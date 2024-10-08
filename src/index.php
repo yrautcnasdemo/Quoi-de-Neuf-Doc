@@ -127,31 +127,39 @@
         <!-- /*CONTACT HOMEPAGE*/ -->
         <section class="homepage-form">
             <div class="title-form">
-                <h4>Une idée à nous <span class="red-span">partager</span> ? Écrivez-nous via le formulaire de contact <br> ci-dessous :</h4>
+                <h4>Une idée à nous <span class="red-span">partager</span> ?</h4>
+                <p>Écrivez-nous via le formulaire de contact ci-dessous :</p>
             </div>
 
-            <form class="full-form" action="">
-                <div class="form-input">
-                    <span>Nom :</span>
-                    <input type="text" placeholder="Entrer votre nom">
+            <form class="full-form" action="POST">
+                <div class="part-all">
+                    <div class="part1">
+                        <div class="form-input">
+                            <span>Nom :</span>
+                            <input type="text" placeholder="Entrer votre nom">
+                        </div>
+                        <div class="form-input">
+                            <span>Prénom :</span>
+                            <input type="text" placeholder="Entrer votre prenom">
+                        </div>
+                        <div class="form-input">
+                            <span>eMail :</span>
+                            <input type="mail" placeholder="Entrer votre eMail">
+                        </div>
+                    </div>
+                    
+                    <div class="part2">
+                        <div class="form-input">
+                            <span>Sujet :</span>
+                            <input type="text" placeholder="Décriver votre sujet">
+                        </div>
+                        <div class="form-input">
+                            <span>Nom :</span>
+                            <textarea id="text-area" name="text-area" rows="10" placeholder="Entrer votre message..."></textarea>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-input">
-                    <span>Prénom :</span>
-                    <input type="text" placeholder="Entrer votre prenom">
-                </div>
-                <div class="form-input">
-                    <span>eMail :</span>
-                    <input type="mail" placeholder="Entrer votre eMail">
-                </div>
-                <div class="form-input">
-                    <span>Sujet :</span>
-                    <input type="text" placeholder="Décriver votre sujet">
-                </div>
-                <div class="form-input">
-                    <span>Nom :</span>
-                    <textarea id="text-area" name="text-area" rows="10" placeholder="Entrer votre message..."></textarea>
-                </div>
-
+                    
                 <button>Envoyer votre message</button>
             </form>
         </section>

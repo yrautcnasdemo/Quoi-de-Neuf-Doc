@@ -378,13 +378,21 @@ footer {
     align-items: center;
 }
 .title-form {
-    width: 350px;
+    max-width: 400px;
+    margin-bottom: 30px;
 }
 .title-form h4 {
     color: aliceblue;
     font-family: poppins;
     font-size: 24px;
     text-align: center;
+}
+.title-form p {
+    color: aliceblue;
+    font-family: poppins;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
 }
 .full-form {
     width: 80%;
@@ -397,6 +405,27 @@ footer {
     border-radius: 20px;
     background-color: #9F4D38;
     box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+}
+.part-all {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.part1 {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.part2 {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .form-input {
     max-width: 350px;
@@ -424,6 +453,7 @@ footer {
     background-color: #D9D9D9;
     color: black;
     margin-top: 10px;
+    margin-bottom: 15px;
     font-family: poppins;
     font-size: 16px;
     padding: 5px 10px;
