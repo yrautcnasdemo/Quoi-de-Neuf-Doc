@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/fonts.css">
     <title>Quoi de neuf Doc ?</title>
 </head>
@@ -32,20 +33,36 @@
                 </div>
                 <button>Chercher</button>
             </section>
+            
+            <!-- Format L-XL -->
+            <section class="homepage-intro-L">
+                    <div class="title-display">
+                        <h2>Trouver un professionnel de la santé <br> près de chez soi</h2>
+                        <button>Chercher</button>
+                    </div>
+            </section>
 
 
             <!-- /* PRESENTATION HOMEPAGE */ -->
             <section class="homepage-presentation">
-                <div class="logo-title">
-                    <h1>Quoi de <br> neuf <span class="red-span">Doc ?</span></h1>
-                    <img class="logo-doc" src="assets/images/logo/medecin-simple2.png" width="56px" alt="logo-doctor">
+                <div class="hp-text">
+                    <div class="logo-title">
+                        <h1>Quoi de neuf <span class="red-span">Doc ?</span></h1>
+                        <img class="logo-doc" src="assets/images/logo/medecin-simple2.png" alt="logo-doctor">
+                    </div>
+                    <p>Bienvenue sur notre site, votre partenaire santé de proximité. Trouver un professionnel de santé peut être stressant, c'est pourquoi nous avons conçu un espace chaleureux et intuitif pour vous guider à chaque étape.</p>
+                    <p>Que vous recherchiez un médecin, un spécialiste, un dentiste ou un autre professionnel de la santé, nous vous aidons à localiser rapidement les praticiens proches de chez vous, disponibles selon vos besoins, avec une attention particulière à leur spécialisation, leurs horaires et leur disponibilité.</p>
+                    <p>Ici, la simplicité et la bienveillance sont au cœur de votre expérience.</p>
                 </div>
-                <p>Bienvenue sur notre site, votre partenaire santé de proximité. Trouver un professionnel de santé peut être stressant, c'est pourquoi nous avons conçu un espace chaleureux et intuitif pour vous guider à chaque étape.</p>
-                <p>Que vous recherchiez un médecin, un spécialiste, un dentiste ou un autre professionnel de la santé, nous vous aidons à localiser rapidement les praticiens proches de chez vous, disponibles selon vos besoins, avec une attention particulière à leur spécialisation, leurs horaires et leur disponibilité.</p>
-                <p>Ici, la simplicité et la bienveillance sont au cœur de votre expérience.</p>
 
                 <div class="homepage-slider">
                     <img src="assets/images/slider1.jpg" alt="img1-slider-genoux">
+                </div>
+                <!-- Format L-XL -->
+                <div class="homepage-gallery">
+                    <img class="img-gallery1" src="assets/images/slider1.jpg" alt="img1-slider-genoux">
+                    <img class="img-gallery2" src="assets/images/slider4.png" alt="img1-slider-genoux">
+                    <img class="img-gallery3" src="assets/images/slider2-b.png" alt="img1-slider-genoux">
                 </div>
             </section>
         </article>

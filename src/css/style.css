@@ -170,6 +170,45 @@ footer {
     font-family: Teachers;
 }
 
+/* INTRO HOMEPAGE tablette & desktop */
+.homepage-intro-L {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    background: url(/assets/images/intro-banner-XL.png);
+    background-size: cover;
+    height: 450px;
+    background-position: center;
+}
+
+.title-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: 1000px;
+}
+.title-display h2 {
+    text-align: center;
+    font-family: poppins-bold;
+    font-size: 36px;
+}
+.title-display button {
+    text-align: center;
+    border: none;
+    border-radius: 15px;
+    font-family: Teachers;
+    font-size: 24px;
+    color: aliceblue;
+    background-color: #E24031;
+    padding: 5px 10px;
+    filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.493));
+}
+
 
 
 /* PRESENTATION HOMEPAGE */
@@ -181,10 +220,15 @@ footer {
     padding: 40px 20px 40px 20px;
     text-align: center;
 }
-
+.hp-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .logo-title {
     position: relative;
-    width: 250px;
+    width: 200px;
 }
 .homepage-presentation h1 {
     font-family: poppins-bold;
@@ -199,6 +243,7 @@ footer {
     position: absolute;
     top: -30px;
     left: 3px;
+    width: 56px;
 }
 
 .homepage-presentation p {
@@ -218,6 +263,37 @@ footer {
     box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
 }
 
+/*PRESENTATION HOMEPAGE tablette & desktop */
+.homepage-gallery {
+    position: relative;
+    height: 580px;
+    width: 600px;
+    margin: 50px;
+}
+.img-gallery1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+}
+.img-gallery2 {
+    position: absolute;
+    top: 50%;
+    transform: translate(-25%, -50%);
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+}
+.img-gallery3 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+}
 
 
 /* SEARCH HOMEPAGE */
@@ -330,3 +406,6 @@ footer {
 
 
 /* ///////////////////////   ???   ///////////////////////////*/
+
+
+

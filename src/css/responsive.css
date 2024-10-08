@@ -1,0 +1,52 @@
+/*------------------------   RESPONSIVE   ---------------------------*/
+@media (max-width: 750px) {
+    .homepage-intro-L {
+        display: none;
+    }
+    .homepage-gallery {
+        display: none;
+    }
+}
+
+@media (min-width: 750px) {
+    /*HOMEPAGE INTRO*/
+    .homepage-intro {
+        display: none;
+    }
+    /*HOMEPAGE PRESENTATION*/
+    .logo-title {
+        width: 600px;
+    }
+    .logo-doc {
+        width: 80px;
+        top: -50px;
+        left: 65px;
+    }
+    .homepage-presentation h1 {
+        margin-bottom: 20px;
+    }
+    .homepage-presentation p {
+        line-height: 1.2;
+        max-width: 600px;
+    }
+    .homepage-slider {
+        display: none;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .homepage-presentation {
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        text-align: start;
+    }
+    .hp-text {
+        align-items: start;
+    }
+    .homepage-presentation p {
+        line-height: 1.2;
+        max-width: 600px;
+    }
+}
