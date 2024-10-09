@@ -15,7 +15,7 @@ body {
 
 
 /* HEADER */
-header {
+.header-s {
     position: fixed;
     top: 0;
     width: 100%;
@@ -27,8 +27,68 @@ header {
     background-color: #143447;
     z-index: 10;
 }
+.header-xl {
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #143447;
+    z-index: 10;
+}
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+    font-family: Teachers;
+    font-size: 24px;
+    padding-right: 85px;
+}
+.header-xl ul li a {
+    color: aliceblue;
+}
 .logo-site {
     max-height: 70px;
+}
+
+.header-xl a {
+    text-decoration: none;
+}
+.btn-style {
+    position: relative;
+    background-color: #1e1e1e;
+    border: 3px solid #848484;
+    border-radius: 20px;
+    padding: 0px 15px 0px 35px;
+    font-family: Teachers;
+    font-size: 18px;
+    margin-right: 20px;
+    color: aliceblue;
+}
+.btn-style-c {
+    position: absolute;
+    bottom: -3px;
+    left: -3px;
+    background-color: rgba(255, 0, 0, 0);
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    border: 3px solid #848484;
+}
+.btn-style-c2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(121, 0, 0);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 5px solid #000000;
 }
 
 

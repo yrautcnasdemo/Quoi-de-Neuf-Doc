@@ -1,5 +1,9 @@
 /*------------------------   RESPONSIVE   ---------------------------*/
-@media (max-width: 750px) {
+@media (max-width: 749px) {
+    /*HEADER*/
+    .header-xl {
+        display: none;
+    }
     .homepage-intro-L {
         display: none;
     }
@@ -12,6 +16,10 @@
 }
 
 @media (min-width: 750px) {
+    /*HEADER*/
+    .header-xl {
+        display: none;
+    }
     /*HOMEPAGE INTRO*/
     .homepage-intro {
         display: none;
@@ -83,6 +91,13 @@
 
 
 @media (min-width: 1200px) {
+    /*HEADER*/
+    .header-s {
+        display: none;
+    }
+    .header-xl {
+        display: flex;
+    }
     .homepage-presentation {
         flex-direction: row-reverse;
         justify-content: center;

@@ -11,8 +11,22 @@
 <body>
     
     <header>
-        <img class="logo-site" src="assets/images/logo/logoQDND.png" alt="Logo_quoi-de-neuf-doc">
-        <img src="assets/icones/burgermenu.png" height="40px" alt="burger-menu">
+        <div class="header-s">
+            <img class="logo-site" src="assets/images/logo/logoQDND.png" alt="Logo_quoi-de-neuf-doc">
+            <img src="assets/icones/burgermenu.png" height="40px" alt="burger-menu">
+        </div>
+        <!-- Format header desktop -->
+        <div class="header-xl">
+            <img class="logo-site" src="assets/images/logo/logoQDND.png" alt="Logo_quoi-de-neuf-doc">
+            <nav>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <a class="connexion-btn" href=""><div class="btn-style"><div class="btn-style-c"><div class="btn-style-c2"></div></div><span>Connexion</span></div></a>
+        </div>
     </header>
 
     <main>
