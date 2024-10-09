@@ -27,6 +27,8 @@ body {
     background-color: #143447;
     z-index: 10;
 }
+
+/* HEADER format XL */
 .header-xl {
     position: fixed;
     top: 0;
@@ -522,7 +524,43 @@ footer {
 }
 
 
+/* ///////////////////////   ABOUT   ///////////////////////////*/
+
+.about-zen {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 35px;
+    gap: 50px;
+}
+
+.about-zen h2 {
+    color: aliceblue;
+    font-family: Teachers;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about-zen p {
+    color: aliceblue;
+    font-family: poppins;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.about-zen img {
+    max-width: 100%;
+    border-radius: 30px;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.493);
+}
+
+
+
 /* ///////////////////////   ???   ///////////////////////////*/
+
 
 
 

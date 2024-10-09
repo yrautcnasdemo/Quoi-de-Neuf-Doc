@@ -87,6 +87,14 @@
         justify-content: center;
         align-items: center;
     }
+    
+    /* ABOUT */
+    .about-zen {
+        padding: 50px 80px;
+    }
+    .about-zen p {
+        line-height: 1.4;
+    }
 }
 
 
@@ -149,8 +157,22 @@
         text-align: start;
         padding: 0px 0px 0px 50px;
     }
+    /* ABOUT */
+    .about-zen {
+        margin-top: 70px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 35px;
+        gap: 50px;
+    }
+    .about-zen img {
+        max-width: 600px;
+    }
 
 
+    /* FOOTER */
     .footer-content {
         display: flex;
         flex-direction: row;
