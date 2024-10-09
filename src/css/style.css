@@ -524,8 +524,8 @@ footer {
 }
 
 
-/* ///////////////////////   ABOUT   ///////////////////////////*/
 
+/* ///////////////////////   ABOUT   ///////////////////////////*/
 .about-zen {
     margin-top: 70px;
     display: flex;
@@ -557,6 +557,103 @@ footer {
     box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.493);
 }
 
+
+/* ///////////////////////   SEARCH   ///////////////////////////*/
+
+.search-filter {
+    margin-top: 110px;
+    background-color: grey;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-doctor-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.search-doctor-form .style-search {
+    width: 290px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.style-search p {
+    background-color: #9F4D38;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-family: Teachers;
+    font-size: 20px;
+    color: aliceblue;
+    width: 100%;
+    text-align: center;
+}
+.style-search input[type="number"] {
+    -moz-appearance: textfield;
+    width: 100%;
+    padding: 0px 10px;
+    border-radius: 10px;
+    font-family: Teachers;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+}
+.style-search input {
+    width: 100%;
+    padding: 0px 10px;
+    border-radius: 10px;
+    font-family: Teachers;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.style-search select {
+    width: 100%;
+    padding: 0px 10px;
+    border-radius: 10px;
+    font-family: Teachers;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.billing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: Teachers;
+    font-size: 20px;
+}
+.billing-method {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.gender {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: Teachers;
+    font-size: 18px;
+}
 
 
 /* ///////////////////////   ???   ///////////////////////////*/
