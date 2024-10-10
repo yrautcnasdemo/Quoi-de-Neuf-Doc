@@ -671,6 +671,77 @@ footer {
     font-family: Teachers;
     font-size: 18px;
 }
+/* DOCTOR CARDS */
+.doctor-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 50px 20px 50px 20px;
+}
+.doctor-card {
+    position: relative;
+    background-color: aliceblue;
+    width: 400px;
+    border-radius: 20px 0px 20px 0px;
+    border: 2px solid #1e1e1e;
+    padding: 5px 5px 15px 0px;
+}
+.doc-img-profil img {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 150px;
+    border-radius: 30px 0px 30px 0px;
+    border: 3px solid #1e1e1e;
+}
+
+.doc-name {
+    margin-left: 140px;
+    font-family: Teachers;
+}
+.doc-name span {
+    font-size: 18px;
+    font-weight: bold;
+}
+.doc-name h1 {
+    color: #008CFF;
+    font-size: 24px;
+    font-weight: bold;
+}
+.doc-name h2 {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.doc-information {
+    margin-top: 5px;
+    margin-left: 140px;
+    font-family: Teachers;
+}
+.doc-information p {
+    font-size: 15px;
+}
+.doc-adress {
+    margin: 0px 0px 10px 10px;
+    font-family: Teachers;
+}
+.complet-adress {
+    height: 40px;
+    overflow-y: auto;
+}
+.doc-adress span {
+    text-decoration: underline;
+}
+.doc-tel {
+    margin-top: 5px;
+}
+.doc-bis {
+    margin-left: 10px;
+    font-family: Teachers;
+}
 
 
 /* ///////////////////////   ???   ///////////////////////////*/
