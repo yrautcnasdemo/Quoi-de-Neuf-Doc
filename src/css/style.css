@@ -573,8 +573,23 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 0px;
     padding: 30px;
+}
+
+
+.first-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.last-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-doctor-form .style-search {
@@ -584,8 +599,8 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .style-search p {
@@ -636,6 +651,8 @@ footer {
     gap: 10px;
     font-family: Teachers;
     font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .billing-method {
     display: flex;
@@ -643,7 +660,7 @@ footer {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 5px;
 }
 
 .gender {

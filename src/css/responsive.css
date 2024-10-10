@@ -95,6 +95,25 @@
     .about-zen p {
         line-height: 1.4;
     }
+
+    /* SEARCH */
+    .first-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .last-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
 }
 
 

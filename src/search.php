@@ -30,29 +30,32 @@
     </header>
 
     <main>
+        <!-- SEARCH FILTER -->
         <section class="search-filter">
             <form class="search-doctor-form" action="GET">
-                <div class="style-search">
-                    <p>Tappez votre département :</p>
-                    <input type="number" placeholder="ex: 58470">
+                <div class="first-section">
+                    <div class="style-search">
+                        <p>Tappez votre département :</p>
+                        <input type="number" placeholder="ex: 58470">
+                    </div>
+                    
+                    <div class="style-search">
+                        <p>Choisissez votre professionnel :</p>
+                        <select name="search-spe" id="search-spe">
+                            <option value="generaliste">Médecin généraliste</option>
+                            <option value="specialiste">Médecin spécialiste </option>
+                            <option value="dentiste">Dentiste</option>
+                            <option value="pediatre">Pédiatre</option>
+                            <option value="Kinesitherapeute">Kinésithérapeute</option>
+                        </select>
+                    </div>
+                    
+                    <div class="style-search">
+                        <p>Tappez une spécialisation :</p>
+                        <input type="text" placeholder="ex: Allergologue">
+                    </div>
                 </div>
-                
-                <div class="style-search">
-                    <p>Choisissez votre professionnel :</p>
-                    <select name="search-spe" id="search-spe">
-                        <option value="generaliste">Médecin généraliste</option>
-                        <option value="specialiste">Médecin spécialiste </option>
-                        <option value="dentiste">Dentiste</option>
-                        <option value="pediatre">Pédiatre</option>
-                        <option value="Kinesitherapeute">Kinésithérapeute</option>
-                    </select>
-                </div>
-
-                <div class="style-search">
-                    <p>Choisisser une spécialisation :</p>
-                    <input type="text" placeholder="ex: Allergologue">
-                </div>
-
+                    
                 <div class="billing">
                     <p>Type de réglement</p>
                     <div class="billing-method">
@@ -75,16 +78,18 @@
                     </div>
                 </div>
 
-                <div class="style-search">
-                    <p>Nom :</p>
-                    <input type="text" placeholder="ex: Ortega">
+                <div class="last-section">
+                    <div class="style-search">
+                        <p>Nom :</p>
+                        <input type="text" placeholder="ex: Ortega">
+                    </div>
+                    
+                    <div class="style-search">
+                        <p>Prénom :</p>
+                        <input type="text" placeholder="ex: Nicolas">
+                    </div>
                 </div>
-
-                <div class="style-search">
-                    <p>Prénom :</p>
-                    <input type="text" placeholder="ex: Nicolas">
-                </div>
-
+                    
 
                 <div class="billing">
                     <p>Choisissez votre médecin</p>
@@ -100,6 +105,37 @@
                     </div>
                 </div>
             </form>
+        </section>
+
+        <!-- DOCOTR CARDS -->
+        <section class="doctor-cards">
+            <figure>
+                <div class="doc-img-profil">
+                    <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
+                </div>
+                <figcaption>
+                    <div>
+                        <span>Profile</span>
+                        <h1>Dr. Jane Doe</h1>
+                        <h2>ORL</h2>
+                    </div>
+                    <div>
+                        <h3>Horraires et contact:</h3>
+                        <p>Horraires d'ouverture</p>
+                        <p>
+                            08h00-12h00 <br> 
+                            13h30-19h00 <br> 
+                            Du lundi au vendredi
+                        </p>
+                        <p>Adresse:</p>
+                        <p>13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des docs</p>
+                        <span>Tel: 555-2368</span>
+                    </div>
+                    <div>
+                        <p>Prend encore des patients en charge : <span>Oui</span></p>
+                    </div>
+                </figcaption>
+            </figure>
         </section>
     </main>
 
