@@ -13,14 +13,24 @@
     <header>
         <div class="header-s">
             <img class="logo-site" src="assets/images/logo/logoQDND.png" alt="Logo_quoi-de-neuf-doc">
-            <img src="assets/icones/burgermenu.png" height="40px" alt="burger-menu">
+            <div>
+                <img class="menu-burger" src="assets/icones/burgermenu.png" height="40px" alt="burger-menu">
+                <div class="nav-burger">
+                    <ul>
+                        <li><a href="index.php">Accueil</a></li>
+                        <li><a href="about.php">A propos</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="">Connexion</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <!-- Format header desktop -->
         <div class="header-xl">
             <img class="logo-site" src="assets/images/logo/logoQDND.png" alt="Logo_quoi-de-neuf-doc">
             <nav>
                 <ul>
-                    <li><a href="#">Accueil</a></li>
+                    <li><a href="index.php">Accueil</a></li>
                     <li><a href="about.php">A propos</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>

@@ -81,12 +81,12 @@
                 <div class="last-section">
                     <div class="style-search">
                         <p>Nom :</p>
-                        <input type="text" placeholder="ex: Ortega">
+                        <input type="text" placeholder="ex: Doe">
                     </div>
                     
                     <div class="style-search">
                         <p>Prénom :</p>
-                        <input type="text" placeholder="ex: Nicolas">
+                        <input type="text" placeholder="ex: Jane">
                     </div>
                 </div>
                     

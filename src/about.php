@@ -20,7 +20,7 @@
             <img class="logo-site" src="assets/images/logo/logoQDND.png" alt="Logo_quoi-de-neuf-doc">
             <nav>
                 <ul>
-                    <li><a href="#">Accueil</a></li>
+                    <li><a href="index.php">Accueil</a></li>
                     <li><a href="about.php">A propos</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>

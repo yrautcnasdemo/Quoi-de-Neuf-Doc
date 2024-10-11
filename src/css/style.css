@@ -28,6 +28,27 @@ body {
     z-index: 10;
 }
 
+.nav-burger {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: poppins;
+    color: aliceblue;
+    margin-top: 70px;
+    padding: 20px;
+    background-color: #471414;
+    text-align: center;
+    line-height: 2;
+    border-radius: 0px 0px 15px 15px;
+}
+.nav-burger ul li {
+    list-style: none;
+}
+.nav-burger ul li a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
 /* HEADER format XL */
 .header-xl {
     position: fixed;
