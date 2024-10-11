@@ -23,8 +23,8 @@
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="about.php">A propos</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a class="connexion-btn" href=""><div class="btn-style-bgm"><span>Connexion</span></div></a>
+                <li><a href="#" role="button" data-target="#modal" data-toggle="modal" href="">Contact</a></li>
+                <li><a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style-bgm"><span>Connexion</span></div></a>
                 </li>
             </ul>
         </div>
@@ -38,11 +38,75 @@
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
-            <a class="connexion-btn" href=""><div class="btn-style"><div class="btn-style-c"><div class="btn-style-c2"></div></div><span>Connexion</span></div></a>
+            <a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style"><div class="btn-style-c"><div class="btn-style-c2"></div></div><span>Connexion</span></div></a>
         </div>
     </header>
 
-    <!-- MODAL -->
+    <!-- MODAL Login-->
+    <div class="modal" id="modal" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-close" data-dismiss="dialog"><button class="btn-close-modal">X</button></div>
+            </div>
+            <div class="modal-title">
+                <p>Connexion</p>
+            </div>
+            <form action="" method="POST">
+                <div class="info-modal">
+                    <span>eMail</span>
+                    <input type="mail">
+                </div>
+                <div class="info-modal">
+                    <span>Mot de passe</span>
+                    <input type="password">
+                </div>
+                <button class="btn-log">Valider</button>
+                <div class="modal-footer">
+                    <p>Pas de compte ? <a href="#" role="button" data-target="#modal2" data-dismiss="dialog" data-toggle="modal">Créer un compte</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL Register-->
+    <div class="modal" id="modal2" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-close" data-dismiss="dialog"><button class="btn-close-modal">X</button></div>
+            </div>
+            <div class="modal-title">
+                <p>Enregistrement</p>
+            </div>
+            <form action="" method="POST">
+                <div class="info-modal">
+                    <span>Nom</span>
+                    <input type="text">
+                </div>
+                <div class="info-modal">
+                    <span>Prénom</span>
+                    <input type="text">
+                </div>
+                <div class="info-modal">
+                    <span>eMail</span>
+                    <input type="mail">
+                </div>
+                <div class="info-modal">
+                    <span>Mot de passe</span>
+                    <input type="password">
+                </div>
+                <div class="info-modal">
+                    <span>Confirmation Mot de passe</span>
+                    <input type="password">
+                </div>
+                <button class="btn-log">Valider</button>
+                <div class="modal-footer">
+                    <p>Vous possédez déjà un compte ? <a href="#" role="button" data-target="#modal" data-dismiss="dialog" data-toggle="modal">Se connecter</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 
     <main>
         <!-- /* INTRO HOMEPAGE */ -->
