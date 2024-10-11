@@ -27,6 +27,11 @@ body {
     background-color: #143447;
     z-index: 10;
 }
+.btn-tr {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
 
 .nav-burger {
     position: absolute;
@@ -34,12 +39,14 @@ body {
     right: 0;
     font-family: poppins;
     color: aliceblue;
-    margin-top: 70px;
+    margin-top: -170px;
     padding: 20px;
-    background-color: #471414;
+    background-color: #143447;
     text-align: center;
     line-height: 2;
     border-radius: 0px 0px 15px 15px;
+    transition: 0.5s ease-in-out;
+    z-index: 9;
 }
 .nav-burger ul li {
     list-style: none;
@@ -113,7 +120,17 @@ nav ul {
     border-radius: 50%;
     border: 5px solid #000000;
 }
-
+.btn-style-bgm {
+    position: relative;
+    background-color: #1e1e1e;
+    border: 3px solid #848484;
+    border-radius: 20px;
+    padding: 0px 15px 0px 15px;
+    font-family: Teachers;
+    font-size: 18px;
+    color: aliceblue;
+    margin-top: 15px;
+}
 
 
 /*FOOTER*/

@@ -122,6 +122,9 @@
     .header-s {
         display: none;
     }
+    .nav-burger {
+        display: none;
+    }
     .header-xl {
         display: flex;
     }

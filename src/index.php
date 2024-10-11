@@ -11,19 +11,22 @@
 <body>
     
     <header>
+        <!-- Header-with-burgerMenu -->
         <div class="header-s">
             <img class="logo-site" src="assets/images/logo/logoQDND.png" alt="Logo_quoi-de-neuf-doc">
             <div>
-                <img class="menu-burger" src="assets/icones/burgermenu.png" height="40px" alt="burger-menu">
-                <div class="nav-burger">
-                    <ul>
-                        <li><a href="index.php">Accueil</a></li>
-                        <li><a href="about.php">A propos</a></li>
-                        <li><a href="">Contact</a></li>
-                        <li><a href="">Connexion</a></li>
-                    </ul>
-                </div>
+                <button class="btn-tr"><img class="menu-burger" src="assets/icones/burgermenu.png" height="40px" alt="burger-menu"></button>
             </div>
+        </div>
+        <!-- Burger navigation -->
+        <div class="nav-burger">
+            <ul>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="about.php">A propos</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a class="connexion-btn" href=""><div class="btn-style-bgm"><span>Connexion</span></div></a>
+                </li>
+            </ul>
         </div>
         <!-- Format header desktop -->
         <div class="header-xl">
