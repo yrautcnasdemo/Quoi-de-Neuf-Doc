@@ -42,6 +42,8 @@
         </div>
     </header>
 
+    <!-- MODAL -->
+
     <main>
         <!-- /* INTRO HOMEPAGE */ -->
         <article>
