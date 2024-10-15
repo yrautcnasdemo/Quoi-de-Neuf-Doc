@@ -30,14 +30,124 @@
     </header>
 
 
-<main>
+<main class="profil-section">
     <section>
         <figure class="user-card">
-            <img src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="">
+            <img class="img-user" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="">
             <figcaption>
-
+                <h1>John Doe</h1>
+                <div>
+                    <div class="adress-user">
+                        <span>Adresse:</span>
+                        <p>01 La chaume contant</p>
+                        <span>CP: <span>58470</span></span><span>Magny-Cours</span>
+                    </div>
+                    <div class="pm-user">
+                        <span>Telephone: <span>0685858585</span></span><br>
+                        <span>eMail: <span>user@mail.com</span></span>
+                    </div>
+                </div>
             </figcaption>
         </figure>
+    </section>
+
+
+    <section>
+        <div class="user-doctor">
+            <h2 class="title-spe">Mes Spécialistes</h2>
+
+            <div class="doctor-cards">
+                <figure class="doctor-card">
+                    <div class="doc-img-profil">
+                        <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
+                    </div>
+                    <figcaption>
+                        <div class="doc-name">
+                            <span>Profile</span>
+                            <h1>Dr. Jane Doe</h1>
+                            <h2>ORL</h2>
+                        </div>
+                        <div class="doc-information">
+                            <h3>Horraires et contact:</h3>
+                            <p>Horraires d'ouverture</p>
+                            <p>
+                                08h00-12h00 <br> 
+                                13h30-19h00 <br> 
+                                Du lundi au vendredi
+                            </p>
+                        </div>
+                        <div class="doc-adress">
+                            <span>Adresse:</span>
+                            <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
+                            <div class="doc-tel">Tel: <span>555-2368</span></div>
+                        </div>
+                        <div class="doc-bis">
+                            <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="doctor-card">
+                    <div class="doc-img-profil">
+                        <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
+                    </div>
+                    <figcaption>
+                        <div class="doc-name">
+                            <span>Profile</span>
+                            <h1>Dr. Jane Doe</h1>
+                            <h2>ORL</h2>
+                        </div>
+                        <div class="doc-information">
+                            <h3>Horraires et contact:</h3>
+                            <p>Horraires d'ouverture</p>
+                            <p>
+                                08h00-12h00 <br> 
+                                13h30-19h00 <br> 
+                                Du lundi au vendredi
+                            </p>
+                        </div>
+                        <div class="doc-adress">
+                            <span>Adresse:</span>
+                            <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
+                            <div class="doc-tel">Tel: <span>555-2368</span></div>
+                        </div>
+                        <div class="doc-bis">
+                            <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="doctor-card">
+                    <div class="doc-img-profil">
+                        <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
+                    </div>
+                    <figcaption>
+                        <div class="doc-name">
+                            <span>Profile</span>
+                            <h1>Dr. Jane Doe</h1>
+                            <h2>ORL</h2>
+                        </div>
+                        <div class="doc-information">
+                            <h3>Horraires et contact:</h3>
+                            <p>Horraires d'ouverture</p>
+                            <p>
+                                08h00-12h00 <br> 
+                                13h30-19h00 <br> 
+                                Du lundi au vendredi
+                            </p>
+                        </div>
+                        <div class="doc-adress">
+                            <span>Adresse:</span>
+                            <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
+                            <div class="doc-tel">Tel: <span>555-2368</span></div>
+                        </div>
+                        <div class="doc-bis">
+                            <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
     </section>
 </main>
 

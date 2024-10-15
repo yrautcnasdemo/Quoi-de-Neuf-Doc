@@ -900,8 +900,63 @@ footer {
 }
 
 
+/* ///////////////////////   USER PROFIL   ///////////////////////////*/
+.profil-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 130px;
+    padding: 20px;
+}
+
+
+.user-card {
+    position: relative;
+    width: 370px;
+    background-color: #F5F5F5 ;
+    border-radius: 10px;
+    font-family: Teachers;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.75);
+}
+
+.img-user {
+    position: absolute;
+    margin-top: -50px;
+    margin-left: -10px;
+    width: 100px;
+    border-radius: 15px 0px 15px 0px;
+    border: 2px solid aliceblue;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.445);
+}
+
+.user-card figcaption {
+    margin-left: 90px;
+    padding: 15px;
+}
+
+.user-card figcaption h1 {
+    color: #008CFF;
+    text-decoration: underline;
+}
+
+.user-card figcaption .adress-user {
+    margin: 10px 0px
+}
+
+.user-doctor {
+    position: relative;
+    margin-top: 50px;
+    width: 370px;
+    background-color: #9c9c9c ;
+    border-radius: 10px;
+    font-family: Teachers;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.75);
+}
+
+.user-doctor .title-spe {
+    padding-top: 15px;
+    text-align: center;
+}
+
 /* ///////////////////////   ???   ///////////////////////////*/
-
-
-
-
