@@ -23,8 +23,11 @@
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="about.php">A propos</a></li>
-                <li><a href="#" role="button" data-target="#modal" data-toggle="modal" href="">Contact</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="user-profile-btn" href="userProfil.php">Mon Profile</a></li>
+                <!-- <li><a class="doc-profile-btn" href="docProfil.php">Mon Profile2</a></li> -->
                 <li><a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style-bgm"><span>Connexion</span></div></a>
+                <li><a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style-bgm"><span>Déconnexion</span></div></a>
                 </li>
             </ul>
         </div>
@@ -38,7 +41,12 @@
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
-            <a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style"><div class="btn-style-c"><div class="btn-style-c2"></div></div><span>Connexion</span></div></a>
+            <div class="login-pro">
+                <a class="user-profile-btn" href="userProfil.php">Mon Profile</a>
+                <a class="doc-profile-btn" href="docProfil.php">Mon Profile2</a>
+                <a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style"><div class="btn-style-c"><div class="btn-style-c2"></div></div><span>Connexion</span></div></a>
+                <a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style"><div class="btn-style-c"><div class="btn-style-c2"></div></div><span>Déconnexion</span></div></a>
+            </div>
         </div>
     </header>
 
@@ -52,17 +60,19 @@
                 <p>Connexion</p>
             </div>
             <form action="" method="POST">
-                <div class="info-modal">
-                    <span>eMail</span>
-                    <input type="mail">
-                </div>
-                <div class="info-modal">
-                    <span>Mot de passe</span>
-                    <input type="password">
-                </div>
-                <button class="btn-log">Valider</button>
-                <div class="modal-footer">
-                    <p>Pas de compte ? <a href="#" role="button" data-target="#modal2" data-dismiss="dialog" data-toggle="modal">Créer un compte</a></p>
+                <div class="section-form-register">
+                    <div class="info-modal">
+                        <span>eMail</span>
+                        <input type="mail">
+                    </div>
+                    <div class="info-modal">
+                        <span>Mot de passe</span>
+                        <input type="password">
+                    </div>
+                    <button class="btn-log">Valider</button>
+                    <div class="modal-footer">
+                        <p>Pas de compte ? <a href="#" role="button" data-target="#modal2" data-dismiss="dialog" data-toggle="modal">Créer un compte</a></p>
+                    </div>
                 </div>
             </form>
         </div>
@@ -78,29 +88,40 @@
                 <p>Enregistrement</p>
             </div>
             <form action="" method="POST">
-                <div class="info-modal">
-                    <span>Nom</span>
-                    <input type="text">
+                <div class="section-form-register">
+                    <div class="info-modal">
+                        <span>Nom</span>
+                        <input type="text">
+                    </div>
+                    <div class="info-modal">
+                        <span>Prénom</span>
+                        <input type="text">
+                    </div>
+                    <div class="info-modal">
+                        <span>eMail</span>
+                        <input type="mail">
+                    </div>
                 </div>
-                <div class="info-modal">
-                    <span>Prénom</span>
-                    <input type="text">
+                <div class="info-modal-select">
+                    <label for="">Êtes vous :</label>
+                    <select name="" id="">
+                        <option value="">Un proffesionnel de la santé</option>
+                        <option value="">Un utilisateur</option>
+                    </select>
                 </div>
-                <div class="info-modal">
-                    <span>eMail</span>
-                    <input type="mail">
-                </div>
-                <div class="info-modal">
-                    <span>Mot de passe</span>
-                    <input type="password">
-                </div>
-                <div class="info-modal">
-                    <span>Confirmation Mot de passe</span>
-                    <input type="password">
-                </div>
-                <button class="btn-log">Valider</button>
-                <div class="modal-footer">
-                    <p>Vous possédez déjà un compte ? <a href="#" role="button" data-target="#modal" data-dismiss="dialog" data-toggle="modal">Se connecter</a></p>
+                <div class="section-form-register">
+                    <div class="info-modal">
+                        <span>Mot de passe</span>
+                        <input type="password">
+                    </div>
+                    <div class="info-modal">
+                        <span>Confirmation Mot de passe</span>
+                        <input type="password">
+                    </div>
+                    <button class="btn-log">Valider</button>
+                    <div class="modal-footer">
+                        <p>Vous possédez déjà un compte ? <a href="#" role="button" data-target="#modal" data-dismiss="dialog" data-toggle="modal">Se connecter</a></p>
+                    </div>
                 </div>
             </form>
         </div>

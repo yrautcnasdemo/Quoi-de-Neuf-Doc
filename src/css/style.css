@@ -44,7 +44,7 @@ body {
     background-color: #143447;
     text-align: center;
     line-height: 2;
-    border-radius: 0px 0px 15px 15px;
+    border-radius: 0px 0px 0px 15px;
     transition: 0.5s ease-in-out;
     z-index: 9;
 }
@@ -54,6 +54,12 @@ body {
 .nav-burger ul li a {
     text-decoration: none;
     color: aliceblue;
+}
+.user-profile-btn, .doc-profile-btn{
+    background-color: grey;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 3px 10px;
 }
 
 /* HEADER format XL */
@@ -131,6 +137,12 @@ nav ul {
     color: aliceblue;
     margin-top: 15px;
 }
+.login-pro {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
 /*MODAL*/
 .modal {
@@ -175,6 +187,7 @@ nav ul {
     font-weight: bold;
     margin: 3px 0px;
     padding: 0px 3px;
+    cursor: pointer;
 }
 
 .modal-title {
@@ -196,16 +209,38 @@ nav ul {
     justify-content: center;
     align-items: center;
     gap: 5px;
-    margin-top: 20px;
+    margin-top: 5px;
+}
+.section-form-register {
+    margin: 25px 0px;
 }
 .info-modal input {
-    width: 100%;
+    padding: 3px 10px;
+    text-align: center;
+    width: 200px;
+}
+.info-modal-select {
+    font-family: Teachers;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+.info-modal-select label {
+    font-family: Teachers;
+}
+.info-modal-select select {
+    font-family: Teachers;
+    padding: 3px 10px;
 }
 .btn-log {
     margin-top: 10px;
     padding: 5px 10px;
     font-family: Teachers;
     font-size: 18px;
+    cursor: pointer;
 }
 .modal-footer {
     padding-top: 10px;

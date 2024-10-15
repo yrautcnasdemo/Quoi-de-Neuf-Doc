@@ -10,6 +10,9 @@ burgerButton.addEventListener("click", () => {
     }
 });
 
+
+
+
 // Modal Loging & register - @Nouvelle-Techno - On se serre des Data-target pour selection la "modal" ou la "modal2"
 window.onload = () => {
     //On récupère tous les boutons d'ouverture de modale
@@ -27,7 +30,7 @@ window.onload = () => {
             //On affiche la modal 
             modal.classList.add("show");
 
-                //On récupere les boutons de fermeture
+            //On récupere les boutons de fermeture
             const modalClose = modal.querySelectorAll("[data-dismiss=dialog]");
 
             for(let close of modalClose) {
@@ -36,6 +39,14 @@ window.onload = () => {
                 });
             }
 
+            //On gere la fermeture lors du clique dans la zone grise
+            modal.addEventListener("click", function(){
+                this.classList.remove("show");
+            });
+            //On évite la propagation du click d'un enfant a son parent grace a la fonction native JS "stopPropagation"
+            modal.children[0].addEventListener("click", function(e){
+                e.stopPropagation();
+            })
         });
     }
 }

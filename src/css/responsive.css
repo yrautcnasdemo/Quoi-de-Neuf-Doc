@@ -20,6 +20,14 @@
     .header-xl {
         display: none;
     }
+    /*MODAL*/
+    .modal-content {
+        margin: auto;
+        width: 450px;
+        background-color: #B8B8B8;
+        border: 3px solid #B8B8B8;
+        text-align: center;
+    }
     /*HOMEPAGE INTRO*/
     .homepage-intro {
         display: none;
@@ -128,6 +136,7 @@
     .header-xl {
         display: flex;
     }
+    /*HOMEPAGE*/
     .homepage-presentation {
         flex-direction: row-reverse;
         justify-content: center;
@@ -161,6 +170,18 @@
     }
     .img-gallery3 {
         width: 280px;
+    }
+    
+    /*modal*/
+    .modal-content {
+        margin: auto;
+        width: 550px;
+        background-color: #B8B8B8;
+        border: 3px solid #B8B8B8;
+        text-align: center;
+    }
+    .info-modal-select {
+        flex-direction: row;
     }
 
 
