@@ -1126,6 +1126,7 @@ footer {
     flex-direction: column;
     gap: 15px;
     margin: 10px 0px 20px 0px;
+    font-size: 18px;
 }
 .adress-user input {
     padding: 5px;
@@ -1138,6 +1139,26 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/* UPDATE DOCTOR */
+.input-hours {
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 20px;
+}
+.input-hours p input{
+    width: 80px;
+}
+
+.selector-dispo select {
+    margin-top: 10px;
+    padding: 2px 10px;
+    font-family: Teachers;
+    font-size: 18px;
 }
 
 

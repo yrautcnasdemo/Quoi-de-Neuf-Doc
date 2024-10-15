@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/fonts.css">
-    <title>A propos - Quoi de neuf Doc ?</title>
+    <title>Update - Quoi de neuf Doc ?</title>
 </head>
 <body>
     

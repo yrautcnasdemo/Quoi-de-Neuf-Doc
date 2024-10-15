@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/fonts.css">
-    <title>A propos - Quoi de neuf Doc ?</title>
+    <title>Update - Quoi de neuf Doc ?</title>
 </head>
 <body>
     
@@ -29,15 +29,57 @@
         </div>
     </header>
 
-    <h1>Doctor</h1>
-    <h1>Doctor</h1>
-    <h1>Doctor</h1>
-    <h1>Doctor</h1>
-    <h1>Doctor</h1>
-    <h1>Doctor</h1>
-    <h1>Doctor</h1>
-    <h1>Doctor</h1>
-    <h1>Doctor</h1>
+    <section class="update-user">
+        <form class="form-update-user">
+            <figure class="user-card-update">
+                <div class="img-box">
+                    <img class="img-update" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="My-pics-Profil">
+                    <button class="upload-btn-img">upload</button>
+                </div>
+            <figcaption>
+                    <h1>Jason Vorheese</h1>
+                        <div class="adress-user">
+                            <div>
+                                <span>Spécialisation:</span>
+                                <input type="text" placeholder="ORL">
+                            </div>
+                            <div class="input-hours">
+                                <span>Horraires:</span>
+                                <p>Du <input type="text" placeholder="Lundi"> au <input type="text" placeholder="Vendredi"></p>
+                                <span>Matin</span>
+                                <p>De <input type="text" placeholder="8h00"> a <input type="text" placeholder="12h00"></p>
+                                <span>Aprés-midi</span>
+                                <p>De <input type="text" placeholder="13h30"> a <input type="text" placeholder="19h00"></p>
+                            </div>
+                            <div>
+                                <span>Adresse:</span>
+                                <input type="text" placeholder="01 la chaume contant">
+                            </div>
+                            <div>
+                                <span>Mon code postal:</span>
+                                <input type="text" placeholder="58470">
+                            </div>
+                            <div>
+                                <span>Ma ville:</span>
+                                <input type="text" placeholder="Magny-Cours">
+                            </div>
+                            <div>
+                                <span>Mon Telephone:</span>
+                                <input type="text" placeholder="0620124574">
+                            </div>
+                            <div class="selector-dispo">
+                                <span>Disponibilité:</span>
+                                <select name="" id="">
+                                    <option value="oui">oui</option>
+                                    <option value="non">non</option>
+                                </select>
+                            </div>
+                        </div>
+                    <a class="btn-mod-user" href="updateUser.php">Valider</a>
+                </figcaption>
+            </figure>
+        </form>
+    </section>
 
 
     <footer>
