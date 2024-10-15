@@ -214,6 +214,15 @@
         max-width: 600px;
     }
 
+    /* USER PROFIL */
+    .user-doctor-appt {
+        max-width: 2000px;
+    }
+
+    .user-doctor { /**/
+        max-width: 2000px;
+    }
+
 
     /* FOOTER */
     .footer-content {

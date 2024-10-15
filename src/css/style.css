@@ -907,7 +907,6 @@ footer {
     justify-content: center;
     align-items: center;
     margin-top: 130px;
-    padding: 20px;
 }
 
 
@@ -943,11 +942,21 @@ footer {
 .user-card figcaption .adress-user {
     margin: 10px 0px
 }
+.btn-mod-user {
+    margin-top: 10px;
+    font-family: poppins;
+    padding: 0px 5px;
+    cursor: pointer;
+}
 
 .user-doctor {
-    position: relative;
-    margin-top: 50px;
-    width: 370px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 50px 10px 0px 10px;
+    max-width: 740px;
     background-color: #9c9c9c ;
     border-radius: 10px;
     font-family: Teachers;
@@ -957,6 +966,62 @@ footer {
 .user-doctor .title-spe {
     padding-top: 15px;
     text-align: center;
+}
+.btn-supr-doc {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-family: poppins;
+    padding: 0px 5px;
+    cursor: pointer;
+}
+
+.user-doctor-appt {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 15px;
+    max-width: 740px;
+    background-color: #9c9c9c ;
+    border-radius: 10px;
+    font-family: Teachers;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.75);
+}
+.user-doctor-appt .title-spe{
+    padding-top: 15px;
+    text-align: center;
+}
+.my-appt {
+    padding: 15px;
+    margin: 10px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    border: 2px solid black;
+    max-width: 370px;
+    height: 210px;
+}
+
+.info-doctor {
+    margin: 0px 0px 10px 0px
+}
+
+.list-rdv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-supr-appt {
+    margin-top: 10px;
+    font-family: poppins;
+    padding: 0px 5px;
+    cursor: pointer;
 }
 
 /* ///////////////////////   ???   ///////////////////////////*/

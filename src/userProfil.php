@@ -31,124 +31,227 @@
 
 
 <main class="profil-section">
+    <!-- MY PROFIL -->
     <section>
-        <figure class="user-card">
-            <img class="img-user" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="">
-            <figcaption>
-                <h1>John Doe</h1>
-                <div>
-                    <div class="adress-user">
-                        <span>Adresse:</span>
-                        <p>01 La chaume contant</p>
-                        <span>CP: <span>58470</span></span><span>Magny-Cours</span>
+        <form action="">
+            <figure class="user-card">
+                <img class="img-user" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="">
+                <figcaption>
+                    <h1>Alice Hardy</h1>
+                    <div>
+                        <div class="adress-user">
+                            <span>Adresse:</span>
+                            <p>01 La chaume contant</p>
+                            <span>CP: <span>58470</span></span><span>Magny-Cours</span>
+                        </div>
+                        <div class="pm-user">
+                            <span>Telephone: <span>0685858585</span></span><br>
+                            <span>eMail: <span>user@mail.com</span></span>
+                        </div>
                     </div>
-                    <div class="pm-user">
-                        <span>Telephone: <span>0685858585</span></span><br>
-                        <span>eMail: <span>user@mail.com</span></span>
-                    </div>
-                </div>
-            </figcaption>
-        </figure>
+                    <button class="btn-mod-user">Modifier</button>
+                </figcaption>
+            </figure>
+        </form>
     </section>
 
 
+
+    <!-- MY DOCTORS -->
     <section>
         <div class="user-doctor">
             <h2 class="title-spe">Mes Spécialistes</h2>
 
             <div class="doctor-cards">
-                <figure class="doctor-card">
-                    <div class="doc-img-profil">
-                        <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
-                    </div>
-                    <figcaption>
-                        <div class="doc-name">
-                            <span>Profile</span>
-                            <h1>Dr. Jane Doe</h1>
-                            <h2>ORL</h2>
+                <form action="">
+                    <figure class="doctor-card">
+                        <div class="doc-img-profil">
+                            <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
                         </div>
-                        <div class="doc-information">
-                            <h3>Horraires et contact:</h3>
-                            <p>Horraires d'ouverture</p>
-                            <p>
-                                08h00-12h00 <br> 
-                                13h30-19h00 <br> 
-                                Du lundi au vendredi
-                            </p>
-                        </div>
-                        <div class="doc-adress">
-                            <span>Adresse:</span>
-                            <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
-                            <div class="doc-tel">Tel: <span>555-2368</span></div>
-                        </div>
-                        <div class="doc-bis">
-                            <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
-                        </div>
-                    </figcaption>
-                </figure>
+                        <figcaption>
+                            <div class="doc-name">
+                                <span>Profile</span>
+                                <h1>Dr. Jane Doe</h1>
+                                <h2>ORL</h2>
+                            </div>
+                            <div class="doc-information">
+                                <h3>Horraires et contact:</h3>
+                                <p>Horraires d'ouverture</p>
+                                <p>
+                                    08h00-12h00 <br> 
+                                    13h30-19h00 <br> 
+                                    Du lundi au vendredi
+                                </p>
+                            </div>
+                            <div class="doc-adress">
+                                <span>Adresse:</span>
+                                <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
+                                <div class="doc-tel">Tel: <span>555-2368</span></div>
+                            </div>
+                            <div class="doc-bis">
+                                <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
+                            </div>
+                            <button class="btn-supr-doc">Retirer ce spécialiste de ma liste</button>
+                        </figcaption>
+                    </figure>
+                </form>
 
-                <figure class="doctor-card">
-                    <div class="doc-img-profil">
-                        <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
-                    </div>
-                    <figcaption>
-                        <div class="doc-name">
-                            <span>Profile</span>
-                            <h1>Dr. Jane Doe</h1>
-                            <h2>ORL</h2>
-                        </div>
-                        <div class="doc-information">
-                            <h3>Horraires et contact:</h3>
-                            <p>Horraires d'ouverture</p>
-                            <p>
-                                08h00-12h00 <br> 
-                                13h30-19h00 <br> 
-                                Du lundi au vendredi
-                            </p>
-                        </div>
-                        <div class="doc-adress">
-                            <span>Adresse:</span>
-                            <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
-                            <div class="doc-tel">Tel: <span>555-2368</span></div>
-                        </div>
-                        <div class="doc-bis">
-                            <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
-                        </div>
-                    </figcaption>
-                </figure>
 
-                <figure class="doctor-card">
-                    <div class="doc-img-profil">
-                        <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
-                    </div>
-                    <figcaption>
-                        <div class="doc-name">
-                            <span>Profile</span>
-                            <h1>Dr. Jane Doe</h1>
-                            <h2>ORL</h2>
+                <form action="">
+                    <figure class="doctor-card">
+                        <div class="doc-img-profil">
+                            <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
                         </div>
-                        <div class="doc-information">
-                            <h3>Horraires et contact:</h3>
-                            <p>Horraires d'ouverture</p>
-                            <p>
-                                08h00-12h00 <br> 
-                                13h30-19h00 <br> 
-                                Du lundi au vendredi
-                            </p>
+                        <figcaption>
+                            <div class="doc-name">
+                                <span>Profile</span>
+                                <h1>Dr. Jane Doe</h1>
+                                <h2>ORL</h2>
+                            </div>
+                            <div class="doc-information">
+                                <h3>Horraires et contact:</h3>
+                                <p>Horraires d'ouverture</p>
+                                <p>
+                                    08h00-12h00 <br> 
+                                    13h30-19h00 <br> 
+                                    Du lundi au vendredi
+                                </p>
+                            </div>
+                            <div class="doc-adress">
+                                <span>Adresse:</span>
+                                <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
+                                <div class="doc-tel">Tel: <span>555-2368</span></div>
+                            </div>
+                            <div class="doc-bis">
+                                <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
+                            </div>
+                            <button class="btn-supr-doc">Retirer ce spécialiste de ma liste</button>
+                        </figcaption>
+                    </figure>
+                </form>
+
+
+                <form action="">
+                    <figure class="doctor-card">
+                        <div class="doc-img-profil">
+                            <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
                         </div>
-                        <div class="doc-adress">
-                            <span>Adresse:</span>
-                            <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
-                            <div class="doc-tel">Tel: <span>555-2368</span></div>
-                        </div>
-                        <div class="doc-bis">
-                            <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
-                        </div>
-                    </figcaption>
-                </figure>
+                        <figcaption>
+                            <div class="doc-name">
+                                <span>Profile</span>
+                                <h1>Dr. Jane Doe</h1>
+                                <h2>ORL</h2>
+                            </div>
+                            <div class="doc-information">
+                                <h3>Horraires et contact:</h3>
+                                <p>Horraires d'ouverture</p>
+                                <p>
+                                    08h00-12h00 <br> 
+                                    13h30-19h00 <br> 
+                                    Du lundi au vendredi
+                                </p>
+                            </div>
+                            <div class="doc-adress">
+                                <span>Adresse:</span>
+                                <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
+                                <div class="doc-tel">Tel: <span>555-2368</span></div>
+                            </div>
+                            <div class="doc-bis">
+                                <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
+                            </div>
+                            <button class="btn-supr-doc">Retirer ce spécialiste de ma liste</button>
+                        </figcaption>
+                    </figure>
+                </form>
             </div>
         </div>
     </section>
+
+
+
+    <!-- MY APPOINTEMENTS -->
+    <section>
+        <div class="user-doctor-appt">
+            <h2 class="title-spe">Mes Rendez-vous</h2>
+            
+            <div class="list-rdv">
+                <!-- appointements card -->
+                <form class="my-appt">
+                    <div class="info-doctor">
+                        <div>
+                            <p>Docteur: Dr. Jane Doe</p>
+                        </div>
+                        <span>Médecin généraliste</span> 
+                    </div>
+                    
+                    <div class="info-appt">
+                        <p><span>13/02/2025</span> a <span>14h00</span></p>
+                        <p>
+                            <span>Note:</span>
+                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
+                        </p>
+                    </div>
+                    <button class="btn-supr-appt">Annuler RDV</button>
+                </form>
+
+                <form class="my-appt">
+                    <div class="info-doctor">
+                        <div>
+                            <p>Docteur: Dr. Jane Doe</p>
+                        </div>
+                        <span>Médecin généraliste</span> 
+                    </div>
+                    
+                    <div class="info-appt">
+                        <p><span>13/02/2025</span> a <span>14h00</span></p>
+                        <p>
+                            <span>Note:</span>
+                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
+                        </p>
+                    </div>
+                    <button class="btn-supr-appt">Annuler RDV</button>
+                </form>
+
+                <form class="my-appt">
+                    <div class="info-doctor">
+                        <div>
+                            <p>Docteur: Dr. Jane Doe</p>
+                        </div>
+                        <span>Médecin généraliste</span> 
+                    </div>
+                    
+                    <div class="info-appt">
+                        <p><span>13/02/2025</span> a <span>14h00</span></p>
+                        <p>
+                            <span>Note:</span>
+                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
+                        </p>
+                    </div>
+                    <button class="btn-supr-appt">Annuler RDV</button>
+                </form>
+
+                <form class="my-appt">
+                    <div class="info-doctor">
+                        <div>
+                            <p>Docteur: Dr. Jane Doe</p>
+                        </div>
+                        <span>Médecin généraliste</span> 
+                    </div>
+                    
+                    <div class="info-appt">
+                        <p><span>13/02/2025</span> a <span>14h00</span></p>
+                        <p>
+                            <span>Note:</span>
+                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
+                        </p>
+                    </div>
+                    <button class="btn-supr-appt">Annuler RDV</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
 </main>
 
 

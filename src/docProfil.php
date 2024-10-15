@@ -30,9 +30,117 @@
     </header>
 
 
+<main class="profil-section">
+    <section>
+        <figure class="user-card">
+            <img class="img-user" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="">
+            <figcaption>
+                <h1>Alice Hardy</h1>
+                <div>
+                    <div class="adress-user">
+                        <span>Adresse:</span>
+                        <p>01 La chaume contant</p>
+                        <span>CP: <span>58470</span></span><span>Magny-Cours</span>
+                    </div>
+                    <div class="pm-user">
+                        <span>Telephone: <span>0685858585</span></span><br>
+                        <span>eMail: <span>user@mail.com</span></span>
+                    </div>
+                </div>
+                <button class="btn-mod-user">Modifier</button>
+            </figcaption>
+        </figure>
+    </section>
+
+
+    <section>
+        <div class="user-doctor-appt">
+            <h2 class="title-spe">Mes Rendez-vous</h2>
+            
+            <!-- Carte rdv spécialiste -->
+            <div class="list-rdv">
+                <div class="my-appt">
+                    <div class="info-doctor">
+                        <div>
+                            <p>Docteur: Dr. Jane Doe</p>
+                        </div>
+                        <span>Médecin généraliste</span> 
+                    </div>
+                    
+                    <div class="info-appt">
+                        <p><span>13/02/2025</span> a <span>14h00</span></p>
+                        <p>
+                            <span>Note:</span>
+                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
+                        </p>
+                    </div>
+                    <button class="btn-supr-appt">Annuler RDV</button>
+                </div>
+
+                <div class="my-appt">
+                    <div class="info-doctor">
+                        <div>
+                            <p>Docteur: Dr. Jane Doe</p>
+                        </div>
+                        <span>Médecin généraliste</span> 
+                    </div>
+                    
+                    <div class="info-appt">
+                        <p><span>13/02/2025</span> a <span>14h00</span></p>
+                        <p>
+                            <span>Note:</span>
+                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
+                        </p>
+                    </div>
+                    <button class="btn-supr-appt">Annuler RDV</button>
+                </div>
+
+                <div class="my-appt">
+                    <div class="info-doctor">
+                        <div>
+                            <p>Docteur: Dr. Jane Doe</p>
+                        </div>
+                        <span>Médecin généraliste</span> 
+                    </div>
+                    
+                    <div class="info-appt">
+                        <p><span>13/02/2025</span> a <span>14h00</span></p>
+                        <p>
+                            <span>Note:</span>
+                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
+                        </p>
+                    </div>
+                    <button class="btn-supr-appt">Annuler RDV</button>
+                </div>
+
+                <div class="my-appt">
+                    <div class="info-doctor">
+                        <div>
+                            <p>Docteur: Dr. Jane Doe</p>
+                        </div>
+                        <span>Médecin généraliste</span> 
+                    </div>
+                    
+                    <div class="info-appt">
+                        <p><span>13/02/2025</span> a <span>14h00</span></p>
+                        <p>
+                            <span>Note:</span>
+                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
+                        </p>
+                    </div>
+                    <button class="btn-supr-appt">Annuler RDV</button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+
+</main>
 
 
     
+
 
     <footer>
     <div class="footer-content">

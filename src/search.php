@@ -251,7 +251,7 @@
                     </div>
                     <div class="doc-adress">
                         <span>Adresse:</span>
-                        <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des docszeif hoezifh oiezhfo ezhfoi ehziof hezohf oezhfoi ezhof hzeofh oezhf ozehf oiezhfio zehf feizh oizehfjio zehfoh zeofh oiezhfoi ezhoifheziofh ioezhfoi hzeoifh oiezhf oiezhoifh oeizhfoi zeh</p>
+                        <p class="complet-adress">13 rue Crystal Lake</p>
                         <div class="doc-tel">Tel: <span>555-2368</span></div>
                     </div>
                     <div class="doc-bis">
