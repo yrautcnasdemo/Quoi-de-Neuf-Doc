@@ -122,6 +122,14 @@
         flex-wrap: wrap;
         gap: 15px;
     }
+
+    /* USER UPDATE */
+    .user-card-update {
+        flex-direction: row;
+        gap: 80px;
+        max-width: 900px;
+        width: 100%;
+    }
 }
 
 
@@ -218,11 +226,18 @@
     .user-doctor-appt {
         max-width: 2000px;
     }
-
-    .user-doctor { /**/
+    /* DOCTOR PROFIL */
+    .user-doctor { 
         max-width: 2000px;
     }
 
+    /* USER UPDATE */
+    .user-card-update {
+        flex-direction: row;
+        gap: 80px;
+        max-width: 900px;
+        width: 100%;
+    }
 
     /* FOOTER */
     .footer-content {

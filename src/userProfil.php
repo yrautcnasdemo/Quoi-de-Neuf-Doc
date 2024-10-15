@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/fonts.css">
-    <title>A propos - Quoi de neuf Doc ?</title>
+    <title>User - Quoi de neuf Doc ?</title>
 </head>
 <body>
     
@@ -49,7 +49,7 @@
                             <span>eMail: <span>user@mail.com</span></span>
                         </div>
                     </div>
-                    <button class="btn-mod-user">Modifier</button>
+                    <a class="btn-mod-user" href="updateUser.php">Modifier</a>
                 </figcaption>
             </figure>
         </form>
