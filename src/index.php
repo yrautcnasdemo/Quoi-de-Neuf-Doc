@@ -2,9 +2,90 @@
     //On vérifie si le formulaire a était envoyé
     if(!empty($_POST)) {
         //Le formulaire a été envoyé
-        //On vérifie que TOUS les champs requis EXISTE et son REMPLIS
+        //On vérifie que TOUS les champs requis EXISTE et sont REMPLIS
         if(isset($_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["role"], $_POST["pass1"], $_POST["pass2"])
-        && !empty($_POST["nom"]) && !empty($_POST["prenom"]) && !empty($_POST["email"]) && !empty($_POST["role"]) && !empty($_POST["pass1"]) && !empty($_POST["pass2"]))
+        && !empty($_POST["nom"]) && !empty($_POST["prenom"]) && !empty($_POST["email"]) && !empty($_POST["role"]) && !empty($_POST["pass1"]) && !empty($_POST["pass2"])) {
+            
+            
+
+            //On récupère les données en les protégeant (on empêche l'injection de code HTML ou JS dans les inputs)
+            $nom = strip_tags($_POST["nom"]);
+            $prenom = strip_tags($_POST["prenom"]);
+            $email = strip_tags($_POST["email"]);
+
+
+
+            //On vérifie si l'adresse email n'en ai pas une "!filter_var" (si ce n'est pas) si c'est le cas on redirige vers une page d'erreur
+            if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+                header("Location: /errors/errorsmail.php?error=invalid_email"); //redirection vers une page d'erreur
+                exit(); //On quite le script
+            }
+
+
+            //On récupère les Mots de passes en les protégeant également
+            $pass1 = strip_tags($_POST["pass1"]);
+            $pass2 = strip_tags($_POST["pass2"]);
+
+            //On vérifie si les 2 mots de passes correspondent
+            if ($pass1 !== $pass2) {
+                header("Location: /errors/errorspass.php?error=password_mismatch"); // redirection vers une page d'erreur
+                exit();
+            }
+
+
+            //On va hasher le mot de passe pour le sécuriser dans la BDD
+            $pass = password_hash($_POST["pass1"], PASSWORD_ARGON2I);
+            
+            
+            
+            
+            //On se connecte a la BDD pour enregistrer nos données
+            require_once "connexion.php";
+            
+            //on enregistre "role" dans une variable pour vérifier si nous n'avons pas de doublons dans les adresses mails dans... 
+            //...la table doctors ET users
+            $role = $_POST["role"];
+            $requete_email = $db->prepare("SELECT COUNT(*) FROM doctors WHERE email = :email UNION SELECT COUNT(*) FROM users WHERE user_mail = :email");
+            $requete_email->bindParam(':email', $email);
+            $requete_email->execute();
+            $counts = $requete_email->fetchAll(PDO::FETCH_COLUMN); // Récupérer le résultat sous forme de tableau
+
+            // Vérification si l'email existe déjà
+            if ($counts[0] > 0 || $counts[1] > 0) {
+                header("Location: /errors/errorsmail.php?error=email_exists");
+                exit();
+            } else {
+                // Insérer les données dans la base de données
+                if ($role == 'professional') {
+                    $sql = $db->prepare("INSERT INTO doctors (last_name, first_name, email, password) VALUES (:nom, :prenom, :email, :pass)");
+                } else {
+                    $sql = $db->prepare("INSERT INTO users (user_lastname, user_firstname, user_mail, user_password) VALUES (:nom, :prenom, :email, :pass)");
+                }
+
+                // On bind les paramètres
+                $sql->bindParam(':nom', $nom);
+                $sql->bindParam(':prenom', $prenom);
+                $sql->bindParam(':email', $email);
+                $sql->bindParam(':pass', $pass);
+
+                // On exécute la requête d'insertion
+                $sql->execute();
+                
+                // Redirection ou message de succès
+                //header("Location: about.php"); // Redirection vers une page de succès
+                exit(); // On quitte le script
+            }
+
+
+
+            //Vérification adresse mail unique dans mes tables "doctors" ET "users"
+
+
+
+        //Le formulaire est complet , sinon => else
+        } else {
+            die ("Le formulaire est incomplet");
+        }
     }
 
 ?>
@@ -77,11 +158,11 @@
                 <div class="section-form-register">
                     <div class="info-modal">
                         <span>eMail</span>
-                        <input type="mail" name="email">
+                        <input type="email" name="email" required>
                     </div>
                     <div class="info-modal">
                         <span>Mot de passe</span>
-                        <input type="password" name="pass">
+                        <input type="password" name="pass" required>
                     </div>
                     <button class="btn-log">Valider</button>
                     <div class="modal-footer">
