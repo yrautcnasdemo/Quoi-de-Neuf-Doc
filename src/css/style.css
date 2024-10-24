@@ -16,7 +16,7 @@ body {
 
 /* HEADER */
 .header-s {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     width: 100%;
     display: flex;
@@ -64,7 +64,7 @@ body {
 
 /* HEADER format XL */
 .header-xl {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     display: flex;
     flex-direction: row;

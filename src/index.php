@@ -1,5 +1,11 @@
 <?php 
-
+    //On vérifie si le formulaire a était envoyé
+    if(!empty($_POST)) {
+        //Le formulaire a été envoyé
+        //On vérifie que TOUS les champs requis EXISTE et son REMPLIS
+        if(isset($_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["role"], $_POST["pass1"], $_POST["pass2"])
+        && !empty($_POST["nom"]) && !empty($_POST["prenom"]) && !empty($_POST["email"]) && !empty($_POST["role"]) && !empty($_POST["pass1"]) && !empty($_POST["pass2"]))
+    }
 
 ?>
 
@@ -71,11 +77,11 @@
                 <div class="section-form-register">
                     <div class="info-modal">
                         <span>eMail</span>
-                        <input type="mail">
+                        <input type="mail" name="email">
                     </div>
                     <div class="info-modal">
                         <span>Mot de passe</span>
-                        <input type="password">
+                        <input type="password" name="pass">
                     </div>
                     <button class="btn-log">Valider</button>
                     <div class="modal-footer">
@@ -95,38 +101,38 @@
             <div class="modal-title">
                 <p>Enregistrement</p>
             </div>
-            <form action="" method="POST">
+            <form method="POST">
                 <div class="section-form-register">
                     <div class="info-modal">
                         <span>Nom</span>
-                        <input type="text">
+                        <input type="text" name="nom" required>
                     </div>
                     <div class="info-modal">
                         <span>Prénom</span>
-                        <input type="text">
+                        <input type="text" name="prenom" required>
                     </div>
                     <div class="info-modal">
                         <span>eMail</span>
-                        <input type="mail">
+                        <input type="email" name="email" required>
                     </div>
                 </div>
                 <div class="info-modal-select">
                     <label for="">Êtes vous :</label>
-                    <select name="" id="">
-                        <option value="">Un profesionnel de la santé</option>
-                        <option value="">Un utilisateur</option>
+                    <select name="role" id="" required>
+                        <option value="professional">Un profesionnel de la santé</option>
+                        <option value="user">Un utilisateur</option>
                     </select>
                 </div>
                 <div class="section-form-register">
                     <div class="info-modal">
                         <span>Mot de passe</span>
-                        <input type="password">
+                        <input type="password" name="pass1" required>
                     </div>
                     <div class="info-modal">
                         <span>Confirmation Mot de passe</span>
-                        <input type="password">
+                        <input type="password" name="pass2" required>
                     </div>
-                    <button class="btn-log">Valider</button>
+                    <button class="btn-log" type="submit">Valider</button>
                     <div class="modal-footer">
                         <p>Vous possédez déjà un compte ? <a href="#" role="button" data-target="#modal" data-dismiss="dialog" data-toggle="modal">Se connecter</a></p>
                     </div>
