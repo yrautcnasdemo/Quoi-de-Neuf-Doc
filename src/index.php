@@ -1,3 +1,11 @@
+<?php 
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,7 +113,7 @@
                 <div class="info-modal-select">
                     <label for="">Êtes vous :</label>
                     <select name="" id="">
-                        <option value="">Un proffesionnel de la santé</option>
+                        <option value="">Un profesionnel de la santé</option>
                         <option value="">Un utilisateur</option>
                     </select>
                 </div>

@@ -40,7 +40,8 @@
                     <div class="doc-name">
                         <span>Profile</span>
                         <h1>Dr. Jane Doe</h1>
-                        <h2>ORL</h2>
+                        <h2>Spécialiste</h2>
+                        
                     </div>
                     <div class="doc-information">
                         <h3>Horraires et contact:</h3>
