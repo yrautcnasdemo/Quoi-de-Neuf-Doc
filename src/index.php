@@ -35,25 +35,36 @@
 
             //On va hasher le mot de passe pour le sécuriser dans la BDD
             $pass = password_hash($_POST["pass1"], PASSWORD_ARGON2I);
-            
-            
-            
-            
+
             //On se connecte a la BDD pour enregistrer nos données
             require_once "connexion.php";
             
+            
+            
+            //VERIFICATION DES ADRESSE MAIL EN DOUBLON DANS LES 2 TABLES USER ET DOCTORS
             //on enregistre "role" dans une variable pour vérifier si nous n'avons pas de doublons dans les adresses mails dans... 
             //...la table doctors ET users
             $role = $_POST["role"];
-            $requete_email = $db->prepare("SELECT COUNT(*) FROM doctors WHERE email = :email UNION SELECT COUNT(*) FROM users WHERE user_mail = :email");
-            $requete_email->bindParam(':email', $email);
-            $requete_email->execute();
-            $counts = $requete_email->fetchAll(PDO::FETCH_COLUMN); // Récupérer le résultat sous forme de tableau
+            // on verifie le nombre d'email dans chaque table
+            $requete_doctor = $db->prepare("SELECT COUNT(*) FROM doctors WHERE email = :email");
+            $requete_user = $db->prepare("SELECT COUNT(*) FROM users WHERE user_mail = :email");
 
-            // Vérification si l'email existe déjà
-            if ($counts[0] > 0 || $counts[1] > 0) {
+            // on execute les 2 requetes
+            $requete_doctor->execute([':email' => $email]);
+            $requete_user->execute([':email' => $email]);
+
+            // récupération des résultas
+            $doctor_count = $requete_doctor->fetchColumn();
+            $user_count = $requete_user->fetchColumn();
+
+            // et ici on vérifie si le mail existe ou pas 
+            if ($doctor_count > 0 || $user_count > 0) {
                 header("Location: /errors/errorsmail.php?error=email_exists");
                 exit();
+
+
+
+
             } else {
                 // Insérer les données dans la base de données
                 if ($role == 'professional') {
@@ -72,14 +83,10 @@
                 $sql->execute();
                 
                 // Redirection ou message de succès
-                //header("Location: about.php"); // Redirection vers une page de succès
+                header("Location: about.php"); // Redirection vers une page de succès
                 exit(); // On quitte le script
             }
-
-
-
-            //Vérification adresse mail unique dans mes tables "doctors" ET "users"
-
+            
 
 
         //Le formulaire est complet , sinon => else
