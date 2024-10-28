@@ -1,6 +1,8 @@
 <?php 
     //On vérifie si le formulaire a était envoyé
     if(!empty($_POST)) {
+
+        if (isset($_POST['form_type']) && $_POST['form_type'] === 'register') {
         //Le formulaire a été envoyé
         //On vérifie que TOUS les champs requis EXISTE et sont REMPLIS
         if(isset($_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["role"], $_POST["pass1"], $_POST["pass2"])
@@ -81,19 +83,12 @@
 
                 // On exécute la requête d'insertion
                 $sql->execute();
-
-
-                //On connecte l'utilisateur ou le medecin
-
-
-
                 
                 // Redirection ou message de succès
-                header("Location: about.php"); // Redirection vers une page de succès
-                exit(); // On quitte le script
+                //header("Location: about.php");
+                //exit(); // On quitte le script
             }
             
-
 
         //Le formulaire est complet , sinon => else
         } else {
@@ -101,6 +96,46 @@
         }
     }
 
+
+
+
+    } elseif (isset($_POST['form_type']) && $_POST['form_type'] === "login") {
+        
+        // On connecte l'utilisateur ou le médecin
+        // On vérifie que tous les champs ont été remplis et on sécurise les injections HTML
+        if (isset($_POST["email1"], $_POST['pass']) && !empty($_POST['email1']) && !empty($_POST["pass"])) {
+            
+            // On vérifie si le mail rentré est bien un email
+            if (!filter_var($_POST['email1'], FILTER_VALIDATE_EMAIL)) {
+                header("Location: /errors/errorsmail.php?error=invalid_email");
+                exit();
+            }
+    
+            // Si le mail rentré est bien une adresse mail, alors on se connecte à la DB
+            require_once "connexion.php";
+    
+            $sql = "SELECT * FROM users WHERE user_mail = :email1 UNION SELECT * FROM doctors WHERE email = :email1";
+            $query = $db->prepare($sql);
+            $query->bindValue(":email1", $_POST["email1"], PDO::PARAM_STR);
+            $query->execute();
+    
+            $user = $query->fetch();
+    
+            // Vérification du mot de passe
+            if ($user && password_verify($_POST['pass'], $user['password'])) {
+                // Connexion réussie
+                // Redirection vers la page de profil ou tableau de bord
+            } else {
+                header("Location: /errors/errorspass.php?error=invalid_credentials");
+                exit();
+            }
+    
+        } else {
+            // Si les champs ne sont pas remplis
+            header("Location: /errors/errorspass.php?error=empty_fields");
+            exit();
+        }
+    }
 ?>
 
 
@@ -167,7 +202,8 @@
             <div class="modal-title">
                 <p>Connexion</p>
             </div>
-            <form action="" method="POST">
+            <form method="POST">
+                <input type="hidden" name="form_type" value="login"> <!-- @- Utilisé pour différencier mes 2 formulaires login/register  -->
                 <div class="section-form-register">
                     <div class="info-modal">
                         <span>eMail</span>
@@ -196,6 +232,7 @@
                 <p>Enregistrement</p>
             </div>
             <form method="POST">
+                <input type="hidden" name="form_type" value="register"> <!-- @- Utilisé pour différencier mes 2 formulaires login/register  -->
                 <div class="section-form-register">
                     <div class="info-modal">
                         <span>Nom</span>
