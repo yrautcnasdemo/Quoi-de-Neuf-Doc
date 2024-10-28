@@ -34,7 +34,7 @@
 
 
             //On va hasher le mot de passe pour le sécuriser dans la BDD
-            $pass = password_hash($_POST["pass1"], PASSWORD_ARGON2I);
+            $pass = password_hash($_POST["pass1"], PASSWORD_ARGON2ID);
 
             //On se connecte a la BDD pour enregistrer nos données
             require_once "connexion.php";
@@ -81,6 +81,12 @@
 
                 // On exécute la requête d'insertion
                 $sql->execute();
+
+
+                //On connecte l'utilisateur ou le medecin
+
+
+
                 
                 // Redirection ou message de succès
                 header("Location: about.php"); // Redirection vers une page de succès
@@ -165,13 +171,13 @@
                 <div class="section-form-register">
                     <div class="info-modal">
                         <span>eMail</span>
-                        <input type="email" name="email" required>
+                        <input type="email" name="email1" required>
                     </div>
                     <div class="info-modal">
                         <span>Mot de passe</span>
                         <input type="password" name="pass" required>
                     </div>
-                    <button class="btn-log">Valider</button>
+                    <button class="btn-log">Connexion</button>
                     <div class="modal-footer">
                         <p>Pas de compte ? <a href="#" role="button" data-target="#modal2" data-dismiss="dialog" data-toggle="modal">Créer un compte</a></p>
                     </div>
@@ -207,7 +213,7 @@
                 <div class="info-modal-select">
                     <label for="">Êtes vous :</label>
                     <select name="role" id="" required>
-                        <option value="professional">Un profesionnel de la santé</option>
+                        <option value="professional">Un professionnel de santé</option>
                         <option value="user">Un utilisateur</option>
                     </select>
                 </div>
