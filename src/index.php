@@ -1,7 +1,7 @@
 <?php 
     //On vérifie si le formulaire a était envoyé
     if(!empty($_POST)) {
-
+        //Ici on selectionne le bon formulaire (le formulaire register) pour faire les vérifications d'usage
         if (isset($_POST['form_type']) && $_POST['form_type'] === 'register') {
         //Le formulaire a été envoyé
         //On vérifie que TOUS les champs requis EXISTE et sont REMPLIS
@@ -98,44 +98,59 @@
 
 
 
-
-    } elseif (isset($_POST['form_type']) && $_POST['form_type'] === "login") {
+// Ici on selectionne l'autre formulaire (le formulaire login)
+} elseif (isset($_POST['form_type']) && $_POST['form_type'] === "login") {
+    
+    // On connecte l'utilisateur ou le médecin
+    // On vérifie que tous les champs ont été remplis et on sécurise les injections HTML
+    if (isset($_POST["email1"], $_POST['pass']) && !empty($_POST['email1']) && !empty($_POST["pass"])) {
         
-        // On connecte l'utilisateur ou le médecin
-        // On vérifie que tous les champs ont été remplis et on sécurise les injections HTML
-        if (isset($_POST["email1"], $_POST['pass']) && !empty($_POST['email1']) && !empty($_POST["pass"])) {
-            
-            // On vérifie si le mail rentré est bien un email
-            if (!filter_var($_POST['email1'], FILTER_VALIDATE_EMAIL)) {
-                header("Location: /errors/errorsmail.php?error=invalid_email");
-                exit();
-            }
-    
-            // Si le mail rentré est bien une adresse mail, alors on se connecte à la DB
-            require_once "connexion.php";
-    
-            $sql = "SELECT * FROM users WHERE user_mail = :email1 UNION SELECT * FROM doctors WHERE email = :email1";
-            $query = $db->prepare($sql);
-            $query->bindValue(":email1", $_POST["email1"], PDO::PARAM_STR);
-            $query->execute();
-    
-            $user = $query->fetch();
-    
-            // Vérification du mot de passe
-            if ($user && password_verify($_POST['pass'], $user['password'])) {
-                // Connexion réussie
-                // Redirection vers la page de profil ou tableau de bord
-            } else {
-                header("Location: /errors/errorspass.php?error=invalid_credentials");
-                exit();
-            }
-    
-        } else {
-            // Si les champs ne sont pas remplis
-            header("Location: /errors/errorspass.php?error=empty_fields");
+        // On vérifie si le mail rentré est bien un email
+        if (!filter_var($_POST['email1'], FILTER_VALIDATE_EMAIL)) {
+            header("Location: /errors/errorsmail.php?error=invalid_email");
             exit();
         }
+
+        // Connexion à la base de données
+        require_once "connexion.php";
+
+        // Vérification dans la table doctors
+        $query_doctor = $db->prepare("SELECT * FROM doctors WHERE email = :email1");
+        $query_doctor->bindValue(":email1", $_POST["email1"], PDO::PARAM_STR);
+        $query_doctor->execute();
+        $doctor = $query_doctor->fetch();
+
+        // Vérification dans la table users
+        $query_user = $db->prepare("SELECT * FROM users WHERE user_mail = :email1");
+        $query_user->bindValue(":email1", $_POST["email1"], PDO::PARAM_STR);
+        $query_user->execute();
+        $user = $query_user->fetch();
+
+        // Vérification du mot de passe pour les médecins
+        if ($doctor && password_verify($_POST['pass'], $doctor['password'])) {
+            // Connexion réussie pour médecin
+            // Redirection vers la page de profil ou tableau de bord
+            header("Location: docProfil.php"); // Exemple de redirection
+            exit();
+        } 
+        // Vérification du mot de passe pour les utilisateurs
+        elseif ($user && password_verify($_POST['pass'], $user['user_password'])) {
+            // Connexion réussie pour utilisateur
+            // Redirection vers la page de profil ou tableau de bord
+            header("Location: userProfil.php"); // Exemple de redirection
+            exit();
+        } else {
+            header("Location: /errors/errorspass.php?error=invalid_credentials");
+            exit();
+        }
+
+    } else {
+        // Si les champs ne sont pas remplis
+        header("Location: /errors/errorspass.php?error=empty_fields");
+        exit();
     }
+}
+
 ?>
 
 
@@ -460,3 +475,4 @@
     <script src="javascript/script.js"></script>
 </body>
 </html>
+
