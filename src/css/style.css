@@ -871,25 +871,81 @@ footer {
     font-size: 18px;
     font-weight: normal;
 }
-
+/*//////////////*/
 .doc-information {
-    margin-top: 5px;
-    margin-left: 140px;
+    text-align: center;
     font-family: Teachers;
 }
+/*//////////////*/
+
 .doc-information p {
     font-size: 15px;
 }
+
+/*///////////////////////////////////////*/
 .doc-adress {
-    margin: 0px 0px 10px 10px;
+    margin: 10px 0px 10px 140px;
     font-family: Teachers;
 }
+/*///////////////////////////////////////*/
+
+.doc-table-read {
+    margin: 10px auto;
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-family: "Teachers";
+    font-size: 14px;
+    font-weight: lighter;
+    width: 300px;
+    }
+.doc-day-read {
+    border: 1px solid rgb(160 160 160);
+    padding: 2px 10px;
+    background-color: aliceblue;
+    text-align: start;
+    font-weight: lighter;
+}
+.doc-hour-read {
+    border: 1px solid rgb(160 160 160);
+    padding: 2px 10px;
+    background-color: #b1e8a2;
+}
+
+
+
+
+
+
+.infosup-doc {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+.infospecial {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
 .complet-adress {
     height: 40px;
     overflow-y: auto;
 }
 .doc-adress span {
     text-decoration: underline;
+}
+.complet-adress span {
+    text-decoration: none;
 }
 .doc-tel {
     margin-top: 5px;
@@ -1142,6 +1198,12 @@ footer {
 }
 
 /* UPDATE DOCTOR */
+.pro-type-doc {
+    font-family: Teachers;
+    padding: 5px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
 .input-hours {
     border: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 15px;
@@ -1150,8 +1212,35 @@ footer {
     gap: 5px;
     padding: 20px;
 }
-.input-hours p input{
-    width: 80px;
+
+.doc-table {
+    border-collapse: separate;
+    border: 2px solid rgb(140 140 140);
+    font-family: "Teachers";
+    font-size: 16px;
+    letter-spacing: 1px;
+    }
+
+.caption-doc {
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.doc-day {
+    border: 1px solid rgb(160 160 160);
+    padding: 4px 10px;
+    background-color: aliceblue;
+    text-align: start;
+}
+
+.doc-hour {
+    border: 1px solid rgb(160 160 160);
+    padding: 4px 10px;
+    background-color: #b1e8a2;
+}
+.doc-hour input {
+    width: 150px;
 }
 
 .selector-dispo select {

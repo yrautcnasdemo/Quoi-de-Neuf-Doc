@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
-</head>
-<body>
+<?php
+require_once("connexion.php");
 
-    <script>
-        alert("Hello World");
-    </script>
+//Ma requete SQL
+$sql= "SELECT * FROM doctors";
 
-</body>
-</html>
+//on prépare la requete
+$query = $db->prepare($sql);
+
+//on execute la requete
+$query->execute();
+
+//on stock le résulta
+$result = $query->fetchAll();
+var_dump($result);
+?>

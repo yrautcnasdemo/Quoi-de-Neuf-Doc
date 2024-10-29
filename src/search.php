@@ -1,3 +1,26 @@
+<?php
+require_once("connexion.php");
+
+//Ma requete SQL
+$sql= "SELECT * FROM doctors";
+
+//on prépare la requete
+$query = $db->prepare($sql);
+
+//on execute la requete
+$query->execute();
+
+//on stock le résulta (le PDO::FETCH_ASSOC) permet de ne pas avoir les résulta en double
+$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+//On ferme la connexion
+require_once("deconnexion.php")
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,6 +133,10 @@
         <!-- DOCOTR CARDS -->
         <section class="doctor-cards">
 
+<!-- ////////////////////// -->
+        <?php
+            foreach($result as $doctor){
+        ?>
             <figure class="doctor-card">
                 <div class="doc-img-profil">
                     <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
@@ -117,29 +144,102 @@
                 <figcaption>
                     <div class="doc-name">
                         <span>Profile</span>
-                        <h1>Dr. Jane Doe</h1>
-                        <h2>ORL</h2>
+                        <h1>Dr. <?= $doctor['first_name'].' '. $doctor['last_name']?></h1>
+                        <h2><?= $doctor['specialization']?></h2>
                     </div>
+
+                    <div class="doc-adress">
+                        <span class="underline">Adresse:</span>
+                        <p class="complet-adress">
+                            <span><?= $doctor['address']?></span>
+                            <span><?= $doctor['department']?></span>
+                            <span><?= $doctor['city']?></span>
+                        </p>
+                        <div>______________</div>
+                    </div>
+
+
                     <div class="doc-information">
                         <h3>Horraires et contact:</h3>
-                        <p>Horraires d'ouverture</p>
-                        <p>
-                            08h00-12h00 <br> 
-                            13h30-19h00 <br> 
-                            Du lundi au vendredi
-                        </p>
+                        <div class="infosup-doc">
+                            <table class="doc-table-read">
+                                <tbody>
+                                    <tr>
+                                        <th class="doc-day-read">Lundi</th>
+                                        <td class="doc-hour-read"><?= $doctor['Monday_schedules']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="doc-day-read">Mardi</th>
+                                        <td class="doc-hour-read"><?= $doctor['Tuesday_schedules']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="doc-day-read">Mercredi</th>
+                                        <td class="doc-hour-read"><?= $doctor['Wednesday_schedules']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="doc-day-read">Jeudi</th>
+                                        <td class="doc-hour-read"><?= $doctor['Thursday_schedules']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="doc-day-read">Vendredi</th>
+                                        <td class="doc-hour-read"><?= $doctor['Friday_schedules']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="doc-day-read">Samedi</th>
+                                        <td class="doc-hour-read"><?= $doctor['Saturday_schedules']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="doc-day-read">Dimanche</th>
+                                        <td class="doc-hour-read"><?= $doctor['Sunday_schedules']?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="infospecial">
+                                <div class="">
+                                    Genre : <span><?= $doctor['gender'] ? 'Homme' : 'Femme' ?></span>
+                                </div>
+                                <div class="">
+                                    mode paiement accepté 
+                                    <span><?php
+                                        // Vérifiez si payment_method n'est pas null ou vide
+                                        if (!empty($doctor['payment_method'])) {
+                                            // Convertir le SET en tableau
+                                            $payment_methods = explode(',', $doctor['payment_method']);
+                                            
+                                            // Parcourir chaque méthode et les afficher sur une nouvelle ligne
+                                            foreach ($payment_methods as $method) {
+                                                // Remplacer les underscores par des espaces
+                                                $formatted_method = str_replace('_', ' ', $method);
+                                                echo "<div>$formatted_method</div>";
+                                            }
+                                        } else {
+                                            echo "<div>Aucune information de paiement disponible.</div>"; // Message alternatif si aucune info
+                                        }
+                                    ?></span>
+                                </div>
+                                <div class="doc-tel">
+                                    Tel: <span><?= $doctor['phone']?></span>
+                                </div>
+                                <div class="doc-bis">
+                                    <p>Disponibilité pour de nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
+                                </div>
+                            </div>
                     </div>
-                    <div class="doc-adress">
-                        <span>Adresse:</span>
-                        <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
-                        <div class="doc-tel">Tel: <span>555-2368</span></div>
-                    </div>
-                    <div class="doc-bis">
-                        <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
-                    </div>
+
+
+
+
                 </figcaption>
             </figure>
+        <?php
+            }
+        ?>
+<!-- ////////////////////// -->
 
+
+
+<!-- 
             <figure class="doctor-card">
                 <div class="doc-img-profil">
                     <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
@@ -348,7 +448,7 @@
                         <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
                     </div>
                 </figcaption>
-            </figure>
+            </figure> -->
             
         </section>
     </main>

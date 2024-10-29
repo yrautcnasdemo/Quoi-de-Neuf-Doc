@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,18 +41,61 @@
                 </div>
             <figcaption>
                     <h1>Jason Vorheese</h1>
+                    <div class="selector-dispo">
+                        <span>Genre :</span>
+                        <select name="" id="">
+                            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
+                        </select>
+                    </div>
                         <div class="adress-user">
                             <div>
-                                <span>Spécialisation:</span>
+                                <select name="pro-type" id="" class="pro-type-doc">
+                                    <option value="">Médecin généraliste</option>
+                                    <option value="">Spécialiste</option>
+                                    <option value="">Dentiste</option>
+                                    <option value="">Kinésithérapeute</option>
+                                </select>
+                                <span>Spécialisation / DIU :</span>
                                 <input type="text" placeholder="ORL">
                             </div>
                             <div class="input-hours">
-                                <span>Horraires:</span>
-                                <p>Du <input type="text" placeholder="Lundi"> au <input type="text" placeholder="Vendredi"></p>
-                                <span>Matin</span>
-                                <p>De <input type="text" placeholder="8h00"> a <input type="text" placeholder="12h00"></p>
-                                <span>Aprés-midi</span>
-                                <p>De <input type="text" placeholder="13h30"> a <input type="text" placeholder="19h00"></p>
+                                <span></span>
+                                <table class="doc-table">
+                                    <caption class="caption-doc">
+                                        Jours / Horraires:
+                                    </caption>
+                                    <tbody class="rere">
+                                        <tr>
+                                            <th class="doc-day">Lundi</th>
+                                            <td class="doc-hour"><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="doc-day">Mardi</th>
+                                            <td class="doc-hour"><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="doc-day">Mercredi</th>
+                                            <td class="doc-hour"><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="doc-day">Jeudi</th>
+                                            <td class="doc-hour"><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="doc-day">Vendredi</th>
+                                            <td class="doc-hour"><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="doc-day">Samedi</th>
+                                            <td class="doc-hour"><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="doc-day">Dimanche</th>
+                                            <td class="doc-hour"><input type="text"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div>
                                 <span>Adresse:</span>
@@ -73,6 +119,27 @@
                                     <option value="oui">oui</option>
                                     <option value="non">non</option>
                                 </select>
+                            </div>
+                            <div class="">
+                                <p>Type de réglement</p>
+                                <div class="doc-billing-update">
+                                    <div>
+                                        <input type="checkbox" id="carte-bancaire" name="" value="carte-bancaire">
+                                        <label for="carte-bancaire">Carte bancaire</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="cheque" name="" value="cheque">
+                                        <label for="cheque">Chèque</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="espece" name="" value="espece">
+                                        <label for="espece">Espèces</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="tiers-payant" name="" value="tiers-payant">
+                                        <label for="tiers-payant">Tiers payant</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     <a class="btn-mod-user" href="updateUser.php">Valider</a>

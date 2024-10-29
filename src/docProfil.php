@@ -1,3 +1,24 @@
+<?php
+require_once("connexion.php");
+
+//Ma requete SQL
+$sql= "SELECT * FROM doctors";
+
+//on prépare la requete
+$query = $db->prepare($sql);
+
+//on execute la requete
+$query->execute();
+
+//on stock le résulta (le PDO::FETCH_ASSOC) permet de ne pas avoir les résulta en double
+$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+//On ferme la connexion
+require_once("deconnexion.php")
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +53,7 @@
 
 <main class="profil-section">
     <section>
+    <!-- ////////////////////// -->
         <figure class="doctor-card">
                 <div class="doc-img-profil">
                     <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
@@ -63,6 +85,7 @@
                     <a class="btn-mod-doctor" href="updateDoc.php">Modifier</a>
                 </figcaption>
             </figure>
+    <!-- ////////////////////// -->
     </section>
 
 
