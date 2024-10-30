@@ -1,4 +1,9 @@
 <?php
+    session_start();
+    //On se connecte a la BDD pour enregistrer nos données
+    require_once "connexion.php";
+    
+    
     //On vérifie si le formulaire a était envoyé
     if(!empty($_POST)) {
         //Ici on selectionne le bon formulaire (le formulaire register) pour faire les vérifications d'usage
@@ -38,9 +43,7 @@
             //On va hasher le mot de passe pour le sécuriser dans la BDD
             $pass = password_hash($_POST["pass1"], PASSWORD_ARGON2ID);
 
-            //On se connecte a la BDD pour enregistrer nos données
-            require_once "connexion.php";
-            
+
             
             
             //VERIFICATION DES ADRESSE MAIL EN DOUBLON DANS LES 2 TABLES USER ET DOCTORS
@@ -84,9 +87,6 @@
                 // On exécute la requête d'insertion
                 $sql->execute();
                 
-                // Redirection ou message de succès
-                //header("Location: about.php");
-                //exit(); // On quitte le script
             }
             
 
@@ -129,15 +129,19 @@
             // Vérification du mot de passe pour les médecins
             if ($doctor && password_verify($_POST['pass'], $doctor['password'])) {
                 // Connexion réussie pour médecin
+
+                $_SESSION['doctor_id'] = $doctor['id']; // Stocke l'ID du médecin dans la session
                 // Redirection vers la page de profil ou tableau de bord
-                header("Location: /docProfil.php"); // Exemple de redirection
+                header("Location: /test.php");
                 exit();
             } 
             // Vérification du mot de passe pour les utilisateurs
             elseif ($user && password_verify($_POST['pass'], $user['user_password'])) {
                 // Connexion réussie pour utilisateur
+
+                $_SESSION['user_id'] = $user['ID']; // Stocke l'ID de l'utilisateur dans la session
                 // Redirection vers la page de profil ou tableau de bord
-                header("Location: /userProfil.php"); // Exemple de redirection
+                header("Location: /test2.php");
                 exit();
             } else {
                 header("Location: /errors/errorspass.php?error=invalid_credentials");
