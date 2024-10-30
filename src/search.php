@@ -145,7 +145,7 @@ require_once("deconnexion.php")
                     <div class="doc-name">
                         <span>Profile</span>
                         <h1>Dr. <?= $doctor['first_name'].' '. $doctor['last_name']?></h1>
-                        <h2><?= $doctor['specialization']?></h2>
+                        <h2><?= $doctor['professional_type'].'<br>'. $doctor['specialization']?></h2>
                     </div>
 
                     <div class="doc-adress">
@@ -196,11 +196,24 @@ require_once("deconnexion.php")
                             </table>
 
                             <div class="infospecial">
-                                <div class="">
-                                    Genre : <span><?= $doctor['gender'] ? 'Homme' : 'Femme' ?></span>
+                                <!-- GENDER -->
+                                <div class="gender-doc">
+                                    <p>Genre : <span>
+                                        <?php 
+                                            if ($doctor['gender'] === 'H') {
+                                                echo 'Homme';
+                                            } elseif ($doctor['gender'] === 'F') {
+                                                echo 'Femme';
+                                            } else {
+                                                echo 'Non spécifié';
+                                            }
+                                        ?>
+                                    </span></p>
                                 </div>
-                                <div class="">
-                                    mode paiement accepté 
+
+                                <!-- PAYMENT METHOD -->
+                                <div>
+                                    <p class="doc-method">mode paiement accepté</p>
                                     <span><?php
                                         // Vérifiez si payment_method n'est pas null ou vide
                                         if (!empty($doctor['payment_method'])) {
@@ -218,11 +231,15 @@ require_once("deconnexion.php")
                                         }
                                     ?></span>
                                 </div>
+
+                                <!-- PHONE -->
                                 <div class="doc-tel">
-                                    Tel: <span><?= $doctor['phone']?></span>
+                                    <p>Tel: <span><?= $doctor['phone']?></span></p>
                                 </div>
+
+                                <!-- AVAIBILITY -->
                                 <div class="doc-bis">
-                                    <p>Disponibilité pour de nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
+                                    <p>Nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
                                 </div>
                             </div>
                     </div>

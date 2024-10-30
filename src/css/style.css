@@ -890,13 +890,13 @@ footer {
 /*///////////////////////////////////////*/
 
 .doc-table-read {
-    margin: 10px auto;
+    margin: 10px;
     border-collapse: collapse;
     border: 2px solid rgb(140 140 140);
     font-family: "Teachers";
     font-size: 14px;
     font-weight: lighter;
-    width: 300px;
+    width: 200px;
     }
 .doc-day-read {
     border: 1px solid rgb(160 160 160);
@@ -904,6 +904,7 @@ footer {
     background-color: aliceblue;
     text-align: start;
     font-weight: lighter;
+    padding: 11px ;
 }
 .doc-hour-read {
     border: 1px solid rgb(160 160 160);
@@ -921,11 +922,17 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-left: 10px;
 }
 .infospecial {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 170px;
+}
+.doc-method {
+    text-decoration: underline;
 }
 
 
