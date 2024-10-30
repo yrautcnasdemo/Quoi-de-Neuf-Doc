@@ -1012,11 +1012,9 @@ footer {
 .user-card figcaption h1 {
     color: #008CFF;
     text-decoration: underline;
+    margin-bottom: 10px;
 }
 
-.user-card figcaption .adress-user {
-    margin: 10px 0px
-}
 .btn-mod-user {
     background-color: #E9E9ED;
     border: 1px solid #8F8F9D;
@@ -1030,8 +1028,20 @@ footer {
     font-weight: lighter;
 }
 
+.adress-user-main{
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+.adress-user-main p {
+    font-size: 16px;
+}
+.adress-user-main span {
+    text-decoration: underline;
+    font-size: 20px;
+}
 .pm-user { 
-    margin-bottom: 10px;
+    margin: 10px 0px 15px 0px;
 }
 
 .user-doctor {
@@ -1195,9 +1205,15 @@ footer {
 .adress-user {
     display: flex;
     flex-direction: column;
-    gap: 15px;
     margin: 10px 0px 20px 0px;
+    gap: 15px;
     font-size: 18px;
+}
+.adress-user div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .adress-user input {
     padding: 5px;
@@ -1205,12 +1221,8 @@ footer {
     text-align: center;
 }
 
-.adress-user div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
+
 
 /* UPDATE DOCTOR */
 .pro-type-doc {

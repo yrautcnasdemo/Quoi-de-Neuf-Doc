@@ -13,12 +13,6 @@
         $query->execute([':id' => $user_id]);
         $user_info = $query->fetch();
 
-        // Déboguer les informations de l'utilisateur
-        echo "<pre>";
-        print_r($user_info);
-        echo "</pre>";
-
-
     } else {
         // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
         header("Location: /login.php");

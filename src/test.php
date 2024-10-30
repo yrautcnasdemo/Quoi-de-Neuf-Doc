@@ -13,11 +13,6 @@ if (isset($_SESSION['doctor_id'])) {
     $query->execute([':id' => $doctor_id]);
     $doctor_info = $query->fetch();
 
-    // Déboguer les informations du médecin
-    echo "<pre>";
-    print_r($doctor_info);
-    echo "</pre>";
-
 } else {
     // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
     header("Location: /login.php");

@@ -132,7 +132,7 @@
 
                 $_SESSION['doctor_id'] = $doctor['id']; // Stocke l'ID du médecin dans la session
                 // Redirection vers la page de profil ou tableau de bord
-                header("Location: /test.php");
+                header("Location: /docProfil.php");
                 exit();
             } 
             // Vérification du mot de passe pour les utilisateurs
@@ -141,7 +141,7 @@
 
                 $_SESSION['user_id'] = $user['ID']; // Stocke l'ID de l'utilisateur dans la session
                 // Redirection vers la page de profil ou tableau de bord
-                header("Location: /test2.php");
+                header("Location: /userProfil.php");
                 exit();
             } else {
                 header("Location: /errors/errorspass.php?error=invalid_credentials");

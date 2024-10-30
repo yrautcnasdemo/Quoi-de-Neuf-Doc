@@ -1,3 +1,27 @@
+<?php
+    session_start();
+    require_once "connexion.php";
+
+    // Vérification si l'utilisateur est connecté
+    if (isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+
+        // Déboguer l'ID de l'utilisateur
+        echo "User ID from session: " . $user_id . "<br>";
+
+        $query = $db->prepare("SELECT * FROM users WHERE ID = :id");
+        $query->execute([':id' => $user_id]);
+        $user_info = $query->fetch();
+
+    } else {
+        // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
+        header("Location: /login.php");
+        exit();
+    }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,16 +61,16 @@
             <figure class="user-card">
                 <img class="img-user" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="">
                 <figcaption>
-                    <h1>Alice Hardy</h1>
+                    <h1><?= $user_info['user_firstname'].' '.$user_info['user_lastname'] ?></h1>
                     <div>
-                        <div class="adress-user">
+                        <div class="adress-user-main">
                             <span>Adresse:</span>
-                            <p>01 La chaume contant</p>
-                            <span>CP: <span>58470</span></span><span>Magny-Cours</span>
+                            <p><?= $user_info['user_adress'] ?></p>
+                            <p><?= $user_info['user_departement'].' - '.$user_info['user_city'] ?></p>
                         </div>
                         <div class="pm-user">
-                            <span>Telephone: <span>0685858585</span></span><br>
-                            <span>eMail: <span>user@mail.com</span></span>
+                            <p>Telephone: <?= $user_info['user_phone'] ?></p>
+                            <p>eMail: <?= $user_info['user_mail'] ?></p>
                         </div>
                     </div>
                     <a class="btn-mod-user" href="updateUser.php">Modifier</a>
