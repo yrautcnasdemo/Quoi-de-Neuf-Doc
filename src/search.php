@@ -207,7 +207,7 @@ require_once("deconnexion.php")
                                             // Convertir le SET en tableau
                                             $payment_methods = explode(',', $doctor['payment_method']);
                                             
-                                            // Parcourir chaque méthode et les afficher sur une nouvelle ligne
+                                            // Parcourir chaque payement_méthode et les afficher sur une nouvelle ligne
                                             foreach ($payment_methods as $method) {
                                                 // Remplacer les underscores par des espaces
                                                 $formatted_method = str_replace('_', ' ', $method);
