@@ -967,6 +967,14 @@ footer {
     margin-bottom: 10px;
 }
 
+.holder-btn-doc {
+    text-align: center;
+}
+.btn-add-doc {
+    padding: 2px 15px;
+    font-family: poppins;
+}
+
 
 /* ///////////////////////   USER PROFIL   ///////////////////////////*/
 .profil-section {

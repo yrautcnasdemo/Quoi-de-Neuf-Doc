@@ -242,6 +242,10 @@ require_once("deconnexion.php")
                                     <p>Nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="holder-btn-doc">
+                        <button class="btn-add-doc">Ajouter a mes favoris</button>
                     </div>
                 </figcaption>
             </figure>
