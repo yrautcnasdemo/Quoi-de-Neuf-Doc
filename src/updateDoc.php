@@ -2,13 +2,16 @@
 session_start();
 require_once "connexion.php"; 
 
-// Section UPDATE
+// Section UPDATE = Mix CREAT & READ 
+
+//CREAT modifié
 if ($_POST) {
-    if (isset($_POST['id'], $_POST['phone'], $_POST['department']) && 
-        !empty($_POST['id']) && !empty($_POST['phone']) && !empty($_POST['department'])) {
+    if (isset($_POST['id'], $_POST['phone'], $_POST['department'], $_POST['gender'], $_POST['city'], $_POST['address'], $_POST['professional_type'], $_POST['specialization'], $_POST['Monday_schedules'], $_POST['Tuesday_schedules'], $_POST['Wednesday_schedules'], $_POST['Thursday_schedules'], $_POST['Friday_schedules'], $_POST['Saturday_schedules'], $_POST['Sunday_schedules']) && 
+        !empty($_POST['id']) && !empty($_POST['phone']) && !empty($_POST['department']) && !empty($_POST['gender']) && !empty($_POST['city']) && !empty($_POST['address']) && !empty($_POST['professional_type']) && !empty($_POST['specialization']) && !empty($_POST['Monday_schedules']) && !empty($_POST['Tuesday_schedules']) && !empty($_POST['Wednesday_schedules']) && !empty($_POST['Thursday_schedules']) && !empty($_POST['Friday_schedules']) && !empty($_POST['Saturday_schedules']) && !empty($_POST['Sunday_schedules'])) {
         
         // Connexion à la base de données
         $id = strip_tags($_POST['id']);
+        $gender = strip_tags($_POST['gender']);
         $phone = strip_tags($_POST['phone']);
         $department = strip_tags($_POST['department']);
 
@@ -19,13 +22,16 @@ if ($_POST) {
         }
 
         // Requête SQL pour la mise à jour
-        $sql = "UPDATE doctors SET phone = :phone, department = :department WHERE id = :id";
+        $sql = "UPDATE doctors SET phone = :phone, department = :department, gender = :gender WHERE id = :id";
         $query = $db->prepare($sql);
         
         // Bind des paramètres
         $query->bindValue(":id", $id, PDO::PARAM_INT);
+        $query->bindValue(":gender", $gender, PDO::PARAM_STR);
         $query->bindValue(":phone", $phone, PDO::PARAM_STR);
         $query->bindValue(":department", $department, PDO::PARAM_STR);
+
+
 
         // Exécution de la requête
         if ($query->execute()) {
@@ -41,6 +47,8 @@ if ($_POST) {
     }
 }
 
+
+
 // Section READ
 if (isset($_SESSION['doctor_id'])) {
     $doctor_id = $_SESSION['doctor_id'];
@@ -52,6 +60,7 @@ if (isset($_SESSION['doctor_id'])) {
     }
 
     $sql = "SELECT * FROM doctors WHERE id = :id";
+
     $query = $db->prepare($sql);
     $query->bindValue(":id", $doctor_id, PDO::PARAM_INT);
     $query->execute();
@@ -106,19 +115,19 @@ if (isset($_SESSION['doctor_id'])) {
     </header>
 
     <section class="update-user">
-        <form class="form-update-user">
+        <form class="form-update-user" method="POST">
             <figure class="user-card-update">
                 <div class="img-box">
                     <img class="img-update" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="My-pics-Profil">
                     <button class="upload-btn-img">upload</button>
                 </div>
             <figcaption>
-                    <h1><?= $doctor['first_name'].' // '.$doctor['last_name'] ?></h1>
+                    <h1><?= $doctor['first_name'].' '.$doctor['last_name'] ?></h1>
                     <div class="selector-dispo">
                         <span>Genre :</span>
-                        <select name="" id="">
-                            <option value="Homme">Homme</option>
-                            <option value="Femme">Femme</option>
+                        <select name="gender" id="gender">
+                            <option value="H" <?= ($doctor['gender'] == 'H') ? 'selected' : '' ?>>Homme</option>
+                            <option value="F" <?= ($doctor['gender'] == 'F') ? 'selected' : '' ?>>Femme</option>
                         </select>
                     </div>
                         <div class="adress-user">
@@ -216,7 +225,7 @@ if (isset($_SESSION['doctor_id'])) {
                             </div>
                         </div>
                         <input type="hidden" value="<?= $doctor["id"]?>" name="id">
-                    <a class="btn-mod-user" href="updateUser.php">Valider</a>
+                        <button type="submit" class="btn-mod-user">Valider</button>
                 </figcaption>
             </figure>
         </form>

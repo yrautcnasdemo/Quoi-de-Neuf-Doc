@@ -170,59 +170,15 @@ if (isset($_SESSION['doctor_id'])) {
         </figcaption>
     </figure>
 <!-- FIN CARTE PROFIL DOCTEUR -->
+</section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- ////////////////////// -->
-        <!-- <figure class="doctor-card">
-                <div class="doc-img-profil">
-                    <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
-                </div>
-                <figcaption>
-                    <div class="doc-name">
-                        <span>Profile</span>
-                        <h1>Dr. Jane Doe</h1>
-                        <h2>Spécialiste</h2>
-                        
-                    </div>
-                    <div class="doc-information">
-                        <h3>Horraires et contact:</h3>
-                        <p>Horraires d'ouverture</p>
-                        <p>
-                            08h00-12h00 <br> 
-                            13h30-19h00 <br> 
-                            Du lundi au vendredi
-                        </p>
-                    </div>
-                    <div class="doc-adress">
-                        <span>Adresse:</span>
-                        <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
-                        <div class="doc-tel">Tel: <span>555-2368</span></div>
-                    </div>
-                    <div class="doc-bis2">
-                        <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
-                    </div>
-                    <a class="btn-mod-doctor" href="updateDoc.php">Modifier</a>
-                </figcaption>
-            </figure> -->
-    <!-- ////////////////////// -->
-    </section>
+<!-- Alerte de mise a jour réussie -->
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert success">
+            <?= $_SESSION['success']; unset($_SESSION['success']); ?>
+        </div>
+    <?php endif; ?>
 
 
     <section>
