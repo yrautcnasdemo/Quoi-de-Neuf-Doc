@@ -159,7 +159,7 @@ if (isset($_SESSION['doctor_id'])) {
 
                         <!-- AVAIBILITY -->
                         <div class="doc-bis">
-                            <p>Nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
+                            <p>Nouveaux patients: <span><?= $doctor['availability'] ?></span></p>
                         </div>
                     </div>
                 </div>
