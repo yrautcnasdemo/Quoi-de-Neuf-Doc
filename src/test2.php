@@ -1,21 +1,20 @@
 <?php
-    session_start();
-    require_once "connexion.php";
+session_start();
+require_once "connexion.php";
 
-    // Vérification si l'utilisateur est connecté
-    if (isset($_SESSION['user_id'])) {
-        $user_id = $_SESSION['user_id'];
+// Verification si l'utilisateur médecin est connecté
+if (isset($_SESSION['doctor_id'])) {
+    $doctor_id = $_SESSION['doctor_id'];
 
-        // Déboguer l'ID de l'utilisateur
-        echo "User ID from session: " . $user_id . "<br>";
+    $query = $db->prepare("SELECT * FROM doctors WHERE id = :id");
 
-        $query = $db->prepare("SELECT * FROM users WHERE ID = :id");
-        $query->execute([':id' => $user_id]);
-        $user_info = $query->fetch();
+    $query->bindValue(":id", $doctor_id, PDO::PARAM_INT);
+    $query->execute();
+    $doctor = $query->fetch();
 
-    } else {
-        // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
-        header("Location: /login.php");
-        exit();
-    }
+} else {
+    // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
+    header("Location: /index.php");
+    exit();
+}
 ?>

@@ -1,18 +1,78 @@
 <?php
-    session_start();
-    require_once "connexion.php"; // Assurez-vous d'inclure votre connexion à la base de données ici
+session_start();
+require_once "connexion.php"; 
 
-    if (isset($_SESSION['doctor_id'])) {
-        $doctor_id = $_SESSION['doctor_id'];
+// Section UPDATE
+if ($_POST) {
+    if (isset($_POST['id'], $_POST['phone'], $_POST['department']) && 
+        !empty($_POST['id']) && !empty($_POST['phone']) && !empty($_POST['department'])) {
+        
+        // Connexion à la base de données
+        $id = strip_tags($_POST['id']);
+        $phone = strip_tags($_POST['phone']);
+        $department = strip_tags($_POST['department']);
 
-        $sql = "SELECT * FROM doctors";
+        // Vérification si l'ID correspond à celui de la session
+        if ($id != $_SESSION['doctor_id']) {
+            echo "Accès non autorisé";
+            exit();
+        }
+
+        // Requête SQL pour la mise à jour
+        $sql = "UPDATE doctors SET phone = :phone, department = :department WHERE id = :id";
         $query = $db->prepare($sql);
-        $query->execute();
-        $doctor = $query->fetch(PDO::FETCH_ASSOC);
+        
+        // Bind des paramètres
+        $query->bindValue(":id", $id, PDO::PARAM_INT);
+        $query->bindValue(":phone", $phone, PDO::PARAM_STR);
+        $query->bindValue(":department", $department, PDO::PARAM_STR);
+
+        // Exécution de la requête
+        if ($query->execute()) {
+            // Message de succès, redirection ou autre action
+            $_SESSION['success'] = "Mise à jour réussie";
+            header("Location: docProfil.php?id=$id"); // Redirection vers le profil
+            exit();
+        } else {
+            $_SESSION['erreur'] = "Erreur lors de la mise à jour. Veuillez réessayer.";
+        }
     } else {
-        die();
+        $_SESSION['erreur'] = "Formulaire incomplet.";
     }
+}
+
+// Section READ
+if (isset($_SESSION['doctor_id'])) {
+    $doctor_id = $_SESSION['doctor_id'];
+
+    // Vérifier si l'ID dans l'URL correspond à l'ID dans la session
+    if (!isset($_GET['id']) || $_GET['id'] != $doctor_id) {
+        echo "Accès non autorisé";
+        exit();
+    }
+
+    $sql = "SELECT * FROM doctors WHERE id = :id";
+    $query = $db->prepare($sql);
+    $query->bindValue(":id", $doctor_id, PDO::PARAM_INT);
+    $query->execute();
+    $doctor = $query->fetch(PDO::FETCH_ASSOC);
+    
+    // Vérifier si le docteur existe
+    if (!$doctor) {
+        echo "Aucun médecin trouvé pour cet ID.";
+        exit();
+    }
+} else {
+    // Si la session de la personne a expiré ou si elle a fermé son compte
+    header("Location: index.php");
+    exit();
+}
 ?>
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +113,7 @@
                     <button class="upload-btn-img">upload</button>
                 </div>
             <figcaption>
-                    <h1><?= $doctor['first_name']?></h1>
+                    <h1><?= $doctor['first_name'].' // '.$doctor['last_name'] ?></h1>
                     <div class="selector-dispo">
                         <span>Genre :</span>
                         <select name="" id="">
@@ -116,7 +176,7 @@
                             </div>
                             <div>
                                 <span>Mon code postal:</span>
-                                <input type="text" placeholder="58470">
+                                <input type="text" placeholder="58470" id="department" name="department" value="<?= $doctor['department']?>"> <!--On rajoute valeur pour UPDATE-->
                             </div>
                             <div>
                                 <span>Ma ville:</span>
@@ -124,7 +184,7 @@
                             </div>
                             <div>
                                 <span>Mon Telephone:</span>
-                                <input type="text" placeholder="0620124574">
+                                <input type="text" placeholder="0620124574" id="phone" name="phone" value="<?= $doctor["phone"]?>"> <!--On rajoute valeur pour UPDATE-->
                             </div>
                             <div class="selector-dispo">
                                 <span>Disponibilité:</span>
@@ -155,6 +215,7 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" value="<?= $doctor["id"]?>" name="id">
                     <a class="btn-mod-user" href="updateUser.php">Valider</a>
                 </figcaption>
             </figure>

@@ -1,21 +1,54 @@
 <?php
-session_start();
-require_once "connexion.php"; // Assurez-vous d'inclure votre connexion à la base de données ici
+    session_start();
 
-// Vérification si l'utilisateur médecin est connecté
-if (isset($_SESSION['doctor_id'])) {
-    $doctor_id = $_SESSION['doctor_id'];
+    if($_POST){
+        if(isset($_POST['phone']) && !empty($_POST['phone'])
+        && isset($_POST['department']) && !empty($_POST['department'])){
+        
+        //Si on a tout, on ce connecte a la BDD
+        require_once "connexion.php";
+        //Ensuite on néttoie les données envoyées
+        $phone = strip_tags($_POST['phone']);
+        $department = strip_tags($_POST['department']);
 
-    // Déboguer l'ID du médecin
-    echo "Doctor ID from session: " . $doctor_id . "<br>";
+        $sql = "INSERT INTO doctors (`phone`, `department`) VALUES (:phone, :department)";
+        $query = $db->prepare($sql);
 
-    $query = $db->prepare("SELECT * FROM doctors WHERE id = :id");
-    $query->execute([':id' => $doctor_id]);
-    $doctor_info = $query->fetch();
+        $query->bindValue(":phone", $phone, PDO::PARAM_INT);
+        $query->bindValue(":department", $department, PDO::PARAM_INT);
 
-} else {
-    // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
-    header("Location: /login.php");
-    exit();
-}
+        $query->execute();
+
+        $resulta = $query->fetchAll();
+
+    
+        } else {
+            $_SESSION['erreur'] = "formulaire incomplet";
+        }
+    }
+
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form method="POST">
+        <div>
+            <input type="text" id="bla" name="bli">
+        </div>
+        <div>
+            <input type="text" id="blo" name="blu">
+        </div>
+
+        <button type="submit">zipfgjzeigfj</button>
+    </form>
+
+</body>
+</html>

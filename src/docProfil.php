@@ -1,21 +1,20 @@
 <?php
 session_start();
-require_once "connexion.php"; // Assurez-vous d'inclure votre connexion à la base de données ici
+require_once "connexion.php";
 
-// Vérification si l'utilisateur médecin est connecté
+// Verification si l'utilisateur médecin est connecté
 if (isset($_SESSION['doctor_id'])) {
     $doctor_id = $_SESSION['doctor_id'];
 
-    // Déboguer l'ID du médecin
-    echo "Doctor ID from session: " . $doctor_id . "<br>";
-
     $query = $db->prepare("SELECT * FROM doctors WHERE id = :id");
-    $query->execute([':id' => $doctor_id]);
+
+    $query->bindValue(":id", $doctor_id, PDO::PARAM_INT);
+    $query->execute();
     $doctor = $query->fetch();
 
 } else {
     // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
-    header("Location: /login.php");
+    header("Location: /index.php");
     exit();
 }
 ?>
@@ -59,117 +58,117 @@ if (isset($_SESSION['doctor_id'])) {
 
 <!-- CARTE PROFIL DOCTEUR -->
     <figure class="doctor-card">
-                <div class="doc-img-profil">
-                    <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
-                </div>
-                <figcaption>
-                    <div class="doc-name">
-                        <span>Profile</span>
-                        <h1>Dr. <?= $doctor['first_name'].' '. $doctor['last_name']?></h1>
-                        <h2><?= $doctor['professional_type'].'<br>'. $doctor['specialization']?></h2>
-                    </div>
+        <div class="doc-img-profil">
+            <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
+        </div>
+        <figcaption>
+            <div class="doc-name">
+                <span>Profile</span>
+                <h1>Dr. <?= $doctor['first_name'].' '. $doctor['last_name']?></h1>
+                <h2><?= $doctor['professional_type'].'<br>'. $doctor['specialization']?></h2>
+            </div>
 
-                    <div class="doc-adress">
-                        <span class="underline">Adresse:</span>
-                        <p class="complet-adress">
-                            <span><?= $doctor['address']?></span>
-                            <span><?= $doctor['department']?></span>
-                            <span><?= $doctor['city']?></span>
-                        </p>
-                        <div>______________</div>
-                    </div>
+            <div class="doc-adress">
+                <span class="underline">Adresse:</span>
+                <p class="complet-adress">
+                    <span><?= $doctor['address']?></span>
+                    <span><?= $doctor['department']?></span>
+                    <span><?= $doctor['city']?></span>
+                </p>
+                <div>______________</div>
+            </div>
 
 
-                    <div class="doc-information">
-                        <h3>Horraires et contact:</h3>
-                        <div class="infosup-doc">
-                            <table class="doc-table-read">
-                                <tbody>
-                                    <tr>
-                                        <th class="doc-day-read">Lundi</th>
-                                        <td class="doc-hour-read"><?= $doctor['Monday_schedules']?></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="doc-day-read">Mardi</th>
-                                        <td class="doc-hour-read"><?= $doctor['Tuesday_schedules']?></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="doc-day-read">Mercredi</th>
-                                        <td class="doc-hour-read"><?= $doctor['Wednesday_schedules']?></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="doc-day-read">Jeudi</th>
-                                        <td class="doc-hour-read"><?= $doctor['Thursday_schedules']?></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="doc-day-read">Vendredi</th>
-                                        <td class="doc-hour-read"><?= $doctor['Friday_schedules']?></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="doc-day-read">Samedi</th>
-                                        <td class="doc-hour-read"><?= $doctor['Saturday_schedules']?></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="doc-day-read">Dimanche</th>
-                                        <td class="doc-hour-read"><?= $doctor['Sunday_schedules']?></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+            <div class="doc-information">
+                <h3>Horraires et contact:</h3>
+                <div class="infosup-doc">
+                    <table class="doc-table-read">
+                        <tbody>
+                            <tr>
+                                <th class="doc-day-read">Lundi</th>
+                                <td class="doc-hour-read"><?= $doctor['Monday_schedules']?></td>
+                            </tr>
+                            <tr>
+                                <th class="doc-day-read">Mardi</th>
+                                <td class="doc-hour-read"><?= $doctor['Tuesday_schedules']?></td>
+                            </tr>
+                            <tr>
+                                <th class="doc-day-read">Mercredi</th>
+                                <td class="doc-hour-read"><?= $doctor['Wednesday_schedules']?></td>
+                            </tr>
+                            <tr>
+                                <th class="doc-day-read">Jeudi</th>
+                                <td class="doc-hour-read"><?= $doctor['Thursday_schedules']?></td>
+                            </tr>
+                            <tr>
+                                <th class="doc-day-read">Vendredi</th>
+                                <td class="doc-hour-read"><?= $doctor['Friday_schedules']?></td>
+                            </tr>
+                            <tr>
+                                <th class="doc-day-read">Samedi</th>
+                                <td class="doc-hour-read"><?= $doctor['Saturday_schedules']?></td>
+                            </tr>
+                            <tr>
+                                <th class="doc-day-read">Dimanche</th>
+                                <td class="doc-hour-read"><?= $doctor['Sunday_schedules']?></td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                            <div class="infospecial">
-                                <!-- GENDER -->
-                                <div class="gender-doc">
-                                    <p>Genre : <span>
-                                        <?php 
-                                            if ($doctor['gender'] === 'H') {
-                                                echo 'Homme';
-                                            } elseif ($doctor['gender'] === 'F') {
-                                                echo 'Femme';
-                                            } else {
-                                                echo 'Non spécifié';
-                                            }
-                                        ?>
-                                    </span></p>
-                                </div>
+                    <div class="infospecial">
+                        <!-- GENDER -->
+                        <div class="gender-doc">
+                            <p>Genre : <span>
+                                <?php 
+                                    if ($doctor['gender'] === 'H') {
+                                        echo 'Homme';
+                                    } elseif ($doctor['gender'] === 'F') {
+                                        echo 'Femme';
+                                    } else {
+                                        echo 'Non spécifié';
+                                    }
+                                ?>
+                            </span></p>
+                        </div>
 
-                                <!-- PAYMENT METHOD -->
-                                <div>
-                                    <p class="doc-method">mode paiement accepté</p>
-                                    <span><?php
-                                        // Vérifiez si payment_method n'est pas null ou vide
-                                        if (!empty($doctor['payment_method'])) {
-                                            // Convertir le SET en tableau
-                                            $payment_methods = explode(',', $doctor['payment_method']);
-                                            
-                                            // Parcourir chaque payement_méthode et les afficher sur une nouvelle ligne
-                                            foreach ($payment_methods as $method) {
-                                                // Remplacer les underscores par des espaces
-                                                $formatted_method = str_replace('_', ' ', $method);
-                                                echo "<div>$formatted_method</div>";
-                                            }
-                                        } else {
-                                            echo "<div>Aucune information de paiement disponible.</div>"; // Message alternatif si aucune info
-                                        }
-                                    ?></span>
-                                </div>
+                        <!-- PAYMENT METHOD -->
+                        <div>
+                            <p class="doc-method">mode paiement accepté</p>
+                            <span><?php
+                                // Vérifiez si payment_method n'est pas null ou vide
+                                if (!empty($doctor['payment_method'])) {
+                                    // Convertir le SET en tableau
+                                    $payment_methods = explode(',', $doctor['payment_method']);
+                                    
+                                    // Parcourir chaque payement_méthode et les afficher sur une nouvelle ligne
+                                    foreach ($payment_methods as $method) {
+                                        // Remplacer les underscores par des espaces
+                                        $formatted_method = str_replace('_', ' ', $method);
+                                        echo "<div>$formatted_method</div>";
+                                    }
+                                } else {
+                                    echo "<div>Aucune information de paiement disponible.</div>"; // Message alternatif si aucune info
+                                }
+                            ?></span>
+                        </div>
 
-                                <!-- PHONE -->
-                                <div class="doc-tel">
-                                    <p>Tel: <span><?= $doctor['phone']?></span></p>
-                                </div>
+                        <!-- PHONE -->
+                        <div class="doc-tel">
+                            <p>Tel: <span><?= $doctor['phone']?></span></p>
+                        </div>
 
-                                <!-- AVAIBILITY -->
-                                <div class="doc-bis">
-                                    <p>Nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
-                                </div>
-                            </div>
+                        <!-- AVAIBILITY -->
+                        <div class="doc-bis">
+                            <p>Nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
                         </div>
                     </div>
-                    <div class="holder-btn-doc">
-                        <a href="updateDoc.php?id=<?= $doctor['id'] ?>">Modifier</a>
-                    </div>
-                </figcaption>
-            </figure>
+                </div>
+            </div>
+            <div class="holder-btn-doc">
+                <a href="updateDoc.php?id=<?= htmlspecialchars($doctor['id']) ?>">Modifier</a>
+            </div>
+        </figcaption>
+    </figure>
 <!-- FIN CARTE PROFIL DOCTEUR -->
 
 
