@@ -1,5 +1,18 @@
+<?php
+    session_start();
+    require_once "connexion.php"; // Assurez-vous d'inclure votre connexion à la base de données ici
 
+    if (isset($_SESSION['doctor_id'])) {
+        $doctor_id = $_SESSION['doctor_id'];
 
+        $sql = "SELECT * FROM doctors";
+        $query = $db->prepare($sql);
+        $query->execute();
+        $doctor = $query->fetch(PDO::FETCH_ASSOC);
+    } else {
+        die();
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +53,7 @@
                     <button class="upload-btn-img">upload</button>
                 </div>
             <figcaption>
-                    <h1>Jason Vorheese</h1>
+                    <h1><?= $doctor['first_name']?></h1>
                     <div class="selector-dispo">
                         <span>Genre :</span>
                         <select name="" id="">

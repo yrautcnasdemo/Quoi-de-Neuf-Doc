@@ -166,7 +166,7 @@ if (isset($_SESSION['doctor_id'])) {
                         </div>
                     </div>
                     <div class="holder-btn-doc">
-                        <button class="btn-add-doc">Ajouter a mes favoris</button>
+                        <a href="updateDoc.php?id=<?= $doctor['id'] ?>">Modifier</a>
                     </div>
                 </figcaption>
             </figure>
