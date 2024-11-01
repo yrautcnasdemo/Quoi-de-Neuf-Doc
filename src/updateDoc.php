@@ -42,8 +42,44 @@ if ($_POST) {
             exit();
         }
 
+
+
+
+        // Gestion de l'image de profil
+        $doctor_image = null;
+        if (!empty($_FILES['profile_image_doc']['name'])) {
+            // Limite de taille à 500 Ko
+            if ($_FILES['profile_image_doc']['size'] > 500000) { // 500000 octets = 500 Ko
+                $_SESSION['erreur'] = "L'image ne doit pas dépasser 500 Ko.";
+                header("Location: updateDoc.php?id=$id"); // Redirection vers la page de mise à jour
+                exit();
+            }
+
+            $upload_dir = 'assets/images/profiles_doctors/';
+            // Obtenir l'extension du fichier
+            $imageFileType = strtolower(pathinfo($_FILES['profile_image_doc']['name'], PATHINFO_EXTENSION));
+            // Générez un nom de fichier unique
+            $unique_name = uniqid("doc_", true) . "." . $imageFileType;
+
+            // Vérifier le type d'image
+            $valid_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+            if (in_array($imageFileType, $valid_extensions)) {
+                // Déplacez le fichier téléchargé
+                if (move_uploaded_file($_FILES['profile_image_doc']['tmp_name'], $upload_dir . $unique_name)) {
+                    $doctor_image = $unique_name; // NE PAS METTRE LE CHEMIN COMPLET DE L'IMAGE UPLOADÉ
+                } else {
+                    $_SESSION['erreur'] = "Erreur lors de l'upload de l'image.";
+                }
+            } else {
+                $_SESSION['erreur'] = "Type de fichier non valide. Veuillez télécharger une image.";
+            }
+        }
+
+
+
+
         // Requête SQL pour la mise à jour
-        $sql = "UPDATE doctors SET phone = :phone, department = :department, gender = :gender, city = :city, address = :address, professional_type = :professional_type, specialization = :specialization, Monday_schedules = :Monday_schedules, Tuesday_schedules = :Tuesday_schedules, Wednesday_schedules = :Wednesday_schedules, Thursday_schedules = :Thursday_schedules, Friday_schedules = :Friday_schedules, Saturday_schedules = :Saturday_schedules, Sunday_schedules = :Sunday_schedules, availability = :availability, payment_method = :payment_method WHERE id = :id";
+        $sql = "UPDATE doctors SET phone = :phone, department = :department, gender = :gender, city = :city, address = :address, professional_type = :professional_type, specialization = :specialization, Monday_schedules = :Monday_schedules, Tuesday_schedules = :Tuesday_schedules, Wednesday_schedules = :Wednesday_schedules, Thursday_schedules = :Thursday_schedules, Friday_schedules = :Friday_schedules, Saturday_schedules = :Saturday_schedules, Sunday_schedules = :Sunday_schedules, availability = :availability, payment_method = :payment_method" . ($doctor_image ? ", doc_image = :doc_image" : "") . " WHERE id = :id";
         $query = $db->prepare($sql);
         
         // Bind des paramètres
@@ -64,6 +100,9 @@ if ($_POST) {
         $query->bindValue(":Sunday_schedules", $Sunday_schedules, PDO::PARAM_STR);
         $query->bindValue(":availability", $availability, PDO::PARAM_STR);
         $query->bindValue(":payment_method", $payment_methods_str, PDO::PARAM_STR);
+        if ($doctor_image) {
+            $query->bindValue(":doc_image", $doctor_image, PDO::PARAM_STR);
+        }
 
 
 
@@ -149,11 +188,11 @@ if (isset($_SESSION['doctor_id'])) {
     </header>
 
     <section class="update-user">
-        <form class="form-update-user" method="POST">
+        <form class="form-update-user" method="POST" enctype="multipart/form-data">
             <figure class="user-card-update">
                 <div class="img-box">
-                    <img class="img-update" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="My-pics-Profil">
-                    <button class="upload-btn-img">upload</button>
+                    <img class="img-update" src="assets/images/profiles_doctors/<?= !empty($doctor['doc_image']) ? htmlspecialchars($doctor['doc_image']) : 'doctor-img-notfound.png' ?>" alt="My-Profil-pics">
+                    <input type="file" name="profile_image_doc" class="upload-btn-img">
                 </div>
             <figcaption>
                     <h1><?= $doctor['first_name'].' '.$doctor['last_name'] ?></h1>

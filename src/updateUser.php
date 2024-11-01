@@ -106,9 +106,9 @@ if (isset($_SESSION['user_id'])) {
     $query->execute();
     $user = $query->fetch(PDO::FETCH_ASSOC);
     
-    // Vérifier si le docteur existe
+    // Vérifier si l'utilisateur existe
     if (!$user) {
-        echo "Aucun médecin trouvé pour cet ID.";
+        echo "Aucun utilisateur trouvé pour cet ID.";
         exit();
     }
 } else {

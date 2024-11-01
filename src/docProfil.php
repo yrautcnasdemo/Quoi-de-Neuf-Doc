@@ -60,7 +60,7 @@ if (isset($_SESSION['doctor_id'])) {
     <figure class="doctor-card">
         <div class="doc-img-profil">
             <!-- Chemin de l'image depuis la BDD attention au path !! -->
-            <img class="img-doc" src="<?= !empty($doctor['doc_image']) ? 'assets/images/profiles_doctors/' . htmlspecialchars($doctor['doc_image']) : 'assets/images/profiles_doctors/doctor-img-notfound.png.png'; ?>" alt="doc img">
+            <img class="img-doc" src="<?= !empty($doctor['doc_image']) ? 'assets/images/profiles_doctors/' . htmlspecialchars($doctor['doc_image']) : 'assets/images/profiles_doctors/doctor-img-notfound.png'; ?>" alt="doc img">
         </div>
         <figcaption>
             <div class="doc-name">
