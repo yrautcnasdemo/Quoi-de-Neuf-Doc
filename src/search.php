@@ -68,7 +68,6 @@ require_once("deconnexion.php")
                             <option value="generaliste">Médecin généraliste</option>
                             <option value="specialiste">Médecin spécialiste </option>
                             <option value="dentiste">Dentiste</option>
-                            <option value="pediatre">Pédiatre</option>
                             <option value="Kinesitherapeute">Kinésithérapeute</option>
                         </select>
                     </div>
@@ -114,21 +113,41 @@ require_once("deconnexion.php")
                 </div>
                     
 
-                <div class="billing">
-                    <p>Choisissez votre médecin</p>
-                    <div class="billing-method">
-                        <div>
-                            <input type="checkbox" id="male" name="" value="male">
-                            <label for="male">Homme</label>
+                <div class="search-info-sup">
+                    <div class="billing">
+                        <p>Choisissez votre médecin</p>
+                        <div class="billing-method">
+                            <div>
+                                <input type="checkbox" id="male" name="" value="male">
+                                <label for="male">Homme</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="female" name="" value="female">
+                                <label for="female">Femme</label>
+                            </div>
                         </div>
-                        <div>
-                            <input type="checkbox" id="female" name="" value="female">
-                            <label for="female">Femme</label>
+                    </div>
+
+                    <div class="billing">
+                        <p>Disponible pour de nouveaux patients ?</p>
+                        <div class="billing-method">
+                            <div>
+                                <input type="checkbox" id="yes" name="" value="yes">
+                                <label for="yes">Oui</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="no" name="" value="no">
+                                <label for="no">Non</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </form>
         </section>
+
+
+
+        
 
         <!-- DOCOTR CARDS -->
         <section class="doctor-cards">
@@ -139,25 +158,32 @@ require_once("deconnexion.php")
         ?>
             <figure class="doctor-card">
                 <div class="doc-img-profil">
-                    <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
+                    <img class="img-doc" src="<?= !empty($doctor['doc_image']) ? 'assets/images/profiles_doctors/' . htmlspecialchars($doctor['doc_image']) : 'assets/images/profiles_doctors/doctor-img-notfound.png'; ?>" alt="doc img">
                 </div>
                 <figcaption>
                     <div class="doc-name">
                         <span>Profile</span>
                         <h1>Dr. <?= $doctor['first_name'].' '. $doctor['last_name']?></h1>
                         <h2><?= $doctor['professional_type'].'<br>'. $doctor['specialization']?></h2>
+
+                        <div class="gender-doc">
+                            <p>Genre :
+                                <?php 
+                                    if ($doctor['gender'] === 'H') {
+                                        echo 'Homme';
+                                    } elseif ($doctor['gender'] === 'F') {
+                                        echo 'Femme';
+                                    } else {
+                                        echo 'Non spécifié';
+                                    }
+                                ?>
+                            </p>
+                            <div>______________</div>
+                        </div>
                     </div>
 
-                    <div class="doc-adress">
-                        <span class="underline">Adresse:</span>
-                        <p class="complet-adress">
-                            <span><?= $doctor['address']?></span>
-                            <span><?= $doctor['department']?></span>
-                            <span><?= $doctor['city']?></span>
-                        </p>
-                        <div>______________</div>
-                    </div>
-
+<!-- address -->
+                    
 
                     <div class="doc-information">
                         <h3>Horraires et contact:</h3>
@@ -197,19 +223,15 @@ require_once("deconnexion.php")
 
                             <div class="infospecial">
                                 <!-- GENDER -->
-                                <div class="gender-doc">
-                                    <p>Genre : <span>
-                                        <?php 
-                                            if ($doctor['gender'] === 'H') {
-                                                echo 'Homme';
-                                            } elseif ($doctor['gender'] === 'F') {
-                                                echo 'Femme';
-                                            } else {
-                                                echo 'Non spécifié';
-                                            }
-                                        ?>
-                                    </span></p>
+                                <div class="doc-adress">
+                                    <span class="underline">Adresse:</span>
+                                    <p class="complet-adress">
+                                        <span><?= $doctor['address']?></span>
+                                        <span><?= $doctor['department']?></span>
+                                        <span><?= $doctor['city']?></span>
+                                    </p>
                                 </div>
+
 
                                 <!-- PAYMENT METHOD -->
                                 <div>

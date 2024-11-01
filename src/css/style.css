@@ -748,6 +748,14 @@ footer {
     align-items: center;
 }
 
+.search-info-sup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
 .search-doctor-form .style-search {
     width: 290px;
     display: flex;
@@ -857,6 +865,7 @@ footer {
 }
 
 .doc-name {
+    height: 190px;
     margin-left: 140px;
     font-family: Teachers;
 }
@@ -883,12 +892,12 @@ footer {
 .doc-information p {
     font-size: 15px;
 }
-
-/*///////////////////////////////////////*/
-.doc-adress {
-    margin: 10px 0px 10px 140px;
+.gender-doc {
+    margin: 10px 0px 10px 0px;
     font-family: Teachers;
 }
+/*///////////////////////////////////////*/
+
 /*///////////////////////////////////////*/
 
 .doc-table-read {
@@ -928,27 +937,22 @@ footer {
 .infospecial {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     width: 170px;
 }
 .doc-method {
     text-decoration: underline;
 }
 
-
-
-
-
-
-
-
-
-
 .complet-adress {
-    height: 40px;
+    max-height: 70px;
     overflow-y: auto;
+}
+.doc-adress {
+    margin: 10px 0px 10px 0px;
+    font-family: Teachers;
 }
 .doc-adress span {
     text-decoration: underline;
