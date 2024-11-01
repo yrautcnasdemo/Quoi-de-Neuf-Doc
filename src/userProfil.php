@@ -56,7 +56,8 @@
     <!-- MY PROFIL -->
     <section>
         <figure class="user-card">
-            <img class="img-user" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="">
+            <!-- Utiliser le chemin de l'image depuis la base de données -->
+            <img class="img-user" src="<?= !empty($user_info['user_image']) ? 'assets/images/profiles/' . htmlspecialchars($user_info['user_image']) : 'assets/images/profiles/userimgnotfound.png'; ?>" alt="user img">
             <figcaption>
                 <h1><?= $user_info['user_firstname'].' '.$user_info['user_lastname'] ?></h1>
                 <div>

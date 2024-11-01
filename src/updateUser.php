@@ -24,8 +24,40 @@ if ($_POST) {
             exit();
         }
 
+
+        // Gestion de l'image de profil
+        $user_image = null;
+        if (!empty($_FILES['profile_image']['name'])) {
+            // Limite de taille à 500 Ko
+            if ($_FILES['profile_image']['size'] > 500000) { // 500000 octets = 500 Ko
+                $_SESSION['erreur'] = "L'image ne doit pas dépasser 500 Ko.";
+                header("Location: updateUser.php?id=$id"); // Redirection vers la page de mise à jour
+                exit();
+            }
+
+            $upload_dir = 'assets/images/profiles/';
+            // Obtenez l'extension du fichier
+            $imageFileType = strtolower(pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION));
+            // Générez un nom de fichier unique
+            $unique_name = uniqid("user_", true) . "." . $imageFileType;
+
+            // Vérifier le type d'image
+            $valid_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+            if (in_array($imageFileType, $valid_extensions)) {
+                // Déplacez le fichier téléchargé
+                if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $upload_dir . $unique_name)) {
+                    $user_image = $unique_name; // Chemin de l'image uploadée
+                } else {
+                    $_SESSION['erreur'] = "Erreur lors de l'upload de l'image.";
+                }
+            } else {
+                $_SESSION['erreur'] = "Type de fichier non valide. Veuillez télécharger une image.";
+            }
+        }
+
+
         // Requête SQL pour la mise à jour
-        $sql = "UPDATE users SET user_phone = :user_phone, user_department = :user_department, user_city = :user_city, user_address = :user_address, user_mail = :user_mail WHERE id = :id";
+        $sql = "UPDATE users SET user_phone = :user_phone, user_department = :user_department, user_city = :user_city, user_address = :user_address, user_mail = :user_mail" . ($user_image ? ", user_image = :user_image" : "") . " WHERE id = :id";
         $query = $db->prepare($sql);
         
         
@@ -36,6 +68,9 @@ if ($_POST) {
         $query->bindValue(":user_city", $user_city, PDO::PARAM_STR);
         $query->bindValue(":user_address", $user_address, PDO::PARAM_STR);
         $query->bindValue(":user_mail", $user_mail, PDO::PARAM_STR);
+        if ($user_image) {
+            $query->bindValue(":user_image", $user_image, PDO::PARAM_STR);
+        }
 
 
         // Exécution de la requête
@@ -122,11 +157,11 @@ if (isset($_SESSION['user_id'])) {
     <section class="update-user">
     
     <!-- UPDATE CARD USER -->
-        <form class="form-update-user" method="POST">
+        <form class="form-update-user" method="POST" enctype="multipart/form-data"> <!-- Le enctype="multipart/form-data" permet l'ajout de fichier image -->
             <figure class="user-card-update">
                 <div class="img-box">
-                    <img class="img-update" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="My-pics-Profil">
-                    <button class="upload-btn-img">upload</button>
+                    <img class="img-update" src="assets/images/profiles/<?= !empty($user['user_image']) ? htmlspecialchars($user['user_image']) : 'user-img-notfound.png' ?>" alt="My-pics-Profil">
+                    <input type="file" name="profile_image" class="upload-btn-img">
                 </div>
             <figcaption>
                     <h1><?= $user["user_firstname"].' '.$user["user_lastname"] ?></h1>

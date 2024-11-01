@@ -999,6 +999,8 @@ footer {
     margin-top: -20px;
     margin-left: -10px;
     width: 100px;
+    height: 130px;
+    object-fit: cover;
     border-radius: 15px 0px 15px 0px;
     border: 2px solid aliceblue;
     box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.445);
@@ -1205,6 +1207,9 @@ footer {
     border-radius: 15px;
     border: 2px dashed black;
 }
+.file-upload {
+    display: none;
+}
 .upload-btn-img {
     margin-left: 10px;
     background-color: #E9E9ED;
@@ -1218,6 +1223,7 @@ footer {
     color: #000000;
     font-weight: lighter;
     cursor: pointer;
+    width: 200px;
 }
 
 .adress-user {
