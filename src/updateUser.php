@@ -1,3 +1,92 @@
+<?php
+session_start();
+require_once "connexion.php"; 
+
+// Section UPDATE = Mix CREAT & READ 
+
+// CREAT modifié
+if ($_POST) {
+    if (isset($_POST['id'], $_POST['user_phone'], $_POST['user_department'], $_POST['user_city'], $_POST['user_address'], $_POST['user_mail']) && 
+        !empty($_POST['id']) && !empty($_POST['user_phone']) && !empty($_POST['user_department']) && !empty($_POST['user_city']) && !empty($_POST['user_address']) && !empty($_POST['user_mail'])) {
+        
+        // Connexion à la base de données
+        $id = strip_tags($_POST['id']);
+        $user_phone = strip_tags($_POST['user_phone']);
+        $user_department = strip_tags($_POST['user_department']);
+        $user_city = strip_tags($_POST['user_city']);
+        $user_address = strip_tags($_POST['user_address']);
+        $user_mail = strip_tags($_POST['user_mail']);
+
+        
+        // Vérification si l'ID correspond à celui de la session
+        if ($id != $_SESSION['user_id']) {
+            echo "Accès non autorisé";
+            exit();
+        }
+
+        // Requête SQL pour la mise à jour
+        $sql = "UPDATE users SET user_phone = :user_phone, user_department = :user_department, user_city = :user_city, user_address = :user_address, user_mail = :user_mail WHERE id = :id";
+        $query = $db->prepare($sql);
+        
+        
+        // Bind des paramètres
+        $query->bindValue(":id", $id, PDO::PARAM_INT);
+        $query->bindValue(":user_phone", $user_phone, PDO::PARAM_STR);
+        $query->bindValue(":user_department", $user_department, PDO::PARAM_INT);
+        $query->bindValue(":user_city", $user_city, PDO::PARAM_STR);
+        $query->bindValue(":user_address", $user_address, PDO::PARAM_STR);
+        $query->bindValue(":user_mail", $user_mail, PDO::PARAM_STR);
+
+
+        // Exécution de la requête
+        if ($query->execute()) {
+            // Message de succes et redirection
+            $_SESSION['success'] = "Mise à jour réussie";
+            header("Location: userProfil.php?id=$id"); // Redirection vers le profil
+            exit();
+        } else {
+            $_SESSION['erreur'] = "Erreur lors de la mise à jour. Veuillez réessayer.";
+        }
+    } else {
+        $_SESSION['erreur'] = "Formulaire incomplet.";
+    }
+}
+
+
+
+// Section READ
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // Vérifier si l'ID dans l'URL correspond à l'ID dans la session
+    if (!isset($_GET['id']) || $_GET['id'] != $user_id) {
+        echo "Accès non autorisé";
+        exit();
+    }
+
+    $sql = "SELECT * FROM users WHERE id = :id";
+
+    $query = $db->prepare($sql);
+    $query->bindValue(":id", $user_id, PDO::PARAM_INT);
+    $query->execute();
+    $user = $query->fetch(PDO::FETCH_ASSOC);
+    
+    // Vérifier si le docteur existe
+    if (!$user) {
+        echo "Aucun médecin trouvé pour cet ID.";
+        exit();
+    }
+} else {
+    // Si la session de la personne a expiré ou si elle a fermé son compte
+    header("Location: index.php");
+    exit();
+}
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,41 +118,47 @@
         </div>
     </header>
 
+
     <section class="update-user">
-        <form class="form-update-user">
+    
+    <!-- UPDATE CARD USER -->
+        <form class="form-update-user" method="POST">
             <figure class="user-card-update">
                 <div class="img-box">
                     <img class="img-update" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="My-pics-Profil">
                     <button class="upload-btn-img">upload</button>
                 </div>
             <figcaption>
-                    <h1>Alice Hardy</h1>
+                    <h1><?= $user["user_firstname"].' '.$user["user_lastname"] ?></h1>
                         <div class="adress-user">
                             <div>
                                 <span>Adresse:</span>
-                                <input type="text" placeholder="01 la chaume contant">
+                                <input type="text" placeholder="01 la chaume contant" id="user_address" name="user_address" value="<?=$user["user_address"]?>">
                             </div>
                             <div>
                                 <span>Mon code postal:</span>
-                                <input type="text" placeholder="58470">
+                                <input type="text" placeholder="58470" id="user_department" name="user_department" value="<?=$user["user_department"]?>">
                             </div>
                             <div>
                                 <span>Ma ville:</span>
-                                <input type="text" placeholder="Magny-Cours">
+                                <input type="text" placeholder="Magny-Cours" id="user_city" name="user_city" value="<?=$user["user_city"]?>">
                             </div>
                             <div>
                                 <span>Mon Telephone:</span>
-                                <input type="text" placeholder="0620124574">
+                                <input type="text" placeholder="0620124574" id="user_phone" name="user_phone" value="<?=$user["user_phone"]?>">
                             </div>
                             <div>
                                 <span>eMail:</span>
-                                <input type="text" placeholder="user@mail.com">
+                                <input type="text" placeholder="user@mail.com" id="user_mail" name="user_mail" value="<?=$user["user_mail"]?>">
                             </div>
                         </div>
-                    <a class="btn-mod-user" href="updateUser.php">Valider</a>
+                        <input type="hidden" value="<?= $user["id"]?>" name="id">
+                        <button type="submit" class="btn-mod-user">Valider</button>
                 </figcaption>
             </figure>
         </form>
+    <!-- END -->
+
     </section>
 
 

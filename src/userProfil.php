@@ -6,11 +6,10 @@
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
 
-        // Déboguer l'ID de l'utilisateur
-        echo "User ID from session: " . $user_id . "<br>";
+        $query = $db->prepare("SELECT * FROM users WHERE id = :id");
 
-        $query = $db->prepare("SELECT * FROM users WHERE ID = :id");
-        $query->execute([':id' => $user_id]);
+        $query->bindValue(":id", $user_id, PDO::PARAM_INT);
+        $query->execute();
         $user_info = $query->fetch();
 
     } else {
@@ -19,7 +18,6 @@
         exit();
     }
 ?>
-
 
 
 <!DOCTYPE html>
@@ -57,26 +55,24 @@
 <main class="profil-section">
     <!-- MY PROFIL -->
     <section>
-        <form action="">
-            <figure class="user-card">
-                <img class="img-user" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="">
-                <figcaption>
-                    <h1><?= $user_info['user_firstname'].' '.$user_info['user_lastname'] ?></h1>
-                    <div>
-                        <div class="adress-user-main">
-                            <span>Adresse:</span>
-                            <p><?= $user_info['user_adress'] ?></p>
-                            <p><?= $user_info['user_departement'].' - '.$user_info['user_city'] ?></p>
-                        </div>
-                        <div class="pm-user">
-                            <p>Telephone: <?= $user_info['user_phone'] ?></p>
-                            <p>eMail: <?= $user_info['user_mail'] ?></p>
-                        </div>
+        <figure class="user-card">
+            <img class="img-user" src="assets/images/profiles/678885909dabe1baaaf1aef8f7a73102.png" alt="">
+            <figcaption>
+                <h1><?= $user_info['user_firstname'].' '.$user_info['user_lastname'] ?></h1>
+                <div>
+                    <div class="adress-user-main">
+                        <span>Adresse:</span>
+                        <p><?= $user_info['user_address'] ?></p>
+                        <p><?= $user_info['user_department'].' - '.$user_info['user_city'] ?></p>
                     </div>
-                    <a class="btn-mod-user" href="updateUser.php">Modifier</a>
-                </figcaption>
-            </figure>
-        </form>
+                    <div class="pm-user">
+                        <p>Telephone: <?= $user_info['user_phone'] ?></p>
+                        <p>eMail: <?= $user_info['user_mail'] ?></p>
+                    </div>
+                </div>
+                <a href="updateUser.php?id=<?= htmlspecialchars($user_info['id']) ?>">Modifier</a>
+            </figcaption>
+        </figure>
     </section>
 
 

@@ -139,7 +139,7 @@
             elseif ($user && password_verify($_POST['pass'], $user['user_password'])) {
                 // Connexion réussie pour utilisateur
 
-                $_SESSION['user_id'] = $user['ID']; // Stocke l'ID de l'utilisateur dans la session
+                $_SESSION['user_id'] = $user['id']; // Stocke l'ID de l'utilisateur dans la session
                 // Redirection vers la page de profil ou tableau de bord
                 header("Location: /userProfil.php");
                 exit();

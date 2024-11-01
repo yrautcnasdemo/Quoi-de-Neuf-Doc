@@ -18,6 +18,3 @@ if (isset($_SESSION['doctor_id'])) {
     exit();
 }
 ?>
-
-
-<!-- Test commit graphique -->
