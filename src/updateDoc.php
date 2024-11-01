@@ -240,19 +240,19 @@ if (isset($_SESSION['doctor_id'])) {
                                 <p>Type de réglement</p>
                                 <div class="doc-billing-update">
                                     <div>
-                                        <input type="checkbox" id="carte-bancaire" name="payment_method[]" value="Carte_Bancaire" <?= (strpos($doctor['payment_method'], 'Carte_Bancaire') !== false) ? 'checked' : '' ?>>
-                                        <label for="carte-bancaire">Carte bancaire</label>
+                                    <input type="checkbox" id="carte-bancaire" name="payment_method[]" value="Carte_Bancaire" <?= (!empty($doctor['payment_method']) && strpos($doctor['payment_method'], 'Carte_Bancaire') !== false) ? 'checked' : '' ?>>
+                                    <label for="carte-bancaire">Carte bancaire</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="cheque" name="payment_method[]" value="Cheque" <?= (strpos($doctor['payment_method'], 'Cheque') !== false) ? 'checked' : '' ?>>
+                                        <input type="checkbox" id="cheque" name="payment_method[]" value="Cheque" <?= (!empty($doctor['payment_method']) && strpos($doctor['payment_method'], 'Cheque') !== false) ? 'checked' : '' ?>>
                                         <label for="cheque">Chèque</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="espece" name="payment_method[]" value="Especes" <?= (strpos($doctor['payment_method'], 'Especes') !== false) ? 'checked' : '' ?>>
+                                        <input type="checkbox" id="espece" name="payment_method[]" value="Especes" <?= (!empty($doctor['payment_method']) && strpos($doctor['payment_method'], 'Especes') !== false) ? 'checked' : '' ?>>
                                         <label for="espece">Espèces</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="tiers-payant" name="payment_method[]" value="Tiers_payant" <?= (strpos($doctor['payment_method'], 'Tiers_payant') !== false) ? 'checked' : '' ?>>
+                                        <input type="checkbox" id="tiers-payant" name="payment_method[]" value="Tiers_payant" <?= (!empty($doctor['payment_method']) && strpos($doctor['payment_method'], 'Tiers_payant') !== false) ? 'checked' : '' ?>>
                                         <label for="tiers-payant">Tiers payant</label>
                                     </div>
                                 </div>
