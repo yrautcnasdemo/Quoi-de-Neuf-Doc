@@ -77,7 +77,7 @@ if ($_POST) {
         if ($query->execute()) {
             // Message de succes et redirection
             $_SESSION['success'] = "Mise à jour réussie";
-            header("Location: userProfil.php?id=$id"); // Redirection vers le profil
+            header("Location: profile-user.php?id=$id"); // Redirection vers le profile
             exit();
         } else {
             $_SESSION['erreur'] = "Erreur lors de la mise à jour. Veuillez réessayer.";

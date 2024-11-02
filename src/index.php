@@ -132,7 +132,7 @@
 
                 $_SESSION['doctor_id'] = $doctor['id']; // Stocke l'ID du médecin dans la session
                 // Redirection vers la page de profil ou tableau de bord
-                header("Location: /docProfil.php");
+                header("Location: /profile-doctor.php");
                 exit();
             } 
             // Vérification du mot de passe pour les utilisateurs
@@ -141,7 +141,7 @@
 
                 $_SESSION['user_id'] = $user['id']; // Stocke l'ID de l'utilisateur dans la session
                 // Redirection vers la page de profil ou tableau de bord
-                header("Location: /userProfil.php");
+                header("Location: /profile-user.php");
                 exit();
             } else {
                 header("Location: /errors/errorspass.php?error=invalid_credentials");
@@ -186,8 +186,8 @@
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="about.php">A propos</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a class="user-profile-btn" href="userProfil.php">Mon Profile</a></li>
-                <!-- <li><a class="doc-profile-btn" href="docProfil.php">Mon Profile2</a></li> -->
+                <li><a class="user-profile-btn" href="profile-user.php">Mon Profile</a></li>
+                <!-- <li><a class="doc-profile-btn" href="profile-doctor.php">Mon Profile2</a></li> -->
                 <li><a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style-bgm"><span>Connexion</span></div></a>
                 <li><a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style-bgm"><span>Déconnexion</span></div></a>
                 </li>
@@ -204,8 +204,8 @@
                 </ul>
             </nav>
             <div class="login-pro">
-                <a class="user-profile-btn" href="userProfil.php">Mon Profile</a>
-                <a class="doc-profile-btn" href="docProfil.php">Mon Profile2</a>
+                <a class="user-profile-btn" href="profile-user.php">Mon Profile</a>
+                <a class="doc-profile-btn" href="profile-doctor.php">Mon Profile2</a>
                 <a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style"><div class="btn-style-c"><div class="btn-style-c2"></div></div><span>Connexion</span></div></a>
                 <a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style"><div class="btn-style-c"><div class="btn-style-c2"></div></div><span>Déconnexion</span></div></a>
             </div>

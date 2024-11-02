@@ -110,7 +110,7 @@ if ($_POST) {
         if ($query->execute()) {
             // Message de succès, redirection ou autre action
             $_SESSION['success'] = "Mise à jour réussie";
-            header("Location: docProfil.php?id=$id"); // Redirection vers le profil
+            header("Location: profile-doctor.php?id=$id"); // Redirection vers le profil
             exit();
         } else {
             $_SESSION['erreur'] = "Erreur lors de la mise à jour. Veuillez réessayer.";

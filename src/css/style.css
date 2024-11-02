@@ -972,9 +972,9 @@ footer {
     font-family: Teachers;
     margin-bottom: 10px;
 }
-
 .holder-btn-doc {
     text-align: center;
+    margin: 5px;
 }
 .btn-add-doc {
     padding: 2px 15px;
@@ -1150,11 +1150,10 @@ footer {
 }
 
 .btn-mod-doctor {
-    margin-left: 10px;
     background-color: #E9E9ED;
     border: 1px solid #8F8F9D;
     font-family: poppins;
-    padding: 0px 5px;
+    padding: 3px 25px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 13px;
@@ -1163,6 +1162,22 @@ footer {
     font-weight: lighter;
     cursor: pointer;
 }
+
+.btn-delete-account{
+    margin-top: 8px;
+    border: none;
+    background-color: transparent;
+    color: #008CFF;
+    font-family: Teachers;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.btn-delete-account:hover {
+    text-decoration: underline;
+    color: red;
+    transition: 0.3s ease-in-out;
+}
+
 
 
 /* ///////////////////////   USER UPDATE   ///////////////////////////*/

@@ -163,8 +163,9 @@ if(isset($_GET['firstname']) && !empty($_GET['firstname'])) {
         </section>
 
 
-
-
+        profile-doctor.php
+        profile-doctor.php
+        
 
 
 

@@ -71,7 +71,11 @@
                         <p>eMail: <?= $user_info['user_mail'] ?></p>
                     </div>
                 </div>
-                <a href="updateUser.php?id=<?= htmlspecialchars($user_info['id']) ?>">Modifier</a>
+                <a class="btn-mod-doctor" href="updateUser.php?id=<?= htmlspecialchars($user_info['id']) ?>">Modifier</a>
+                <form action="gestions/deleteAccount-user.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.');">
+                    <input type="hidden" name="user_id" value="<?= htmlspecialchars($user['id']) ?>">
+                    <button type="submit" class="btn-delete-account">Supprimer mon compte</button>
+                </form>
             </figcaption>
         </figure>
     </section>
