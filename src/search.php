@@ -1,22 +1,65 @@
 <?php
 require_once("connexion.php");
 
-//Ma requete SQL
-$sql= "SELECT * FROM doctors";
+// Initialisation de la requête SQL de base
+$sql = "SELECT * FROM doctors";
+$conditions = [];
+$params = [];
 
-//on prépare la requete
+// Vérifie chaque champ et ajoute des conditions en fonction
+if (!empty($_GET['department'])) {
+    $conditions[] = "department LIKE :department";
+    $params[':department'] = $_GET['department'] . '%';
+}
+
+if (!empty($_GET['professional_type'])) {
+    $conditions[] = "professional_type = :professional_type";
+    $params[':professional_type'] = $_GET['professional_type'];
+}
+
+if (!empty($_GET['first_name'])) { 
+    $conditions[] = "first_name = :first_name";
+    $params[':first_name'] = $_GET['first_name'];
+}
+
+if (!empty($_GET['last_name'])) { 
+    $conditions[] = "last_name = :last_name";
+    $params[':last_name'] = $_GET['last_name'];
+}
+
+if (!empty($_GET['specialization'])) {
+    $conditions[] = "specialization LIKE :specialization";
+    $params[':specialization'] = '%' . $_GET['specialization'] . '%';
+}
+
+if (!empty($_GET['payment_method'])) {
+    $payment_methods = implode("','", $_GET['payment_method']);
+    $conditions[] = "payment_method IN ('" . $payment_methods . "')";
+}
+
+if (!empty($_GET['gender'])) {
+    $genders = implode("','", $_GET['gender']);
+    $conditions[] = "gender IN ('" . $genders . "')";
+}
+
+if (!empty($_GET['availability'])) {
+    $availability_values = implode(",", $_GET['availability']);
+    $conditions[] = "availability IN (" . $availability_values . ")";
+}
+
+// Ajoute les conditions à la requête si nécessaire
+if (!empty($conditions)) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
+}
+
+// Prépare et exécute la requête
 $query = $db->prepare($sql);
-
-//on execute la requete
-$query->execute();
-
-//on stock le résulta (le PDO::FETCH_ASSOC) permet de ne pas avoir les résulta en double
+$query->execute($params);
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-//On ferme la connexion
-require_once("deconnexion.php")
+// On ferme la connexion
+require_once("deconnexion.php");
 ?>
-
 
 
 
@@ -55,104 +98,113 @@ require_once("deconnexion.php")
     <main>
         <!-- SEARCH FILTER -->
         <section class="search-filter">
-            <form class="search-doctor-form" action="GET">
-                <div class="first-section">
-                    <div class="style-search">
-                        <p>Tappez votre département :</p>
-                        <input type="number" placeholder="ex: 58470">
-                    </div>
-                    
-                    <div class="style-search">
-                        <p>Choisissez votre professionnel :</p>
-                        <select name="search-spe" id="search-spe">
-                            <option value="generaliste">Médecin généraliste</option>
-                            <option value="specialiste">Médecin spécialiste </option>
-                            <option value="dentiste">Dentiste</option>
-                            <option value="Kinesitherapeute">Kinésithérapeute</option>
-                        </select>
-                    </div>
-                    
-                    <div class="style-search">
-                        <p>Tappez une spécialisation :</p>
-                        <input type="text" placeholder="ex: Allergologue">
-                    </div>
-                </div>
-                    
-                <div class="billing">
-                    <p>Type de réglement</p>
-                    <div class="billing-method">
-                        <div>
-                            <input type="checkbox" id="carte-bancaire" name="" value="carte-bancaire">
-                            <label for="carte-bancaire">Carte bancaire</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="cheque" name="" value="cheque">
-                            <label for="cheque">Chèque</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="espece" name="" value="espece">
-                            <label for="espece">Espèces</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="tiers-payant" name="" value="tiers-payant">
-                            <label for="tiers-payant">Tiers payant</label>
-                        </div>
-                    </div>
-                </div>
+        <form class="search-doctor-form" method="GET" action="search.php">
+    <div class="first-section">
+        <div class="style-search">
+            <p>Tapez votre département :</p>
+            <input type="number" name="department" placeholder="ex: 58470">
+        </div>
+        
+        <div class="style-search">
+            <p>Choisissez votre professionnel :</p>
+            <select name="professional_type" id="search-spe">
+                <option value="">Tous</option>
+                <option value="generaliste">Médecin généraliste</option>
+                <option value="specialiste">Médecin spécialiste</option>
+                <option value="dentiste">Dentiste</option>
+                <option value="Kinesitherapeute">Kinésithérapeute</option>
+            </select>
+        </div>
+        
+        <div class="style-search">
+            <p>Tapez une spécialisation :</p>
+            <input type="text" name="specialization" placeholder="ex: Allergologue">
+        </div>
+    </div>
+        
+    <div class="billing">
+        <p>Type de règlement</p>
+        <div class="billing-method">
+            <div>
+                <input type="checkbox" id="carte-bancaire" name="payment_method[]" value="Carte_Bancaire">
+                <label for="carte-bancaire">Carte bancaire</label>
+            </div>
+            <div>
+                <input type="checkbox" id="cheque" name="payment_method[]" value="Cheque">
+                <label for="cheque">Chèque</label>
+            </div>
+            <div>
+                <input type="checkbox" id="espece" name="payment_method[]" value="Especes">
+                <label for="espece">Espèces</label>
+            </div>
+            <div>
+                <input type="checkbox" id="tiers-payant" name="payment_method[]" value="Tiers_payant">
+                <label for="tiers-payant">Tiers payant</label>
+            </div>
+        </div>
+    </div>
 
-                <div class="last-section">
-                    <div class="style-search">
-                        <p>Nom :</p>
-                        <input type="text" placeholder="ex: Doe">
-                    </div>
-                    
-                    <div class="style-search">
-                        <p>Prénom :</p>
-                        <input type="text" placeholder="ex: Jane">
-                    </div>
+    <div class="last-section">
+        <div class="style-search">
+            <p>Nom :</p>
+            <input type="search" placeholder="ex: Doe" id="lastname" name="last_name">
+        </div>
+        
+        <div class="style-search">
+            <p>Prénom :</p>
+            <input type="search" placeholder="ex: Jane" id="firstname" name="first_name">
+        </div>
+    </div>
+    
+    <div class="search-info-sup">
+        <div class="billing">
+            <p>Choisissez votre médecin</p>
+            <div class="billing-method">
+                <div>
+                    <input type="checkbox" id="male" name="gender[]" value="H">
+                    <label for="male">Homme</label>
                 </div>
-                    
-
-                <div class="search-info-sup">
-                    <div class="billing">
-                        <p>Choisissez votre médecin</p>
-                        <div class="billing-method">
-                            <div>
-                                <input type="checkbox" id="male" name="" value="male">
-                                <label for="male">Homme</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="female" name="" value="female">
-                                <label for="female">Femme</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="billing">
-                        <p>Disponible pour de nouveaux patients ?</p>
-                        <div class="billing-method">
-                            <div>
-                                <input type="checkbox" id="yes" name="" value="yes">
-                                <label for="yes">Oui</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="no" name="" value="no">
-                                <label for="no">Non</label>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <input type="checkbox" id="female" name="gender[]" value="F">
+                    <label for="female">Femme</label>
                 </div>
-            </form>
+            </div>
+        </div>
+
+        <div class="billing">
+            <p>Disponible pour de nouveaux patients ?</p>
+            <div class="billing-method">
+                <div>
+                    <input type="checkbox" id="yes" name="availability[]" value="1">
+                    <label for="yes">Oui</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="no" name="availability[]" value="0">
+                    <label for="no">Non</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" name="envoyer">Rechercher</button>
+</form>
+
+
+
         </section>
+
 
 
 
         
 
+
+
+
+
+
         <!-- DOCOTR CARDS -->
         <section class="doctor-cards">
 
-<!-- ////////////////////// -->
         <?php
             foreach($result as $doctor){
         ?>
@@ -182,8 +234,6 @@ require_once("deconnexion.php")
                         </div>
                     </div>
 
-<!-- address -->
-                    
 
                     <div class="doc-information">
                         <h3>Horraires et contact:</h3>
