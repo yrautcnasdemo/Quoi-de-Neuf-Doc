@@ -1,0 +1,13 @@
+SAMEDI :
+
+-Search Filter
+-arrangement cards doctor dans docProfil.php et updateDoc.php
+-Modifier les nom des fichier docProfil.php et updateDoc.php
+-ajouter la suppression du compte avec un bouton supprimer mon compte sur la cards
+
+
+DIMANCHE
+
+-Modification Header pour intégrer le system de redirection
+-ajouter les require_once header et footer
+-Organisation des fichiers et dossiers connexion.php etc...
