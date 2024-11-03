@@ -1,5 +1,16 @@
 <?php
     session_start();
+// Gestion des compte pour le Header afin d'afficher le "btn" profile user OU docteur et le btn déconnexion
+    function userLogin() {
+        return isset($_SESSION['user_id']);
+    }
+    
+    function doctorLogin() {
+        return isset($_SESSION['doctor_id']);
+    }
+
+
+
     //On se connecte a la BDD pour enregistrer nos données
     require_once "connexion.php";
     
@@ -172,45 +183,11 @@
 </head>
 <body>
     
-    <header>
-        <!-- Header-with-burgerMenu -->
-        <div class="header-s">
-            <img class="logo-site" src="assets/images/logo/logoQDND.png" alt="Logo_quoi-de-neuf-doc">
-            <div>
-                <button class="btn-tr"><img class="menu-burger" src="assets/icones/burgermenu.png" height="40px" alt="burger-menu"></button>
-            </div>
-        </div>
-        <!-- Burger navigation -->
-        <div class="nav-burger">
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="about.php">A propos</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a class="user-profile-btn" href="profile-user.php">Mon Profile</a></li>
-                <!-- <li><a class="doc-profile-btn" href="profile-doctor.php">Mon Profile2</a></li> -->
-                <li><a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style-bgm"><span>Connexion</span></div></a>
-                <li><a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style-bgm"><span>Déconnexion</span></div></a>
-                </li>
-            </ul>
-        </div>
-        <!-- Format header desktop -->
-        <div class="header-xl">
-            <img class="logo-site" src="assets/images/logo/logoQDND.png" alt="Logo_quoi-de-neuf-doc">
-            <nav>
-                <ul>
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="about.php">A propos</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="login-pro">
-                <a class="user-profile-btn" href="profile-user.php">Mon Profile</a>
-                <a class="doc-profile-btn" href="profile-doctor.php">Mon Profile2</a>
-                <a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style"><div class="btn-style-c"><div class="btn-style-c2"></div></div><span>Connexion</span></div></a>
-                <a class="connexion-btn" href="#" role="button" data-target="#modal" data-toggle="modal"><div class="btn-style"><div class="btn-style-c"><div class="btn-style-c2"></div></div><span>Déconnexion</span></div></a>
-            </div>
-        </div>
-    </header>
+
+<!-- Header -->
+<?php 
+    require_once "gestions/header.php";
+?>
 
     <!-- MODAL Login-->
     <div class="modal" id="modal" role="dialog">
@@ -444,37 +421,10 @@
     </main>
 
 
-    <footer>
-    <div class="footer-content">
-        <div class="footer-up">
-            <div class="footer-about">
-                <h3 class="red-span">À propos</h3>
-                <p>Notre site vous offre des informations fiables et actualisées sur la santé, avec une équipe de professionnels dédiée à vous informer.</p>
-            </div>
-            
-            <div class="footer-links">
-                <h3 class="red-span">Liens utiles</h3>
-                <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">A propos</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Politique de confidentialité</a></li>
-                </ul>
-            </div>
-        </div>
-            
-        <div class="contact-us">
-            <h3 class="red-span">Contactez-nous</h3>
-            <p>Email : contact@quoi-de-neuf-doc.com</p>
-            <p>Téléphone : +1 555-2368</p>
-            <p>Adresse : Hook & Ladder 8, 14 North Moore Street, New York, NY 10013, États-Unis</p>
-        </div>
-    </div>
-
-    <div class="all-right">
-        <p>2024 Quoi de neuf Doc ? Tous droits réservés.</p>
-    </div>
-</footer>
+<!-- FOOTER -->
+<?php 
+    include_once "gestions/footer.php";
+?>
 
     <script src="javascript/script.js"></script>
 </body>

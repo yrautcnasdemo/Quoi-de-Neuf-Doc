@@ -2,7 +2,7 @@ SAMEDI :
 
 -Search Filter (FAIT)
 -ajouter la suppression du compte avec un bouton supprimer mon compte sur la cards (FAIT)
--Modifier les noms des fichiers profile-doctor.php et updateDoc.php
+-Modifier les noms des fichiers profile-doctor.php et updateDoc.php (FAIT)
 -arrangement cards doctor dans profile-doctor.php (FAIT)
 et updateDoc.php
 

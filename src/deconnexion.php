@@ -1,3 +1,6 @@
 <?php
-//On se déconnecte de la base de données
-$db = null;
+    session_start();
+    session_destroy();
+    header('Location: index.php');
+    exit();
+?>
