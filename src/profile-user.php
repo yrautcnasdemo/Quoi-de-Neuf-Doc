@@ -8,17 +8,30 @@
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
 
+        //récuperation des données de l'utilisateur pour affichage
         $query = $db->prepare("SELECT * FROM users WHERE id = :id");
 
         $query->bindValue(":id", $user_id, PDO::PARAM_INT);
         $query->execute();
         $user_info = $query->fetch();
 
+
+        //récuperation des données des favories de l'utilisateur pour affichage
+        $favoritesQuery = $db->prepare("SELECT doctors.* FROM doctors
+            JOIN favorites ON doctors.id = favorites.doctor_id
+            WHERE favorites.user_id = :user_id");
+        $favoritesQuery->execute([':user_id' => $user_id]);
+        $favorites = $favoritesQuery->fetchAll();
+
     } else {
         // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
         header("Location: /login.php");
         exit();
     }
+
+
+
+
 ?>
 
 
@@ -73,109 +86,135 @@
     <!-- MY DOCTORS -->
     <section>
         <div class="user-doctor">
-            <h2 class="title-spe">Mes Spécialistes</h2>
+            <h2 class="title-spe">Mes professionnels de la santé</h2>
 
             <div class="doctor-cards">
-                <form action="">
-                    <figure class="doctor-card">
-                        <div class="doc-img-profil">
-                            <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
-                        </div>
-                        <figcaption>
-                            <div class="doc-name">
-                                <span>Profile</span>
-                                <h1>Dr. Jane Doe</h1>
-                                <h2>ORL</h2>
+
+            <?php if ($favorites): ?>
+                    <?php foreach ($favorites as $doctor): ?>
+                        <figure class="doctor-card">
+                            <div class="doc-img-profil">
+                                <img class="img-doc" src="<?= !empty($doctor['doc_image']) ? 'assets/images/profiles_doctors/' . htmlspecialchars($doctor['doc_image']) : 'assets/images/profiles_doctors/doctor-img-notfound.png'; ?>" alt="doc img">
                             </div>
-                            <div class="doc-information">
-                                <h3>Horraires et contact:</h3>
-                                <p>Horraires d'ouverture</p>
-                                <p>
-                                    08h00-12h00 <br> 
-                                    13h30-19h00 <br> 
-                                    Du lundi au vendredi
-                                </p>
-                            </div>
-                            <div class="doc-adress">
-                                <span>Adresse:</span>
-                                <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
-                                <div class="doc-tel">Tel: <span>555-2368</span></div>
-                            </div>
-                            <div class="doc-bis">
-                                <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
-                            </div>
-                            <button class="btn-supr-doc">Retirer ce spécialiste de ma liste</button>
-                        </figcaption>
-                    </figure>
-                </form>
+                            <figcaption>
+                                <div class="doc-name">
+                                    <span>Profile</span>
+                                    <h1>Dr. <?= $doctor['first_name'].' '. $doctor['last_name']?></h1>
+                                    <h2><?= $doctor['professional_type'].'<br>'. $doctor['specialization']?></h2>
+
+                                    <div class="gender-doc">
+                                        <p>Genre :
+                                            <?php 
+                                                if ($doctor['gender'] === 'H') {
+                                                    echo 'Homme';
+                                                } elseif ($doctor['gender'] === 'F') {
+                                                    echo 'Femme';
+                                                } else {
+                                                    echo 'Non spécifié';
+                                                }
+                                            ?>
+                                        </p>
+                                        <div>______________</div>
+                                    </div>
+                                </div>
 
 
-                <form action="">
-                    <figure class="doctor-card">
-                        <div class="doc-img-profil">
-                            <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
-                        </div>
-                        <figcaption>
-                            <div class="doc-name">
-                                <span>Profile</span>
-                                <h1>Dr. Jane Doe</h1>
-                                <h2>ORL</h2>
-                            </div>
-                            <div class="doc-information">
-                                <h3>Horraires et contact:</h3>
-                                <p>Horraires d'ouverture</p>
-                                <p>
-                                    08h00-12h00 <br> 
-                                    13h30-19h00 <br> 
-                                    Du lundi au vendredi
-                                </p>
-                            </div>
-                            <div class="doc-adress">
-                                <span>Adresse:</span>
-                                <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
-                                <div class="doc-tel">Tel: <span>555-2368</span></div>
-                            </div>
-                            <div class="doc-bis">
-                                <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
-                            </div>
-                            <button class="btn-supr-doc">Retirer ce spécialiste de ma liste</button>
-                        </figcaption>
-                    </figure>
-                </form>
+                                <div class="doc-information">
+                                    <h3>Horraires et contact:</h3>
+                                    <div class="infosup-doc">
+                                        <table class="doc-table-read">
+                                            <tbody>
+                                                <tr>
+                                                    <th class="doc-day-read">Lundi</th>
+                                                    <td class="doc-hour-read"><?= $doctor['Monday_schedules']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="doc-day-read">Mardi</th>
+                                                    <td class="doc-hour-read"><?= $doctor['Tuesday_schedules']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="doc-day-read">Mercredi</th>
+                                                    <td class="doc-hour-read"><?= $doctor['Wednesday_schedules']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="doc-day-read">Jeudi</th>
+                                                    <td class="doc-hour-read"><?= $doctor['Thursday_schedules']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="doc-day-read">Vendredi</th>
+                                                    <td class="doc-hour-read"><?= $doctor['Friday_schedules']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="doc-day-read">Samedi</th>
+                                                    <td class="doc-hour-read"><?= $doctor['Saturday_schedules']?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="doc-day-read">Dimanche</th>
+                                                    <td class="doc-hour-read"><?= $doctor['Sunday_schedules']?></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <div class="infospecial">
+                                            <!-- GENDER -->
+                                            <div class="doc-adress">
+                                                <span class="underline">Adresse:</span>
+                                                <p class="complet-adress">
+                                                    <span><?= $doctor['address']?></span>
+                                                    <span><?= $doctor['department']?></span>
+                                                    <span><?= $doctor['city']?></span>
+                                                </p>
+                                            </div>
 
 
-                <form action="">
-                    <figure class="doctor-card">
-                        <div class="doc-img-profil">
-                            <img src="assets/images/profiles/profile06.png" alt="img-profil-doctor">
-                        </div>
-                        <figcaption>
-                            <div class="doc-name">
-                                <span>Profile</span>
-                                <h1>Dr. Jane Doe</h1>
-                                <h2>ORL</h2>
-                            </div>
-                            <div class="doc-information">
-                                <h3>Horraires et contact:</h3>
-                                <p>Horraires d'ouverture</p>
-                                <p>
-                                    08h00-12h00 <br> 
-                                    13h30-19h00 <br> 
-                                    Du lundi au vendredi
-                                </p>
-                            </div>
-                            <div class="doc-adress">
-                                <span>Adresse:</span>
-                                <p class="complet-adress">13 rue Crystal Lake, 58470 Magny-cours, 20eme étage porte 616-bis, près des doc</p>
-                                <div class="doc-tel">Tel: <span>555-2368</span></div>
-                            </div>
-                            <div class="doc-bis">
-                                <p>Disponibilité pour de nouveaux patients: <span>Oui</span></p>
-                            </div>
-                            <button class="btn-supr-doc">Retirer ce spécialiste de ma liste</button>
-                        </figcaption>
-                    </figure>
-                </form>
+                                            <!-- PAYMENT METHOD -->
+                                            <div>
+                                                <p class="doc-method">mode paiement accepté</p>
+                                                <span><?php
+                                                    // Vérifiez si payment_method n'est pas null ou vide
+                                                    if (!empty($doctor['payment_method'])) {
+                                                        // Convertir le SET en tableau
+                                                        $payment_methods = explode(',', $doctor['payment_method']);
+                                                        
+                                                        // Parcourir chaque payement_méthode et les afficher sur une nouvelle ligne
+                                                        foreach ($payment_methods as $method) {
+                                                            // Remplacer les underscores par des espaces
+                                                            $formatted_method = str_replace('_', ' ', $method);
+                                                            echo "<div>$formatted_method</div>";
+                                                        }
+                                                    } else {
+                                                        echo "<div>Aucune information de paiement disponible.</div>"; // Message alternatif si aucune info
+                                                    }
+                                                ?></span>
+                                            </div>
+
+                                            <!-- PHONE -->
+                                            <div class="doc-tel">
+                                                <p>Tel: <span><?= $doctor['phone']?></span></p>
+                                            </div>
+
+                                            <!-- AVAIBILITY -->
+                                            <div class="doc-bis">
+                                                <p>Nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="holder-btn-doc">
+                                    <form action="gestions/delete-favorites.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer se médecin de vos favoris ?');">
+                                        <input type="hidden" name="doctor_id" value="<?= htmlspecialchars($doctor['id']) ?>">
+                                        <button type="submit" class="btn-delete-account">Supprimer de mes favoris</button>
+                                    </form>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="add-pro">
+                        <p>Vous n'avez aucun médecin en favori.</p>
+                        <a href="search.php">Ajouter</a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

@@ -1067,11 +1067,12 @@ footer {
 
 .user-doctor {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     margin: 50px 10px 0px 10px;
+    padding: 0px 10px;
     max-width: 740px;
     background-color: #9c9c9c ;
     border-radius: 10px;
@@ -1089,6 +1090,13 @@ footer {
     font-family: poppins;
     padding: 0px 5px;
     cursor: pointer;
+}
+.add-pro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
 .user-doctor-appt {
