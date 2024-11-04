@@ -16,26 +16,28 @@ if (isset($_SESSION['user_id']) && isset($_GET['doctor_id'])) {
     $query->execute();
     $favorite = $query->fetch();
 
-    if (!$favorite) {
-        // Utilisation de la variable $favorite pour inserer les infos dans la table SI $favorite n'existe pas déjà
 
-        $add_pro = "INSERT INTO favorites (user_id, doctor_id) VALUES (:user_id, :doctor_id)"; // Jointure de table a cette ligne
+    // Utilisation de la variable $favorite pour inserer les infos dans la table SI $favorite n'existe pas déjà
+    if ($favorite->rowCount() > 0) {
+        $_SESSION['favorite_message'] = "Ce médecin est déjà dans vos favoris.";
+
+    } else {
+        //sinon ajout du médecin dans les favoris
+        $add_pro = "INSERT INTO favorites (user_id, doctor_id) VALUES (:user_id, :doctor_id)"; // on rentre les valeurs
 
         $query = $db->prepare($add_pro);
         $query->bindValue(":user_id", $user_id);
         $query->bindValue(":doctor_id", $doctor_id);
         $query->execute();
-        echo "Médecin ajouté aux favoris avec succès.";
-    } else {
-        echo "Ce médecin est déjà dans vos favoris.";
-    }
 
-    // Redirection vers la page de recherche
-    header("Location: ../search.php");
-    exit();
+        $_SESSION['favorite_message'] = "Médecin ajouté aux favoris.";
+        }
+
 } else {
-    echo "Erreur : Vous devez être connecté pour ajouter des favoris.";
-    header("Location: ../index.php");
-    exit();
+    $_SESSION['favorite_message'] = "Erreur lors de l'ajout du favori.";
 }
+
+// On se redirige vers search.php
+header("Location: ../search.php");
+exit();
 ?>
