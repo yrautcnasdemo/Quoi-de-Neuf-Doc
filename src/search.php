@@ -4,6 +4,12 @@ session_start();
 require_once("gestions/tools.php"); //Fonction qui permet au header de faire la différence entre un professionnel et un utilisateur
 require_once("connexion.php");
 
+// Gestion des message d'erreurs des favoris
+if (isset($_SESSION['favorite_message'])) {
+    echo "<script>alert('" . $_SESSION['favorite_message'] . "');</script>";
+    unset($_SESSION['favorite_message']);
+}
+
 
 // Requete de base
 $sql = "SELECT * FROM doctors";

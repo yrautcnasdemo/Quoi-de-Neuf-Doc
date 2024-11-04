@@ -18,7 +18,7 @@ if (isset($_SESSION['user_id']) && isset($_GET['doctor_id'])) {
 
 
     // Utilisation de la variable $favorite pour inserer les infos dans la table SI $favorite n'existe pas déjà
-    if ($favorite->rowCount() > 0) {
+    if ($query->rowCount() > 0) {
         $_SESSION['favorite_message'] = "Ce médecin est déjà dans vos favoris.";
 
     } else {
