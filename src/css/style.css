@@ -979,8 +979,19 @@ footer {
     margin: 5px;
 }
 .btn-add-doc {
+    border: 1px solid #8F8F9D;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #141414;
+    background-color: #E9E9ED;
+    font-size: 15px;
     padding: 2px 15px;
     font-family: poppins;
+    transition: 0.5s ease-in-out;
+}
+.btn-add-doc:hover {
+    background-color: #dcdcdf;
+    transition: 0.5s ease-in-out;
 }
 
 

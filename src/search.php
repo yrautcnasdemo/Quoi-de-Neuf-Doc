@@ -303,7 +303,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <div class="holder-btn-doc">
-                        <button class="btn-add-doc">Ajouter a mes favoris</button>
+                        <a class="btn-add-doc" href="gestions/addFavorite.php?doctor_id=<?php echo $doctor['id']; ?>">Ajouter aux Favoris</a>
                     </div>
                 </figcaption>
             </figure>

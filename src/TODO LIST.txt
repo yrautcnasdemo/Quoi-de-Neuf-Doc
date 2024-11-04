@@ -9,6 +9,6 @@ et updateDoc.php
 
 DIMANCHE
 
--Modification Header pour intégrer le system de redirection
--ajouter les require_once header et footer
+-Modification Header pour intégrer le system de redirection (FAIT)
+-ajouter les require_once header et footer (FAIT)
 -Organisation des fichiers et dossiers connexion.php etc...
