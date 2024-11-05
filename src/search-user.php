@@ -120,9 +120,9 @@ $user_info = $query->fetchAll(PDO::FETCH_ASSOC);
                             <input name="minutes" class="input-rdv" type="number" min="0" max="59" placeholder="30">
                         </p>
                         <span>Note:</span>
-                        <textarea class="note-info-area" name="story" rows="5" cols="33" placeholder="Entrez une note (facultatif)"></textarea>
+                        <textarea class="note-info-area" name="info" rows="5" cols="33" placeholder="Entrez une note (facultatif)"></textarea>
                         <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                        <input type="hidden" name="doctor_id" value="<?= $doctor_id_variable ?>"> <!-- Remplace par l'ID du médecin courant -->
+                        <input type="hidden" name="doctor_id" value="<?= $doctor_id ?>"> <!-- Remplace par l'ID du médecin courant -->
                         <button type="submit" name="submit_rdv">Enregistrer</button>
                     </form>
 
