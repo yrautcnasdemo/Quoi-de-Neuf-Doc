@@ -837,6 +837,16 @@ footer {
     font-family: Teachers;
     font-size: 18px;
 }
+
+
+/*/////////////////////////// SEARCH USER ////////////////////////////*/
+
+.note-info-area {
+    max-width: 235px;
+}
+
+
+
 /* DOCTOR CARDS */
 .doctor-cards {
     display: flex;
@@ -1101,10 +1111,12 @@ footer {
 
 .user-doctor-appt {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    gap: 10px;
+    text-align: center;
     margin-top: 50px;
     margin-left: 10px;
     margin-right: 10px;
@@ -1114,6 +1126,14 @@ footer {
     border-radius: 10px;
     font-family: Teachers;
     box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.75);
+}
+.select-rdv {
+    margin: 5px 0 10px 0px;
+}
+.select-rdv button{
+    padding: 3px 10px;
+    font-family: Teachers;
+    cursor: pointer;
 }
 .user-doctor-appt .title-spe{
     padding-top: 15px;
@@ -1197,6 +1217,10 @@ footer {
     text-decoration: underline;
     color: red;
     transition: 0.3s ease-in-out;
+}
+
+.input-rdv{
+    width: 60px;
 }
 
 

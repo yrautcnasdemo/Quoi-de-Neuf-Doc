@@ -12,3 +12,15 @@ DIMANCHE
 -Modification Header pour intégrer le system de redirection (FAIT)
 -ajouter les require_once header et footer (FAIT)
 -Organisation des fichiers et dossiers connexion.php etc...
+
+
+
+
+RESTE :
+-arrangement cards doctor dans updateDoc.php
+-ajout search patients pour médecins + ajout de bouton ajout RDV sur la carte des patient
+
+-ajout de la section visualisation RDV pour médecins et Search qui filtre par Années mois jours
+-jointure de table pour les Rendez-vous
+
+-consultation des RDV sur la page profile-user.php

@@ -178,6 +178,17 @@ if (isset($_SESSION['doctor_id'])) {
     <section>
         <div class="user-doctor-appt">
             <h2 class="title-spe">Mes Rendez-vous</h2>
+            <div>
+                <form method="POST">
+                    <p class="select-rdv">Mes rendez-vous:
+                        <input class="input-rdv" type="number" min='1' max='31'  placeholder="jour"> 
+                        <input class="input-rdv" type="number" min='1' max='12'  placeholder="mois"> 
+                        <input class="input-rdv" type="number" min='2024' max='9990'  placeholder="année">
+                        <button>Chercher</button>
+                    </p>
+                </form>
+                <a href="search-user.php">Donner un RDV</a>
+            </div>
             
             <!-- Carte rdv spécialiste -->
             <div class="list-rdv">
