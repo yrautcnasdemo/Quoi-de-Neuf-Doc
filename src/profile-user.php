@@ -257,18 +257,10 @@
                                     <p class="info-doc"><?= $appointment['note_info'] ?></p>
                                 </p>
                             </div>
-                            <form action="" method="POST">
-                                <button class="btn-supr-appt">Annuler RDV</button>
+                            <form action="gestions/delete-appointment.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce rendez-vous ?');">
+                                <input type="hidden" name="appointment_id" value="<?= $appointment['id'] ?>">
+                                <button type="submit" class="btn-supr-appt">Annuler RDV</button>
                             </form>
-
-
-                            <form action="gestions/delete-favorites.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer se médecin de vos favoris ?');">
-                                <input type="hidden" name="doctor_id" value="<?= htmlspecialchars($doctor['id']) ?>">
-                                <button type="submit" class="btn-delete-account">Supprimer de mes favoris</button>
-                            </form>
-
-
-
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -276,27 +268,6 @@
                         <p>Vous n'avez aucun rendez-vous de prévu.</p>
                     </div>
                 <?php endif; ?>
-                
-                
-                <!-- <form class="my-appt">
-                    <div class="info-doctor">
-                        <div>
-                            <p>Docteur: Dr. Jane Doe</p>
-                        </div>
-                        <span>Médecin généraliste</span> 
-                    </div>
-                    
-                    <div class="info-appt">
-                        <p><span>13/02/2025</span> a <span>14h00</span></p>
-                        <p>
-                            <span>Note:</span>
-                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
-                        </p>
-                    </div>
-                    <button class="btn-supr-appt">Annuler RDV</button>
-                </form> -->
-
-                
             </div>
         </div>
     </section>
