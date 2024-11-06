@@ -17,21 +17,26 @@
 
 
         //récuperation des données des favories de l'utilisateur pour affichage
-        $favoritesQuery = $db->prepare("SELECT doctors.* FROM doctors
-            JOIN favorites ON doctors.id = favorites.doctor_id
-            WHERE favorites.user_id = :user_id");
-        $favoritesQuery->execute([':user_id' => $user_id]);
+        $sql = "SELECT doctors.* FROM doctors JOIN favorites ON doctors.id = favorites.doctor_id WHERE favorites.user_id = :user_id";
+        $favoritesQuery = $db->prepare($sql);
+        $favoritesQuery->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $favoritesQuery->execute();
         $favorites = $favoritesQuery->fetchAll();
 
+
+        //récuperation des données de appoitment de l'utilisateur pour affichage
+        $sqlAppointment = "SELECT appointment.*, doctors.first_name, doctors.last_name FROM appointment JOIN doctors ON doctors.id = appointment.doctor_id WHERE appointment.user_id = :user_id";
+
+        $appointmentQuery = $db->prepare($sqlAppointment);
+        $appointmentQuery->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $appointmentQuery->execute();
+        $appointmentResult = $appointmentQuery->fetchAll();
+
     } else {
-        // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
+        //redirection si utilisateur non connecté
         header("Location: /login.php");
         exit();
     }
-
-
-
-
 ?>
 
 
@@ -91,130 +96,130 @@
             <div class="doctor-cards">
 
             <?php if ($favorites): ?>
-                    <?php foreach ($favorites as $doctor): ?>
-                        <figure class="doctor-card">
-                            <div class="doc-img-profil">
-                                <img class="img-doc" src="<?= !empty($doctor['doc_image']) ? 'assets/images/profiles_doctors/' . htmlspecialchars($doctor['doc_image']) : 'assets/images/profiles_doctors/doctor-img-notfound.png'; ?>" alt="doc img">
-                            </div>
-                            <figcaption>
-                                <div class="doc-name">
-                                    <span>Profile</span>
-                                    <h1>Dr. <?= $doctor['first_name'].' '. $doctor['last_name']?></h1>
-                                    <h2><?= $doctor['professional_type'].'<br>'. $doctor['specialization']?></h2>
+                <?php foreach ($favorites as $doctor): ?>
+                    <figure class="doctor-card">
+                        <div class="doc-img-profil">
+                            <img class="img-doc" src="<?= !empty($doctor['doc_image']) ? 'assets/images/profiles_doctors/' . htmlspecialchars($doctor['doc_image']) : 'assets/images/profiles_doctors/doctor-img-notfound.png'; ?>" alt="doc img">
+                        </div>
+                        <figcaption>
+                            <div class="doc-name">
+                                <span>Profile</span>
+                                <h1>Dr. <?= $doctor['first_name'].' '. $doctor['last_name']?></h1>
+                                <h2><?= $doctor['professional_type'].'<br>'. $doctor['specialization']?></h2>
 
-                                    <div class="gender-doc">
-                                        <p>Genre :
-                                            <?php 
-                                                if ($doctor['gender'] === 'H') {
-                                                    echo 'Homme';
-                                                } elseif ($doctor['gender'] === 'F') {
-                                                    echo 'Femme';
-                                                } else {
-                                                    echo 'Non spécifié';
-                                                }
-                                            ?>
-                                        </p>
-                                        <div>______________</div>
-                                    </div>
+                                <div class="gender-doc">
+                                    <p>Genre :
+                                        <?php 
+                                            if ($doctor['gender'] === 'H') {
+                                                echo 'Homme';
+                                            } elseif ($doctor['gender'] === 'F') {
+                                                echo 'Femme';
+                                            } else {
+                                                echo 'Non spécifié';
+                                            }
+                                        ?>
+                                    </p>
+                                    <div>______________</div>
                                 </div>
+                            </div>
 
 
-                                <div class="doc-information">
-                                    <h3>Horraires et contact:</h3>
-                                    <div class="infosup-doc">
-                                        <table class="doc-table-read">
-                                            <tbody>
-                                                <tr>
-                                                    <th class="doc-day-read">Lundi</th>
-                                                    <td class="doc-hour-read"><?= $doctor['Monday_schedules']?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="doc-day-read">Mardi</th>
-                                                    <td class="doc-hour-read"><?= $doctor['Tuesday_schedules']?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="doc-day-read">Mercredi</th>
-                                                    <td class="doc-hour-read"><?= $doctor['Wednesday_schedules']?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="doc-day-read">Jeudi</th>
-                                                    <td class="doc-hour-read"><?= $doctor['Thursday_schedules']?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="doc-day-read">Vendredi</th>
-                                                    <td class="doc-hour-read"><?= $doctor['Friday_schedules']?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="doc-day-read">Samedi</th>
-                                                    <td class="doc-hour-read"><?= $doctor['Saturday_schedules']?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="doc-day-read">Dimanche</th>
-                                                    <td class="doc-hour-read"><?= $doctor['Sunday_schedules']?></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="doc-information">
+                                <h3>Horraires et contact:</h3>
+                                <div class="infosup-doc">
+                                    <table class="doc-table-read">
+                                        <tbody>
+                                            <tr>
+                                                <th class="doc-day-read">Lundi</th>
+                                                <td class="doc-hour-read"><?= $doctor['Monday_schedules']?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="doc-day-read">Mardi</th>
+                                                <td class="doc-hour-read"><?= $doctor['Tuesday_schedules']?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="doc-day-read">Mercredi</th>
+                                                <td class="doc-hour-read"><?= $doctor['Wednesday_schedules']?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="doc-day-read">Jeudi</th>
+                                                <td class="doc-hour-read"><?= $doctor['Thursday_schedules']?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="doc-day-read">Vendredi</th>
+                                                <td class="doc-hour-read"><?= $doctor['Friday_schedules']?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="doc-day-read">Samedi</th>
+                                                <td class="doc-hour-read"><?= $doctor['Saturday_schedules']?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="doc-day-read">Dimanche</th>
+                                                <td class="doc-hour-read"><?= $doctor['Sunday_schedules']?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-                                        <div class="infospecial">
-                                            <!-- GENDER -->
-                                            <div class="doc-adress">
-                                                <span class="underline">Adresse:</span>
-                                                <p class="complet-adress">
-                                                    <span><?= $doctor['address']?></span>
-                                                    <span><?= $doctor['department']?></span>
-                                                    <span><?= $doctor['city']?></span>
-                                                </p>
-                                            </div>
+                                    <div class="infospecial">
+                                        <!-- GENDER -->
+                                        <div class="doc-adress">
+                                            <span class="underline">Adresse:</span>
+                                            <p class="complet-adress">
+                                                <span><?= $doctor['address']?></span>
+                                                <span><?= $doctor['department']?></span>
+                                                <span><?= $doctor['city']?></span>
+                                            </p>
+                                        </div>
 
 
-                                            <!-- PAYMENT METHOD -->
-                                            <div>
-                                                <p class="doc-method">mode paiement accepté</p>
-                                                <span><?php
-                                                    // Vérifiez si payment_method n'est pas null ou vide
-                                                    if (!empty($doctor['payment_method'])) {
-                                                        // Convertir le SET en tableau
-                                                        $payment_methods = explode(',', $doctor['payment_method']);
-                                                        
-                                                        // Parcourir chaque payement_méthode et les afficher sur une nouvelle ligne
-                                                        foreach ($payment_methods as $method) {
-                                                            // Remplacer les underscores par des espaces
-                                                            $formatted_method = str_replace('_', ' ', $method);
-                                                            echo "<div>$formatted_method</div>";
-                                                        }
-                                                    } else {
-                                                        echo "<div>Aucune information de paiement disponible.</div>"; // Message alternatif si aucune info
+                                        <!-- PAYMENT METHOD -->
+                                        <div>
+                                            <p class="doc-method">mode paiement accepté</p>
+                                            <span><?php
+                                                // Vérifiez si payment_method n'est pas null ou vide
+                                                if (!empty($doctor['payment_method'])) {
+                                                    // Convertir le SET en tableau
+                                                    $payment_methods = explode(',', $doctor['payment_method']);
+                                                    
+                                                    // Parcourir chaque payement_méthode et les afficher sur une nouvelle ligne
+                                                    foreach ($payment_methods as $method) {
+                                                        // Remplacer les underscores par des espaces
+                                                        $formatted_method = str_replace('_', ' ', $method);
+                                                        echo "<div>$formatted_method</div>";
                                                     }
-                                                ?></span>
-                                            </div>
+                                                } else {
+                                                    echo "<div>Aucune information de paiement disponible.</div>"; // Message alternatif si aucune info
+                                                }
+                                            ?></span>
+                                        </div>
 
-                                            <!-- PHONE -->
-                                            <div class="doc-tel">
-                                                <p>Tel: <span><?= $doctor['phone']?></span></p>
-                                            </div>
+                                        <!-- PHONE -->
+                                        <div class="doc-tel">
+                                            <p>Tel: <span><?= $doctor['phone']?></span></p>
+                                        </div>
 
-                                            <!-- AVAIBILITY -->
-                                            <div class="doc-bis">
-                                                <p>Nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
-                                            </div>
+                                        <!-- AVAIBILITY -->
+                                        <div class="doc-bis">
+                                            <p>Nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="holder-btn-doc">
-                                    <form action="gestions/delete-favorites.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer se médecin de vos favoris ?');">
-                                        <input type="hidden" name="doctor_id" value="<?= htmlspecialchars($doctor['id']) ?>">
-                                        <button type="submit" class="btn-delete-account">Supprimer de mes favoris</button>
-                                    </form>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="add-pro">
-                        <p>Vous n'avez aucun médecin en favori.</p>
-                        <a href="search.php">Ajouter</a>
-                    </div>
-                <?php endif; ?>
+                            </div>
+                            <div class="holder-btn-doc">
+                                <form action="gestions/delete-favorites.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer se médecin de vos favoris ?');">
+                                    <input type="hidden" name="doctor_id" value="<?= htmlspecialchars($doctor['id']) ?>">
+                                    <button type="submit" class="btn-delete-account">Supprimer de mes favoris</button>
+                                </form>
+                            </div>
+                        </figcaption>
+                    </figure>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="add-pro">
+                    <p>Vous n'avez aucun médecin en favori.</p>
+                    <a href="search.php">Ajouter</a>
+                </div>
+            <?php endif; ?>
             </div>
         </div>
     </section>
@@ -227,8 +232,38 @@
             <h2 class="title-spe">Mes Rendez-vous</h2>
             
             <div class="list-rdv">
-                <!-- appointements card -->
-                <form class="my-appt">
+                <!-- appointments cards -->
+                
+                <?php if ($appointmentResult): ?>
+                    <?php foreach ($appointmentResult as $appointment): ?>
+                        <div class="my-appt">
+                            <div class="info-doctor">
+                                <div>
+                                    <p>Dr. <?= htmlspecialchars($appointment['first_name'].' '.$appointment['last_name']) ?></p>
+                                </div>
+                                <span>Médecin généraliste</span> 
+                            </div>
+                            
+                            <div class="info-appt">
+                                <p><?= $appointment['appointment_datetime']?></p>
+                                <p>
+                                    <span>Note:</span>
+                                    <p><?= $appointment['note_info'] ?></p>
+                                </p>
+                            </div>
+                            <form action="" method="POST">
+                                <button class="btn-supr-appt">Annuler RDV</button>
+                            </form>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="add-pro">
+                        <p>Vous n'avez aucun rendez-vous de prévu.</p>
+                    </div>
+                <?php endif; ?>
+                
+                
+                <!-- <form class="my-appt">
                     <div class="info-doctor">
                         <div>
                             <p>Docteur: Dr. Jane Doe</p>
@@ -244,61 +279,9 @@
                         </p>
                     </div>
                     <button class="btn-supr-appt">Annuler RDV</button>
-                </form>
+                </form> -->
 
-                <form class="my-appt">
-                    <div class="info-doctor">
-                        <div>
-                            <p>Docteur: Dr. Jane Doe</p>
-                        </div>
-                        <span>Médecin généraliste</span> 
-                    </div>
-                    
-                    <div class="info-appt">
-                        <p><span>13/02/2025</span> a <span>14h00</span></p>
-                        <p>
-                            <span>Note:</span>
-                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
-                        </p>
-                    </div>
-                    <button class="btn-supr-appt">Annuler RDV</button>
-                </form>
-
-                <form class="my-appt">
-                    <div class="info-doctor">
-                        <div>
-                            <p>Docteur: Dr. Jane Doe</p>
-                        </div>
-                        <span>Médecin généraliste</span> 
-                    </div>
-                    
-                    <div class="info-appt">
-                        <p><span>13/02/2025</span> a <span>14h00</span></p>
-                        <p>
-                            <span>Note:</span>
-                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
-                        </p>
-                    </div>
-                    <button class="btn-supr-appt">Annuler RDV</button>
-                </form>
-
-                <form class="my-appt">
-                    <div class="info-doctor">
-                        <div>
-                            <p>Docteur: Dr. Jane Doe</p>
-                        </div>
-                        <span>Médecin généraliste</span> 
-                    </div>
-                    
-                    <div class="info-appt">
-                        <p><span>13/02/2025</span> a <span>14h00</span></p>
-                        <p>
-                            <span>Note:</span>
-                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
-                        </p>
-                    </div>
-                    <button class="btn-supr-appt">Annuler RDV</button>
-                </form>
+                
             </div>
         </div>
     </section>
