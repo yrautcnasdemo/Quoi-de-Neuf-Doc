@@ -25,7 +25,7 @@
 
 
         //récuperation des données de appoitment de l'utilisateur pour affichage
-        $sqlAppointment = "SELECT appointment.*, doctors.first_name, doctors.last_name FROM appointment JOIN doctors ON doctors.id = appointment.doctor_id WHERE appointment.user_id = :user_id";
+        $sqlAppointment = "SELECT appointment.*, doctors.first_name, doctors.last_name, doctors.specialization, doctors.professional_type FROM appointment JOIN doctors ON doctors.id = appointment.doctor_id WHERE appointment.user_id = :user_id";
 
         $appointmentQuery = $db->prepare($sqlAppointment);
         $appointmentQuery->bindValue(':user_id', $user_id, PDO::PARAM_INT);
@@ -241,19 +241,34 @@
                                 <div>
                                     <p>Dr. <?= htmlspecialchars($appointment['first_name'].' '.$appointment['last_name']) ?></p>
                                 </div>
-                                <span>Médecin généraliste</span> 
+                                <span><?= ($appointment['professional_type'].' '.$appointment['specialization']) ?></span> 
                             </div>
                             
                             <div class="info-appt">
-                                <p><?= $appointment['appointment_datetime']?></p>
-                                <p>
+                            <?php
+                                // On crée une variable date pour stocker la date du rendez-vous
+                                $date = new DateTime($appointment['appointment_datetime']);
+                                // On modifie le format de la date pour avoir jour-mois-année 
+                                $dateformat = $date->format('d-m-Y à H\hi');
+                            ?>
+                            <p><?= $dateformat ?></p>
+                                <p class="all-info-doc">
                                     <span>Note:</span>
-                                    <p><?= $appointment['note_info'] ?></p>
+                                    <p class="info-doc"><?= $appointment['note_info'] ?></p>
                                 </p>
                             </div>
                             <form action="" method="POST">
                                 <button class="btn-supr-appt">Annuler RDV</button>
                             </form>
+
+
+                            <form action="gestions/delete-favorites.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer se médecin de vos favoris ?');">
+                                <input type="hidden" name="doctor_id" value="<?= htmlspecialchars($doctor['id']) ?>">
+                                <button type="submit" class="btn-delete-account">Supprimer de mes favoris</button>
+                            </form>
+
+
+
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>

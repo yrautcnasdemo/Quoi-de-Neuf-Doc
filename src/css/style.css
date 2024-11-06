@@ -1146,11 +1146,18 @@ footer {
     border-radius: 10px;
     border: 2px solid black;
     max-width: 370px;
-    height: 210px;
+    height: 230px;
 }
 
 .info-doctor {
     margin: 0px 0px 10px 0px
+}
+.all-info-doc {
+    margin-top: 10px;
+}
+.info-doc {
+    height: 60px;
+    overflow: scroll;
 }
 
 .list-rdv {
