@@ -23,8 +23,8 @@
         $favoritesQuery->execute();
         $favorites = $favoritesQuery->fetchAll();
 
-
-        //récuperation des données de appoitment de l'utilisateur pour affichage
+        //JOINTURE DE TABLE 
+        //récuperation des données de appoitment de l'utilisateur pour affichage ((La jointure de table se fait précisement ici : JOIN doctors ON doctors.id = appointment.doctor_id ))
         $sqlAppointment = "SELECT appointment.*, doctors.first_name, doctors.last_name, doctors.specialization, doctors.professional_type FROM appointment JOIN doctors ON doctors.id = appointment.doctor_id WHERE appointment.user_id = :user_id";
 
         $appointmentQuery = $db->prepare($sqlAppointment);
