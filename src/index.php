@@ -386,7 +386,7 @@
                 <p>Écrivez-nous via le formulaire de contact ci-dessous :</p>
             </div>
 
-            <form class="full-form" action="contact.php" method="POST">
+            <form class="full-form" action="gestions/contact-admin.php" method="POST">
                 <div class="part-all">
                     <div class="part1">
                         <div class="form-input">

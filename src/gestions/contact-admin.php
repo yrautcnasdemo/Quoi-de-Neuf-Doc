@@ -26,14 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mail($to, $subject, $body, $headers)) {
         echo "Votre message a été envoyé avec succès.";
         // Redirection après l'envoi du message
-        header("Location: index.php?message=envoye");
+        header("Location: ../index.php?message=envoye");
         exit();
     } else {
         echo "Erreur lors de l'envoi du message. Veuillez réessayer plus tard.";
     }
 } else {
     // Redirection si la page est accédée sans soumission du formulaire
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>
