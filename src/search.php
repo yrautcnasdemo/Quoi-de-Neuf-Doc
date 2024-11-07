@@ -187,11 +187,16 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
-                <button type="submit" name="envoyer">Rechercher</button>
+                <button class="btn-mod-user" type="submit" name="envoyer">Rechercher</button>
             </form>
         </section>
 
-
+    <!-- Message si aucun résultat -->
+    <?php if (empty($result)): ?>
+        <div class="no-results-message">
+            <p>Aucun professionnel de la santé ne correspond à votre recherche.</p>
+        </div>
+    <?php endif; ?>
 
         <!-- DOCOTR CARDS -->
         <section class="doctor-cards">

@@ -838,6 +838,14 @@ footer {
     font-size: 18px;
 }
 
+.no-results-message {
+    margin-top: 100px;
+    text-align: center;
+    font-family: Teachers;
+    font-size: 24px;
+    color: white;
+}
+
 
 /*/////////////////////////// SEARCH USER ////////////////////////////*/
 

@@ -79,7 +79,7 @@ $user_info = $query->fetchAll(PDO::FETCH_ASSOC);
                     <input type="email" name="user_mail">
                 </div>
             </div>
-            <button type="submit" name="envoyer">Rechercher</button>
+            <button class="btn-mod-user" type="submit" name="envoyer">Rechercher</button>
         </form>
     </section>
 
@@ -130,7 +130,7 @@ $user_info = $query->fetchAll(PDO::FETCH_ASSOC);
             </figure>
         <?php endforeach; ?>
     <?php else: ?>
-        <p>Aucun utilisateur trouvé avec ces informations.</p>
+        <p class="no-results-message">Aucun utilisateur trouvé avec ces informations.</p>
     <?php endif; ?>
     </section>
 </main>
