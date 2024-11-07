@@ -386,36 +386,36 @@
                 <p>Écrivez-nous via le formulaire de contact ci-dessous :</p>
             </div>
 
-            <form class="full-form" action="POST">
+            <form class="full-form" action="contact.php" method="POST">
                 <div class="part-all">
                     <div class="part1">
                         <div class="form-input">
                             <span>Nom :</span>
-                            <input type="text" placeholder="Entrer votre nom">
+                            <input type="text" name="nom" placeholder="Entrer votre nom" required>
                         </div>
                         <div class="form-input">
                             <span>Prénom :</span>
-                            <input type="text" placeholder="Entrer votre prenom">
+                            <input type="text" name="prenom" placeholder="Entrer votre prenom" required>
                         </div>
                         <div class="form-input">
                             <span>eMail :</span>
-                            <input type="mail" placeholder="Entrer votre eMail">
+                            <input type="email" name="email" placeholder="Entrer votre eMail" required>
                         </div>
                     </div>
                     
                     <div class="part2">
                         <div class="form-input">
                             <span>Sujet :</span>
-                            <input type="text" placeholder="Décriver votre sujet">
+                            <input type="text" name="sujet" placeholder="Décriver votre sujet" required>
                         </div>
                         <div class="form-input">
-                            <span>Nom :</span>
-                            <textarea id="text-area" name="text-area" rows="10" placeholder="Entrer votre message..."></textarea>
+                            <span>Votre message :</span>
+                            <textarea id="text-area" name="message" rows="10" placeholder="Entrer votre message..." required></textarea>
                         </div>
                     </div>
                 </div>
                     
-                <button>Envoyer votre message</button>
+                <button type="submit">Envoyer votre message</button>
             </form>
         </section>
     </main>

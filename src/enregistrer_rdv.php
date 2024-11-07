@@ -2,7 +2,8 @@
 session_start();
 require_once("connexion.php");
 
-if (isset($_POST['submit_rdv'])) {
+if (isset($_POST['submit_rdv'], $_POST["day"], $_POST["month"], $_POST["year"], $_POST["hour"], $_POST["minutes"])
+&& !empty($_POST["day"]) && !empty($_POST["month"]) && !empty($_POST["year"]) && !empty($_POST["hour"]) && !empty($_POST["minutes"])) {
     // vérification de l'id du médecin dans la SESSION
     if (!isset($_SESSION['doctor_id'])) {
         $_SESSION['message'] = "Erreur: ID du médecin introuvable.";
@@ -41,5 +42,7 @@ if (isset($_POST['submit_rdv'])) {
         header("Location: search-user.php");
         exit();
     }
+} else {
+    die("rdv incomplet");
 }
 ?>

@@ -19,6 +19,56 @@ if (isset($_SESSION['doctor_id'])) {
     header("Location: /index.php");
     exit();
 }
+
+
+
+
+// @-ChatGPT
+if (isset($_POST['day']) || isset($_POST['month']) || isset($_POST['year'])) {
+    // Initialisation des variables de filtre
+    $day = !empty($_POST['day']) ? str_pad($_POST['day'], 2, '0', STR_PAD_LEFT) : null;
+    $month = !empty($_POST['month']) ? str_pad($_POST['month'], 2, '0', STR_PAD_LEFT) : null;
+    $year = !empty($_POST['year']) ? $_POST['year'] : null;
+
+    // Construire la date en fonction des valeurs fournies
+    $dateFilter = "";
+    if ($year) {
+        $dateFilter .= $year;
+    }
+    if ($month) {
+        $dateFilter .= ($dateFilter ? '-' : '') . $month;
+    }
+    if ($day) {
+        $dateFilter .= ($dateFilter ? '-' : '') . $day;
+    }
+
+    // Préparer la requête SQL en tenant compte des filtres de date
+    $sqlAppointment = "SELECT appointment.*, users.user_firstname, users.user_lastname 
+    FROM appointment JOIN users ON users.id = appointment.user_id WHERE appointment.doctor_id = :doctor_id";
+
+    if ($dateFilter) {
+        $sqlAppointment .= " AND DATE(appointment.appointment_datetime) LIKE :dateFilter";
+    }
+
+    $queryAppointment = $db->prepare($sqlAppointment);
+    $queryAppointment->bindValue(':doctor_id', $doctor_id, PDO::PARAM_INT);
+
+    if ($dateFilter) {
+        $queryAppointment->bindValue(':dateFilter', "$dateFilter%", PDO::PARAM_STR);
+    }
+
+    $queryAppointment->execute();
+    $appointments = $queryAppointment->fetchAll();
+} else {
+    // Requête sans filtre si aucun champ n'est rempli
+    $sqlAppointment = "SELECT appointment.*, users.user_firstname, users.user_lastname 
+    FROM appointment JOIN users ON users.id = appointment.user_id WHERE appointment.doctor_id = :doctor_id";
+
+    $queryAppointment = $db->prepare($sqlAppointment);
+    $queryAppointment->bindValue(':doctor_id', $doctor_id, PDO::PARAM_INT);
+    $queryAppointment->execute();
+    $appointments = $queryAppointment->fetchAll();
+}
 ?>
 
 
@@ -179,92 +229,47 @@ if (isset($_SESSION['doctor_id'])) {
         <div class="user-doctor-appt">
             <h2 class="title-spe">Mes Rendez-vous</h2>
             <div>
-                <form method="POST">
-                    <p class="select-rdv">Mes rendez-vous:
-                        <input class="input-rdv" type="number" min='1' max='31'  placeholder="jour"> 
-                        <input class="input-rdv" type="number" min='1' max='12'  placeholder="mois"> 
-                        <input class="input-rdv" type="number" min='2024' max='9990'  placeholder="année">
-                        <button>Chercher</button>
-                    </p>
-                </form>
+            <form method="POST">
+                <p class="select-rdv">Filtre:
+                    <input class="input-rdv" type="number" min='1' max='31' name="day" placeholder="jour"> 
+                    <input class="input-rdv" type="number" min='1' max='12' name="month" placeholder="mois"> 
+                    <input class="input-rdv" type="number" min='2024' max='9990' name="year" placeholder="année">
+                    <button type="submit">Chercher</button>
+                </p>
+            </form>
                 <a href="search-user.php">Donner un RDV</a>
             </div>
             
             <!-- Carte rdv spécialiste -->
             <div class="list-rdv">
-                <div class="my-appt">
-                    <div class="info-doctor">
-                        <div>
-                            <p>Docteur: Dr. Jane Doe</p>
+                <?php if (count($appointments) === 0): ?>
+                    <p class="no-appointment">Aucun rendez-vous pour la date du <?= htmlspecialchars($dateFilter) ?>.</p>
+                <?php else: ?>
+                <?php foreach ($appointments as $appointment): ?>
+                    <div class="my-appt">
+                        <div class="info-doctor">
+                            <div>
+                                <p>Patient : <?= htmlspecialchars($appointment['user_firstname'] . ' ' . $appointment['user_lastname']) ?></p>
+                            </div>
+                            <span>Rendez-vous</span>
                         </div>
-                        <span>Médecin généraliste</span> 
-                    </div>
-                    
-                    <div class="info-appt">
-                        <p><span>13/02/2025</span> a <span>14h00</span></p>
-                        <p>
-                            <span>Note:</span>
-                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
-                        </p>
-                    </div>
-                    <button class="btn-supr-appt">Annuler RDV</button>
-                </div>
 
-                <div class="my-appt">
-                    <div class="info-doctor">
-                        <div>
-                            <p>Docteur: Dr. Jane Doe</p>
+                        <div class="info-appt">
+                            <p><span><?= date('d-m-Y', strtotime($appointment['appointment_datetime'])) ?></span> à <span><?= date('H:i', strtotime($appointment['appointment_datetime'])) ?></span></p>
+                            <p class="all-info-doc">
+                                <span>Note:</span>
+                                <p class="info-doc"><?= htmlspecialchars($appointment['note_info']) ?></p>
+                            </p>
                         </div>
-                        <span>Médecin généraliste</span> 
+                        <form action="gestions/delete-appointment.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce rendez-vous ?');">
+                            <input type="hidden" name="appointment_id" value="<?= $appointment['id'] ?>">
+                            <button type="submit" class="btn-supr-appt">Annuler RDV</button>
+                        </form>
                     </div>
-                    
-                    <div class="info-appt">
-                        <p><span>13/02/2025</span> a <span>14h00</span></p>
-                        <p>
-                            <span>Note:</span>
-                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
-                        </p>
-                    </div>
-                    <button class="btn-supr-appt">Annuler RDV</button>
-                </div>
-
-                <div class="my-appt">
-                    <div class="info-doctor">
-                        <div>
-                            <p>Docteur: Dr. Jane Doe</p>
-                        </div>
-                        <span>Médecin généraliste</span> 
-                    </div>
-                    
-                    <div class="info-appt">
-                        <p><span>13/02/2025</span> a <span>14h00</span></p>
-                        <p>
-                            <span>Note:</span>
-                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
-                        </p>
-                    </div>
-                    <button class="btn-supr-appt">Annuler RDV</button>
-                </div>
-
-                <div class="my-appt">
-                    <div class="info-doctor">
-                        <div>
-                            <p>Docteur: Dr. Jane Doe</p>
-                        </div>
-                        <span>Médecin généraliste</span> 
-                    </div>
-                    
-                    <div class="info-appt">
-                        <p><span>13/02/2025</span> a <span>14h00</span></p>
-                        <p>
-                            <span>Note:</span>
-                            <p>Ne pas oublier de rapporter les radios de votre jambe droite ainsi que votre carte santé, et soyez bien a l'heure</p>
-                        </p>
-                    </div>
-                    <button class="btn-supr-appt">Annuler RDV</button>
-                </div>
-                
+                <?php endforeach; ?>
+                <?php endif; ?>
             </div>
+
         </div>
     </section>
 

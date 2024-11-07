@@ -2,27 +2,42 @@
 session_start();
 require_once "../connexion.php";
 
-//On vérifie si l'utilisateur est connecté et l'id du RDV
-if (isset($_SESSION['user_id']) && isset($_POST['appointment_id'])) {
-    $user_id = $_SESSION['user_id'];
+// On vérifie si l'utilisateur est connecté et si l'ID du rendez-vous est fourni
+if ((isset($_SESSION['user_id']) || isset($_SESSION['doctor_id'])) && isset($_POST['appointment_id'])) {
     $appointment_id = $_POST['appointment_id'];
 
-    $suppr_rdv = "DELETE FROM appointment WHERE id = :appointment_id AND user_id = :user_id";
+    // Vérification si l'utilisateur est un patient
+    if (isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+        $delete_query = "DELETE FROM appointment WHERE id = :appointment_id AND user_id = :user_id";
+        
+        $query = $db->prepare($delete_query);
+        $query->bindValue(":appointment_id", $appointment_id, PDO::PARAM_INT);
+        $query->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+        
+        $redirect_page = "../profile-user.php"; // Redirection pour les patients
+    
+    // Vérification si l'utilisateur est un médecin
+    } elseif (isset($_SESSION['doctor_id'])) {
+        $doctor_id = $_SESSION['doctor_id'];
+        $delete_query = "DELETE FROM appointment WHERE id = :appointment_id AND doctor_id = :doctor_id";
+        
+        $query = $db->prepare($delete_query);
+        $query->bindValue(":appointment_id", $appointment_id, PDO::PARAM_INT);
+        $query->bindValue(":doctor_id", $doctor_id, PDO::PARAM_INT);
+        
+        $redirect_page = "../profile-doctor.php"; // Redirection pour les médecins
+    }
 
-    $query = $db->prepare($suppr_rdv);
-    
-    $query->bindValue(":appointment_id", $appointment_id, PDO::PARAM_INT);
-    $query->bindValue(":user_id", $user_id, PDO::PARAM_INT);
-    
+    // Exécution de la requête et redirection
     if ($query->execute()) {
-        // On redirige vers la page profile-user.php apres la suppression du RDV
-        header("Location: ../profile-user.php?message=rdv_supprimé");
+        header("Location: $redirect_page?message=rdv_supprimé");
         exit();
     } else {
         echo "Erreur lors de la suppression du rendez-vous.";
     }
 } else {
-    // On redirige vers la page de connexion si l'utilisateur n'est pas connecté ou si l'appointment_id est manquant
+    // Redirection vers la page de connexion si non connecté ou si appointment_id manquant
     header("Location: ../index.php");
     exit();
 }
