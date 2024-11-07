@@ -98,11 +98,11 @@ $user_info = $query->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="adress-user-main">
                             <span>Adresse:</span>
-                            <p><?= htmlspecialchars($user['user_address']) ?></p>
-                            <p><?= htmlspecialchars($user['user_department']) . ' - ' . htmlspecialchars($user['user_city']) ?></p>
+                            <p><?= !empty($user['user_address']) ? htmlspecialchars($user['user_address']) : 'Address: non-renseigné' ?></p>
+                            <p><?= !empty($user['user_department']) ? htmlspecialchars($user['user_department']) : 'CP: N/A' ?> - <?= !empty($user['user_city']) ? htmlspecialchars($user['user_city']) : 'Ville: N/A' ?></p>
                         </div>
                         <div class="pm-user">
-                            <p>Telephone: <?= htmlspecialchars($user['user_phone']) ?></p>
+                            <p>Telephone: <?= !empty($user['user_phone']) ? htmlspecialchars($user['user_phone']) : 'non-renseigné' ?></p>
                             <p>eMail: <?= htmlspecialchars($user['user_mail']) ?></p>
                         </div>
                     </div>
