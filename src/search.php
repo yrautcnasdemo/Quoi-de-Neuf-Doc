@@ -11,6 +11,7 @@ if (isset($_SESSION['favorite_message'])) {
 }
 
 
+
 // Requete de base
 $sql = "SELECT * FROM doctors";
 $conditions = [];
