@@ -8,13 +8,14 @@ require_once "connexion.php";
 
 //CREAT modifié
 if ($_POST) {
-    if (isset($_POST['id'], $_POST['phone'], $_POST['department'], $_POST['gender'], $_POST['city'], $_POST['address'], $_POST['professional_type'], $_POST['specialization'], $_POST['Monday_schedules'], $_POST['Tuesday_schedules'], $_POST['Wednesday_schedules'], $_POST['Thursday_schedules'], $_POST['Friday_schedules'], $_POST['Saturday_schedules'], $_POST['Sunday_schedules'], $_POST['availability'], $_POST['payment_method']) && 
-        !empty($_POST['id']) && !empty($_POST['phone']) && !empty($_POST['department']) && !empty($_POST['gender']) && !empty($_POST['city']) && !empty($_POST['address']) && !empty($_POST['professional_type']) && !empty($_POST['specialization']) && !empty($_POST['Monday_schedules']) && !empty($_POST['Tuesday_schedules']) && !empty($_POST['Wednesday_schedules']) && !empty($_POST['Thursday_schedules']) && !empty($_POST['Friday_schedules']) && !empty($_POST['Saturday_schedules']) && !empty($_POST['Sunday_schedules']) && !empty($_POST['availability'])) {
+    if (isset($_POST['id'], $_POST['phone'], $_POST['region'], $_POST['department'], $_POST['gender'], $_POST['city'], $_POST['address'], $_POST['professional_type'], $_POST['specialization'], $_POST['Monday_schedules'], $_POST['Tuesday_schedules'], $_POST['Wednesday_schedules'], $_POST['Thursday_schedules'], $_POST['Friday_schedules'], $_POST['Saturday_schedules'], $_POST['Sunday_schedules'], $_POST['availability'], $_POST['payment_method']) && 
+    !empty($_POST['id']) && !empty($_POST['phone']) && !empty($_POST['region']) && !empty($_POST['department']) && !empty($_POST['gender']) && !empty($_POST['city']) && !empty($_POST['address']) && !empty($_POST['professional_type']) && !empty($_POST['specialization']) && !empty($_POST['Monday_schedules']) && !empty($_POST['Tuesday_schedules']) && !empty($_POST['Wednesday_schedules']) && !empty($_POST['Thursday_schedules']) && !empty($_POST['Friday_schedules']) && !empty($_POST['Saturday_schedules']) && !empty($_POST['Sunday_schedules']) && !empty($_POST['availability'])) {
         
         // Connexion à la base de données
         $id = strip_tags($_POST['id']);
         $gender = strip_tags($_POST['gender']);
         $phone = strip_tags($_POST['phone']);
+        $region = strip_tags($_POST['region']);
         $department = strip_tags($_POST['department']);
         $city = strip_tags($_POST['city']);
         $address = strip_tags($_POST['address']);
@@ -81,7 +82,7 @@ if ($_POST) {
 
 
         // Requête SQL pour la mise à jour
-        $sql = "UPDATE doctors SET phone = :phone, department = :department, gender = :gender, city = :city, address = :address, professional_type = :professional_type, specialization = :specialization, Monday_schedules = :Monday_schedules, Tuesday_schedules = :Tuesday_schedules, Wednesday_schedules = :Wednesday_schedules, Thursday_schedules = :Thursday_schedules, Friday_schedules = :Friday_schedules, Saturday_schedules = :Saturday_schedules, Sunday_schedules = :Sunday_schedules, availability = :availability, payment_method = :payment_method" . ($doctor_image ? ", doc_image = :doc_image" : "") . " WHERE id = :id";
+        $sql = "UPDATE doctors SET phone = :phone, department = :department, gender = :gender, city = :city, address = :address, professional_type = :professional_type, specialization = :specialization, Monday_schedules = :Monday_schedules, Tuesday_schedules = :Tuesday_schedules, Wednesday_schedules = :Wednesday_schedules, Thursday_schedules = :Thursday_schedules, Friday_schedules = :Friday_schedules, Saturday_schedules = :Saturday_schedules, Sunday_schedules = :Sunday_schedules, availability = :availability, payment_method = :payment_method, region = :region" . ($doctor_image ? ", doc_image = :doc_image" : "") . " WHERE id = :id";
         $query = $db->prepare($sql);
         
         // Bind des paramètres
@@ -102,6 +103,7 @@ if ($_POST) {
         $query->bindValue(":Sunday_schedules", $Sunday_schedules, PDO::PARAM_STR);
         $query->bindValue(":availability", $availability, PDO::PARAM_STR);
         $query->bindValue(":payment_method", $payment_methods_str, PDO::PARAM_STR);
+        $query->bindValue(":region", $region, PDO::PARAM_STR);
         if ($doctor_image) {
             $query->bindValue(":doc_image", $doctor_image, PDO::PARAM_STR);
         }
@@ -244,6 +246,24 @@ if (isset($_SESSION['doctor_id'])) {
                                 <span>Adresse:</span>
                                 <input type="text" placeholder="01 la chaume contant" id="address" name="address" value="<?= $doctor['address'] ?>">
                             </div>
+
+                            <label for="region">Région :</label>
+                            <select name="region" id="region">
+                                <option value="Auvergne-Rhône-Alpes" <?= ($doctor['region'] == 'Auvergne-Rhône-Alpes') ? 'selected' : '' ?>>Auvergne-Rhône-Alpes</option>
+                                <option value="Bourgogne-Franche-Comté" <?= ($doctor['region'] == 'Bourgogne-Franche-Comté') ? 'selected' : '' ?>>Bourgogne-Franche-Comté</option>
+                                <option value="Bretagne" <?= ($doctor['region'] == 'Bretagne') ? 'selected' : '' ?>>Bretagne</option>
+                                <option value="Centre-Val de Loire" <?= ($doctor['region'] == 'Centre-Val de Loire') ? 'selected' : '' ?>>Centre-Val de Loire</option>
+                                <option value="Corse" <?= ($doctor['region'] == 'Corse') ? 'selected' : '' ?>>Corse</option>
+                                <option value="Grand Est" <?= ($doctor['region'] == 'Grand Est') ? 'selected' : '' ?>>Grand Est</option>
+                                <option value="Hauts-de-France" <?= ($doctor['region'] == 'Hauts-de-France') ? 'selected' : '' ?>>Hauts-de-France</option>
+                                <option value="Île-de-France" <?= ($doctor['region'] == 'Île-de-France') ? 'selected' : '' ?>>Île-de-France</option>
+                                <option value="Normandie" <?= ($doctor['region'] == 'Normandie') ? 'selected' : '' ?>>Normandie</option>
+                                <option value="Nouvelle-Aquitaine" <?= ($doctor['region'] == 'Nouvelle-Aquitaine') ? 'selected' : '' ?>>Nouvelle-Aquitaine</option>
+                                <option value="Occitanie" <?= ($doctor['region'] == 'Occitanie') ? 'selected' : '' ?>>Occitanie</option>
+                                <option value="Pays de la Loire" <?= ($doctor['region'] == 'Pays de la Loire') ? 'selected' : '' ?>>Pays de la Loire</option>
+                                <option value="Provence-Alpes-Côte d'Azur" <?= ($doctor['region'] == "Provence-Alpes-Côte d'Azur") ? 'selected' : '' ?>>Provence-Alpes-Côte d'Azur</option>
+                            </select>
+
                             <div>
                                 <span>Mon code postal:</span>
                                 <input type="text" placeholder="58470" id="department" name="department" value="<?= $doctor['department']?>"> <!--On rajoute valeur pour UPDATE-->
