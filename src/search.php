@@ -61,8 +61,8 @@ if (!empty($_GET['gender'])) {
 }
 
 if (!empty($_GET['availability'])) {
-    $availability_values = implode(",", $_GET['availability']);
-    $conditions[] = "availability IN (" . $availability_values . ")";
+    $availability_values = implode("','", $_GET['availability']);
+    $conditions[] = "availability IN ('" . $availability_values . "')";
 }
 
 // On ajoute les conditions a la requete si on désire en mettre
@@ -177,11 +177,11 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                         <p>Disponible pour de nouveaux patients ?</p>
                         <div class="billing-method">
                             <div>
-                                <input type="checkbox" id="yes" name="availability[]" value="1">
+                                <input type="checkbox" id="yes" name="availability[]" value="Oui">
                                 <label for="yes">Oui</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="no" name="availability[]" value="0">
+                                <input type="checkbox" id="no" name="availability[]" value="Non">
                                 <label for="no">Non</label>
                             </div>
                         </div>
@@ -308,7 +308,17 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
                                 <!-- AVAIBILITY -->
                                 <div class="doc-bis">
-                                    <p>Nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
+                                    <p>Nouveaux patients: <span>
+                                    <?php 
+                                        if ($doctor['availability'] === 'Oui') {
+                                            echo 'Oui';
+                                        } elseif ($doctor['availability'] === 'Non') {
+                                            echo 'Non';
+                                        } else {
+                                            echo 'Non spécifié';
+                                        }
+                                    ?>    
+                                    
                                 </div>
                             </div>
                         </div>

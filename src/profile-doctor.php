@@ -198,7 +198,7 @@ if (isset($_POST['day']) || isset($_POST['month']) || isset($_POST['year'])) {
 
                             <!-- AVAIBILITY -->
                             <div class="doc-bis">
-                                <p>Nouveaux patients: <span><?= $doctor['availability'] ? 'Oui' : 'Non' ?></span></p>
+                                <p>Nouveaux patients: <span><?= ($doctor['availability'] === 'Oui') ? 'Oui' : 'Non' ?></span></p>
                             </div>
                         </div>
                     </div>
