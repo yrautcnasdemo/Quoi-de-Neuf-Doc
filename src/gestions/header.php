@@ -12,7 +12,7 @@
             <li><a href="index.php">Accueil</a></li>
             <li><a href="search.php">Rechercher</a></li>
             <li><a href="about.php">A propos</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#homepage-contact">Contact</a></li>
             <?php if(userLogin()): ?>
                 <li><a class="user-profile-btn" href="profile-user.php">Mon Profile</a></li>
                 <li><a class="connexion-btn" href="deconnexion.php"><div class="btn-style-bgm"><span>Déconnexion</span></div></a></li>
@@ -32,7 +32,7 @@
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="search.php">Rechercher</a></li>
                 <li><a href="about.php">A propos</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#homepage-contact">Contact</a></li>
             </ul>
         </nav>
         <div class="login-pro">
@@ -40,7 +40,7 @@
                 <a class="user-profile-btn" href="profile-user.php">Mon Profile</a>
                 <a class="connexion-btn" href="deconnexion.php" role="button">
                     <div class="btn-style">
-                        <div class="btn-style-c"><div class="btn-style-c2"></div></div>
+                        <div class="btn-style-c"><div class="btn-style-d2"></div></div>
                         <span>Déconnexion</span>
                     </div>
                 </a>
@@ -48,7 +48,7 @@
                 <a class="doc-profile-btn" href="profile-doctor.php">Mon Profile</a>
                 <a class="connexion-btn" href="deconnexion.php" role="button">
                     <div class="btn-style">
-                        <div class="btn-style-c"><div class="btn-style-c2"></div></div>
+                        <div class="btn-style-c"><div class="btn-style-d2"></div></div>
                         <span>Déconnexion</span>
                     </div>
                 </a>

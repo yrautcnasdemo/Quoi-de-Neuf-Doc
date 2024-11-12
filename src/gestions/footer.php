@@ -10,8 +10,8 @@
                 <h3 class="red-span">Liens utiles</h3>
                 <ul>
                     <li><a href="#">Accueil</a></li>
-                    <li><a href="#">A propos</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="about.php">A propos</a></li>
+                    <li><a href="#homepage-contact">Contact</a></li>
                     <li><a href="#">Politique de confidentialité</a></li>
                 </ul>
             </div>

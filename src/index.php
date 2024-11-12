@@ -286,14 +286,14 @@
                         <h2>. . .près de chez moi ♥</h2>
                     </div>
                 </div>
-                <button>Chercher</button>
+                <a href="search.php">Chercher</a>
             </section>
             
             <!-- Format L-XL -->
             <section class="homepage-intro-L">
                     <div class="title-display">
                         <h2>Trouver un professionnel de la santé <br> près de chez soi</h2>
-                        <button>Chercher</button>
+                        <a class="btn-search-map" href="#search-map">Chercher</a>
                     </div>
             </section>
 
@@ -305,9 +305,11 @@
                         <h1>Quoi de neuf <span class="red-span">Doc ?</span></h1>
                         <img class="logo-doc" src="assets/images/logo/medecin-simple2.png" alt="logo-doctor">
                     </div>
-                    <p>Bienvenue sur notre site, votre partenaire santé de proximité. Trouver un professionnel de santé peut être stressant, c'est pourquoi nous avons conçu un espace chaleureux et intuitif pour vous guider à chaque étape.</p>
-                    <p>Que vous recherchiez un médecin, un spécialiste, un dentiste ou un autre professionnel de la santé, nous vous aidons à localiser rapidement les praticiens proches de chez vous, disponibles selon vos besoins, avec une attention particulière à leur spécialisation, leurs horaires et leur disponibilité.</p>
-                    <p>Ici, la simplicité et la bienveillance sont au cœur de votre expérience.</p>
+                    <div class="red-hover">
+                        <p>Bienvenue sur notre site, votre <span class="red-spot">partenaire santé</span> de proximité. Trouver un professionnel de santé peut être stressant, c'est pourquoi nous avons conçu un espace chaleureux et intuitif pour vous guider à chaque étape.</p>
+                        <p>Que vous recherchiez un médecin, un spécialiste, un dentiste ou un autre professionnel de la santé, nous vous aidons à localiser rapidement les praticiens <span class="red-spot">proches de chez vous</span>, disponibles selon vos besoins, avec une attention particulière à leur spécialisation, leurs horaires et leur disponibilité.</p>
+                        <p>Ici, la <span class="red-spot">simplicité</span> et la bienveillance sont au cœur de votre expérience.</p>
+                    </div>
                 </div>
 
                 <div class="homepage-slider">
@@ -315,9 +317,9 @@
                 </div>
                 <!-- Format L-XL -->
                 <div class="homepage-gallery">
-                    <img class="img-gallery1" src="assets/images/slider1F.png" alt="img1-slider-genoux">
-                    <img class="img-gallery2" src="assets/images/slider3F.png" alt="img1-slider-genoux">
-                    <img class="img-gallery3" src="assets/images/slider2F.png" alt="img1-slider-genoux">
+                        <img class="img-gallery1" src="assets/images/slider1F.png" alt="img1-slider-genoux">
+                        <img class="img-gallery2" src="assets/images/slider3F.png" alt="img2-slider-team">
+                        <img class="img-gallery3" src="assets/images/slider2F.png" alt="img3-slider-dentiste">
                 </div>
             </section>
         </article>
@@ -351,10 +353,12 @@
             </form>
         </section>
 
-        <section class="homepage-search-L">
+        <section id="search-map" class="homepage-search-L">
             <div class="interractive-intro">
                 <h3>Selectionner votre <span class="red-span">région</span> :</h3>
-                <p>En sélectionnant votre région sur notre carte interactive, vous aurez accès à une liste complète de tous les professionnels de santé à proximité de chez vous, incluant médecins, spécialistes, dentistes, et bien d'autres. Vous pourrez non seulement visualiser les praticiens disponibles dans votre région, mais aussi obtenir des informations précises sur leurs horaires, spécialités et jours de garde. De plus, pour répondre au mieux à vos besoins, vous aurez la possibilité d'affiner cette recherche en fonction de critères spécifiques, tels que la spécialisation recherchée ou la disponibilité des professionnels. Tout est conçu pour vous offrir une expérience simple et efficace, directement depuis votre écran.</p>
+                <div class="red-hover">
+                    <p>En sélectionnant votre région sur notre carte interactive, vous aurez accès à une liste complète de <span class="red-spot">tous les professionnels de santé</span> à proximité de chez vous, incluant médecins, spécialistes, dentistes, et bien d'autres. Vous pourrez non seulement visualiser les praticiens disponibles dans votre région, mais aussi <span class="red-spot">obtenir des informations précises</span> sur leurs horaires, spécialités et jours de garde. De plus, pour répondre au mieux à vos besoins, vous aurez la possibilité d'affiner cette recherche en fonction de critères spécifiques, tels que la spécialisation recherchée ou la disponibilité des professionnels. Tout est conçu pour vous offrir <span class="red-spot">une expérience simple et efficace</span>, directement depuis votre écran.</p>
+                </div>
             </div>
             <form action="">
                 <!-- Image Map Generated by http://www.image-map.net/ -->
@@ -380,7 +384,7 @@
             
 
         <!-- /*CONTACT HOMEPAGE*/ -->
-        <section class="homepage-form">
+        <section id="homepage-contact" class="homepage-form">
             <div class="title-form">
                 <h4>Une idée à nous <span class="red-span">partager</span> ?</h4>
                 <p>Écrivez-nous via le formulaire de contact ci-dessous :</p>
@@ -415,7 +419,7 @@
                     </div>
                 </div>
                     
-                <button type="submit">Envoyer votre message</button>
+                <button type="submit" class="btn-form-contact">Envoyer votre message</button>
             </form>
         </section>
     </main>
