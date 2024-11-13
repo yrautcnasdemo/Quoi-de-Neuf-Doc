@@ -25,7 +25,7 @@ body {
     align-items: center;
     padding-right: 20px;
     background-color: #143447;
-    z-index: 10;
+    z-index: 50;
 }
 .btn-tr {
     background-color: transparent;
@@ -39,14 +39,15 @@ body {
     right: 0;
     font-family: poppins;
     color: aliceblue;
-    margin-top: -170px;
+    margin-top: 70px;
+    margin-right: -180px;
     padding: 20px;
     background-color: #143447;
     text-align: center;
     line-height: 2;
     border-radius: 0px 0px 0px 15px;
     transition: 0.5s ease-in-out;
-    z-index: 9;
+    z-index: -999999;
 }
 .nav-burger ul li {
     list-style: none;
@@ -54,6 +55,11 @@ body {
 .nav-burger ul li a {
     text-decoration: none;
     color: aliceblue;
+    transition: 0.3s ease-in-out;
+}
+.nav-burger ul li a:hover {
+    color: red;
+    transition: 0.3s ease-in-out;
 }
 .user-profile-btn, .doc-profile-btn{
     background-color: #1e1e1e;
@@ -506,14 +512,37 @@ footer {
     line-height: 1.1;
 }
 
-.homepage-slider {
+
+.slider-frame {
+    width: 360px;
+    height: 240px;
+    margin-top: 30px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
+}
+
+.slide-images {
+display: flex;
+transition: transform 0.5s ease-in-out;
+}
+
+.slide-images img {
+width: 360px;
+height: 240px;
+object-fit: cover;
+}
+
+
+/* .slider-frame {
     margin-top: 30px;
 }
-.homepage-slider img {
+.slider-frame img {
     width: 100%;
     border-radius: 10px;
     box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.50);
-}
+} */
 
 /*PRESENTATION HOMEPAGE tablette & desktop */
 .homepage-gallery {
@@ -1349,9 +1378,36 @@ footer {
     box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.473);
 }
 
+.selected-doc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.div-info-doc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-info-doc input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    padding: 5px;
+    text-align: center;
+}
+
 .img-box {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 15px;
 }
 .img-update {
@@ -1383,7 +1439,7 @@ footer {
     display: flex;
     flex-direction: column;
     margin: 10px 0px 20px 0px;
-    gap: 15px;
+    gap: 10px;
     font-size: 18px;
 }
 .adress-user div {
@@ -1397,7 +1453,6 @@ footer {
     width: 300px;
     text-align: center;
 }
-
 
 
 
@@ -1454,7 +1509,14 @@ footer {
     font-size: 18px;
 }
 
-
+.region-list {
+    width: 280px;
+    text-align: center;
+    margin: auto;
+    padding: 3px 10px;
+    font-family: Teachers;
+    font-size: 18px;
+}
 
 
 

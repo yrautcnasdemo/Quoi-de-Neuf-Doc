@@ -3,12 +3,24 @@ let burgerNav = document.querySelector(".nav-burger");
 let burgerButton = document.querySelector(".menu-burger");
 
 burgerButton.addEventListener("click", () => {
-    if(burgerNav.style.marginTop === "70px") {
-        burgerNav.style.marginTop = "-170px";
+    if(burgerNav.style.marginRight === "0px") {
+        burgerNav.style.marginRight = "-180px";
     } else {
-        burgerNav.style.marginTop = "70px";
+        burgerNav.style.marginRight = "0px";
     }
 });
+
+
+/* SLIDER IMG RESPONSIVE HOMEPAGE*/
+const slides = document.querySelector('.slide-images');
+const images = document.querySelectorAll('.slide-images img');
+let index = 0;
+
+function showNextSlide() {
+    index = (index + 1) % images.length;
+    slides.style.transform = `translateX(${-index * 360}px)`;
+}
+setInterval(showNextSlide, 5000);
 
 
 

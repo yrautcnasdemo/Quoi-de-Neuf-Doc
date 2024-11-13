@@ -312,8 +312,12 @@
                     </div>
                 </div>
 
-                <div class="homepage-slider">
-                    <img src="assets/images/slider1.jpg" alt="img1-slider-genoux">
+                <div class="slider-frame">
+                    <div class="slide-images">
+                            <img src="assets/images/slider1.jpg" alt="img1-slider-genoux">
+                            <img src="assets/images/slider3F.png" alt="img2-slider-team">
+                            <img src="assets/images/slider2F.png" alt="img3-slider-dentiste">
+                    </div>
                 </div>
                 <!-- Format L-XL -->
                 <div class="homepage-gallery">

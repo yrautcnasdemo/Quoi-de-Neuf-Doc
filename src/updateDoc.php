@@ -248,7 +248,7 @@ if (isset($_SESSION['doctor_id'])) {
                             </div>
 
                             <label for="region">Région :</label>
-                            <select name="region" id="region">
+                            <select class="region-list" name="region" id="region">
                                 <option value="Auvergne-Rhône-Alpes" <?= ($doctor['region'] == 'Auvergne-Rhône-Alpes') ? 'selected' : '' ?>>Auvergne-Rhône-Alpes</option>
                                 <option value="Bourgogne-Franche-Comté" <?= ($doctor['region'] == 'Bourgogne-Franche-Comté') ? 'selected' : '' ?>>Bourgogne-Franche-Comté</option>
                                 <option value="Bretagne" <?= ($doctor['region'] == 'Bretagne') ? 'selected' : '' ?>>Bretagne</option>
