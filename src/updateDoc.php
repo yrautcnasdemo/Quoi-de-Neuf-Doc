@@ -11,7 +11,7 @@ if ($_POST) {
     if (isset($_POST['id'], $_POST['phone'], $_POST['region'], $_POST['department'], $_POST['gender'], $_POST['city'], $_POST['address'], $_POST['professional_type'], $_POST['specialization'], $_POST['Monday_schedules'], $_POST['Tuesday_schedules'], $_POST['Wednesday_schedules'], $_POST['Thursday_schedules'], $_POST['Friday_schedules'], $_POST['Saturday_schedules'], $_POST['Sunday_schedules'], $_POST['availability'], $_POST['payment_method']) && 
     !empty($_POST['id']) && !empty($_POST['phone']) && !empty($_POST['region']) && !empty($_POST['department']) && !empty($_POST['gender']) && !empty($_POST['city']) && !empty($_POST['address']) && !empty($_POST['professional_type']) && !empty($_POST['specialization']) && !empty($_POST['Monday_schedules']) && !empty($_POST['Tuesday_schedules']) && !empty($_POST['Wednesday_schedules']) && !empty($_POST['Thursday_schedules']) && !empty($_POST['Friday_schedules']) && !empty($_POST['Saturday_schedules']) && !empty($_POST['Sunday_schedules']) && !empty($_POST['availability'])) {
         
-        // Connexion à la base de données
+        // Récupération et nettoyage des données du formulaire
         $id = strip_tags($_POST['id']);
         $gender = strip_tags($_POST['gender']);
         $phone = strip_tags($_POST['phone']);
@@ -49,24 +49,25 @@ if ($_POST) {
 
 
         // Gestion de l'image de profil
-        $doctor_image = null;
-        if (!empty($_FILES['profile_image_doc']['name'])) {
+        $doctor_image = null; // Initialisation de la variable pour l'image
+        if (!empty($_FILES['profile_image_doc']['name'])) { // Vérifie si un fichier a été téléchargé
             // Limite de taille à 500 Ko
-            if ($_FILES['profile_image_doc']['size'] > 500000) { // 500000 octets = 500 Ko
+            if ($_FILES['profile_image_doc']['size'] > 500000) {
                 $_SESSION['erreur'] = "L'image ne doit pas dépasser 500 Ko.";
                 header("Location: updateDoc.php?id=$id"); // Redirection vers la page de mise à jour
                 exit();
             }
 
             $upload_dir = 'assets/images/profiles_doctors/';
-            // Obtenir l'extension du fichier
+            
+            // Obtenir l'extension du fichier (jpg, png) du fichier dl et de la convertir en minuscule
             $imageFileType = strtolower(pathinfo($_FILES['profile_image_doc']['name'], PATHINFO_EXTENSION));
             // Générez un nom de fichier unique
             $unique_name = uniqid("doc_", true) . "." . $imageFileType;
 
             // Vérifier le type d'image
             $valid_extensions = ['jpg', 'jpeg', 'png', 'gif'];
-            if (in_array($imageFileType, $valid_extensions)) {
+            if (in_array($imageFileType, $valid_extensions)) { // Vérifie si le type de fichier est accepté
                 // Déplacez le fichier téléchargé
                 if (move_uploaded_file($_FILES['profile_image_doc']['tmp_name'], $upload_dir . $unique_name)) {
                     $doctor_image = $unique_name; // NE PAS METTRE LE CHEMIN COMPLET DE L'IMAGE UPLOADÉ
