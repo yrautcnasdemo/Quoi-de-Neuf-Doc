@@ -16,7 +16,7 @@
         $user_info = $query->fetch();
 
 
-        //récuperation des données des favories de l'utilisateur pour affichage
+        //récuperation des données des favories de l'utilisateur pour affichage et jointure des tables doctor, favorites et users
         $sql = "SELECT doctors.* FROM doctors JOIN favorites ON doctors.id = favorites.doctor_id WHERE favorites.user_id = :user_id";
         $favoritesQuery = $db->prepare($sql);
         $favoritesQuery->bindValue(':user_id', $user_id, PDO::PARAM_INT);
@@ -24,7 +24,7 @@
         $favorites = $favoritesQuery->fetchAll();
 
         //JOINTURE DE TABLE 
-        //récuperation des données de appoitment de l'utilisateur pour affichage ((La jointure de table se fait précisement ici : JOIN doctors ON doctors.id = appointment.doctor_id ))
+        //récuperation des données de appoitment de l'utilisateur pour affichage (ici on ne récupère pas tout dans la table doctor, uniquement doctors.first_name, doctors.last_name, doctors.specialization, doctors.professional_type)
         $sqlAppointment = "SELECT appointment.*, doctors.first_name, doctors.last_name, doctors.specialization, doctors.professional_type FROM appointment JOIN doctors ON doctors.id = appointment.doctor_id WHERE appointment.user_id = :user_id";
 
         $appointmentQuery = $db->prepare($sqlAppointment);
