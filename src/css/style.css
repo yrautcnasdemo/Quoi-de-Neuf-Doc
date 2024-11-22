@@ -428,6 +428,25 @@ footer {
     transition: 0.3s ease-in-out;
 }
 
+.btn-search-map2 {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100px;
+    border-radius: 10px;
+    background-color: #DE6E52;
+    padding: 5px 15px;
+    text-decoration: none;
+    font-family: Teachers;
+    font-size: 18px;
+    color: aliceblue;
+    filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.548));
+    transition: 0.3s ease-in-out;
+    margin: auto;
+}
+
 /* INTRO HOMEPAGE tablette & desktop */
 .homepage-intro-L {
     display: flex;
@@ -438,7 +457,7 @@ footer {
     margin-bottom: 50px;
     background: url(/assets/images/intro-banner-XL.png);
     background-size: cover;
-    height: 450px;
+    height: 650px;
     background-position: center;
 }
 

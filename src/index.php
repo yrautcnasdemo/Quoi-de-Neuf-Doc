@@ -286,7 +286,7 @@
                         <h2>. . .près de chez moi ♥</h2>
                     </div>
                 </div>
-                <a href="search.php">Chercher</a>
+                <a class="btn-search-map2" href="search.php">Chercher</a>
             </section>
             
             <!-- Format L-XL -->
