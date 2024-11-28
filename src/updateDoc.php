@@ -209,7 +209,7 @@ if (isset($_SESSION['doctor_id'])) {
                                 <span></span>
                                 <table class="doc-table">
                                     <caption class="caption-doc">
-                                        Jours / Horraires:
+                                        Jours / Horaires:
                                     </caption>
                                     <tbody>
                                         <tr>

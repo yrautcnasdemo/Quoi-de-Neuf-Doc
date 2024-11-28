@@ -100,8 +100,8 @@
                                 <h2>ORL</h2>
                             </div>
                             <div class="doc-information">
-                                <h3>Horraires et contact:</h3>
-                                <p>Horraires d'ouverture</p>
+                                <h3>Horaires et contact:</h3>
+                                <p>Horaires d'ouverture</p>
                                 <p>
                                     08h00-12h00 <br> 
                                     13h30-19h00 <br> 
@@ -134,8 +134,8 @@
                                 <h2>ORL</h2>
                             </div>
                             <div class="doc-information">
-                                <h3>Horraires et contact:</h3>
-                                <p>Horraires d'ouverture</p>
+                                <h3>Horaires et contact:</h3>
+                                <p>Horaires d'ouverture</p>
                                 <p>
                                     08h00-12h00 <br> 
                                     13h30-19h00 <br> 
@@ -168,8 +168,8 @@
                                 <h2>ORL</h2>
                             </div>
                             <div class="doc-information">
-                                <h3>Horraires et contact:</h3>
-                                <p>Horraires d'ouverture</p>
+                                <h3>Horaires et contact:</h3>
+                                <p>Horaires d'ouverture</p>
                                 <p>
                                     08h00-12h00 <br> 
                                     13h30-19h00 <br> 

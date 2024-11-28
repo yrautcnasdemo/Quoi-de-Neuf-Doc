@@ -1,26 +1,24 @@
-SAMEDI :
+Amélioration Front-End :
+-Arrangement cards doctor dans updateDoc.php : design a revoir
+-Amélioration Design du header : rajouter un effet au survole des liens de navigation
+-Revoir la map interactive 
+-Revoir le bug en responsive de la page about.php
+-prévoir des instructions sur les pages pour indiquer que le password doit comporter 12 caractères une maj et un chiffre
+-prévoir des instructions pour les planning afin d'adopter le même format pour tous le monde
+ou en back-end
+-Prevoir un system de saisie pour le planning en back-end afin d'avoir des rendus identiques sur tous les praticiens
 
--Search Filter (FAIT)
--ajouter la suppression du compte avec un bouton supprimer mon compte sur la cards (FAIT)
--Modifier les noms des fichiers profile-doctor.php et updateDoc.php (FAIT)
--arrangement cards doctor dans profile-doctor.php (FAIT)
-et updateDoc.php
+Amélioration Back-end :
+-METTRE UN MODE ADMIN !!
+-Intégrer un planning pour les horaires de gardes
+-Intégrer un meilleur system de trie pour les rendez-vous
+-Prévoir un emplacement de lien extern pour les rendez-vous des médecins, car beaucoup utilise un autre site
+-Tester le formulaire de contacte
+-Prendre le temps pour finaliser les messages d'erreurs
+-ajouter une pagination pour les recherches
 
 
-DIMANCHE
-
--Modification Header pour intégrer le system de redirection (FAIT)
--ajouter les require_once header et footer (FAIT)
--Organisation des fichiers et dossiers connexion.php etc...
-
-
-
-
-RESTE :
--arrangement cards doctor dans updateDoc.php
--ajout search patients pour médecins + ajout de bouton ajout RDV sur la carte des patient
-
--ajout de la section visualisation RDV pour médecins et Search qui filtre par Années mois jours
--jointure de table pour les Rendez-vous
-
--consultation des RDV sur la page profile-user.php
+NIVEAU SUP :
+-Envoyer un mail tous les 4 mois aux docteurs afin de vérifier si ils sont toujours en activité, 
+si il ne valide pas le lien de de vérification envoyé par mail au bout de 15 jours, leur profile est désactivé car ils seront juger comme n'étant plus en activité
+(Calibrage du mail avec un compte a rebourre en fixant une date de départ, et réinitialisation de se compte a rebourre a la validation du mail ? a voir)

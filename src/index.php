@@ -50,6 +50,13 @@
                 exit();
             }
 
+            // conditions du mot de passe Une ou plusieurs maj et chiffre, ainsi que 12 caracteres minimum
+            // preg_match est une fonction qui vérifie la correspondance au model définie: majuscule A-Z , \d n'importe quel chiffre etc..
+            if (!preg_match('/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{12,}$/', $pass1)) {
+                die("Votre mdp doit faire au minimum 12 caractères, et comporter au moins une majuscule et un chiffre"); // Redirection en cas de mot de passe faible
+                exit();
+            }
+
 
             //On va hasher le mot de passe pour le sécuriser dans la BDD
             $pass = password_hash($_POST["pass1"], PASSWORD_ARGON2ID);

@@ -27,7 +27,6 @@
     </div>
 
 
-    
     <!-- Format header desktop -->
     <div class="header-xl">
         <img class="logo-site" src="assets/images/logo/logoQDND.png" alt="Logo_quoi-de-neuf-doc">

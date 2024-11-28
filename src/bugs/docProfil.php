@@ -85,7 +85,7 @@ if (isset($_SESSION['doctor_id'])) {
 
 
                 <div class="doc-information">
-                    <h3>Horraires et contact:</h3>
+                    <h3>Horaires et contact:</h3>
                     <div class="infosup-doc">
                         <table class="doc-table-read">
                             <tbody>
